@@ -9,26 +9,34 @@ use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Rule;
 
+#[Title('Tambah Lokasi')] 
 class CreateLokasi extends Component
 {
     use WithFileUploads;
 
-    public $areas;
     public $kel, $korlaps = [];
-    public $kecamatan, $kelurahan, $korlap;
-    public $titik_parkir, $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $gambar, $keterangan;
-    public $pendaftaran, $no_ketetapan, $tgl_registrasi, $sisi, $panjang_luas, $google_maps, $tgl_ketetapan, $hari_buka, $kord_long, $kord_lat, $kategori;
-    public $kordinat = '-8.575144258693733, 116.07355620823786';
-    public $is_jukir = 0;
+    public $areas, $keterangan;
 
-    #[Title('Tambah Lokasi')] 
+    #[Rule('required')] 
+    public $titik_parkir, $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $kordinat, 
+    $pendaftaran, $no_ketetapan, $sisi, $panjang_luas, $google_maps, $tgl_ketetapan, $hari_buka, $kord_long, $kord_lat, $kategori,
+    $kecamatan, $kelurahan, $korlap;
+    
+    #[Rule('required|date|before_or_equal:today')] 
+    public $tgl_registrasi;
+
+    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    public $gambar;
+
     public function render()
     {                   
         return view('livewire.lokasi.create-lokasi');
     }
 
     public function addLokasi(){
+        $this->validate();
 
         $this->getDasarKetetapan($this->dasar_ketetapan);
 
@@ -56,7 +64,7 @@ class CreateLokasi extends Component
             'pendaftaran' => $this->pendaftaran,
             'gambar' => $file_gambar,
             'status' => "Tunai",
-            'is_jukir' => $this->is_jukir,
+            'is_jukir' => 0,
             'hari_buka' => $this->hari_buka,
             'area_id' => $this->kecamatan,
             'kelurahan_id' => $this->kelurahan,
@@ -65,7 +73,8 @@ class CreateLokasi extends Component
             'keterangan' => $this->keterangan
         ]);
 
-        $this->resetForm();
+        // $this->resetForm();
+        $this->reset(); 
 
         session()->flash('status', 'Data Lokasi berhasil diinput!');
 
@@ -125,8 +134,7 @@ class CreateLokasi extends Component
         $this->kecamatan = null;
         $this->kelurahan = null;
         $this->korlap = null;
-        $this->kordinat = "";
-        
+        $this->kordinat = "";        
     }
     
 }

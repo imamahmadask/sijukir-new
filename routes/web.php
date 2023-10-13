@@ -1,7 +1,11 @@
 <?php
 
+use App\Livewire\Dashboard\IndexDashboard;
+use App\Livewire\Korlap\CreateKorlap;
+use App\Livewire\Korlap\IndexKorlap;
 use App\Livewire\Lokasi\CreateLokasi;
 use App\Livewire\Lokasi\EditLokasi;
+use App\Livewire\Lokasi\IndexLokasi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +26,16 @@ Route::get('/', function () {
 Route::middleware([
         'auth:sanctum', config('jetstream.auth_session'), 'verified',
     ])->group(function () {    
-    Route::view('admin/dashboard', 'pages.dashboard')->name('dashboard');
+    Route::get('admin/dashboard', IndexDashboard::class)->name('dashboard.index');
     
-    Route::view('admin/lokasi', 'pages.lokasi.index')->name('lokasi');
+    Route::get('admin/lokasi', IndexLokasi::class)->name('lokasi.index');
     Route::get('admin/lokasi/create', CreateLokasi::class)->name('lokasi.create');
     Route::get('admin/lokasi/edit/{id}', EditLokasi::class)->name('lokasi.edit');
     
-    Route::view('admin/jukir', 'pages.jukir')->name('jukir');
-    Route::view('admin/tunai', 'pages.tunai')->name('tunai');
-    Route::view('admin/nontunai', 'pages.nontunai')->name('nontunai');
+    Route::view('admin/jukir', 'pages.jukir')->name('jukir.index');
+    Route::view('admin/tunai', 'pages.tunai')->name('tunai.index');
+    Route::view('admin/nontunai', 'pages.nontunai')->name('nontunai.index');
+
+    Route::get('admin/korlap', IndexKorlap::class)->name('korlap.index');
+    Route::get('admin/korlap/create', CreateKorlap::class)->name('korlap.create');
 });

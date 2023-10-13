@@ -18,7 +18,7 @@
         </form>
         <ul class="space-y-2">
             <li>
-                <a href="{{ route('dashboard') }}"
+                <a href="{{ route('dashboard.index') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank"
                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('lokasi') }}"
+                <a href="{{ route('lokasi.index') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="24"
                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('jukir') }}"
+                <a href="{{ route('jukir.index') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-dollar"
                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('tunai') }}"
+                <a href="{{ route('tunai.index') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cash" width="24"
                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -81,11 +81,11 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('nontunai') }}"
+                <a href="{{ route('nontunai.index') }}"
                     class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-qrcode"
-                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-qrcode" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M4 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path>
                         <path d="M7 17l0 .01"></path>
@@ -101,6 +101,17 @@
                         <path d="M20 17l0 3"></path>
                     </svg>
                     <span class="ml-3">NonTunai</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('korlap.index') }}"
+                    class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.333 6.764a3 3 0 1 1 3.141-5.023M2.5 16H1v-2a4 4 0 0 1 4-4m7.379-8.121a3 3 0 1 1 2.976 5M15 10a4 4 0 0 1 4 4v2h-1.761M13 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-4 6h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" />
+                    </svg>
+                    <span class="ml-3">Korlap</span>
                 </a>
             </li>
         </ul>

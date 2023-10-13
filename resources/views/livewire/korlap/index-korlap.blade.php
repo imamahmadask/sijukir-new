@@ -90,19 +90,16 @@
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            No.
+                            Nama
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Nama Merchant
+                            NIK
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Jumlah Transaksi
+                            Telepon
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Total Nilai
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Vendor
+                            Alamat
                         </th>
                         <th scope="col" class="px-6 py-3 text-center">
                             Action
@@ -110,54 +107,45 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($korlaps as $korlap)
+                        <tr
+                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
+                            <td class="px-6 py-4">
+                                {{ $korlap->nama }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $korlap->nik }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $korlap->telepon }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $korlap->alamat }}
+                            </td>
 
-                    <tr
-                        class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                        <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap ">
-                            <div class="pl-3">
-                                <div class="text-base font-semibold">
-                                    Jukir Dishub 001
-                                </div>
-                                <div class="italic font-normal">
-                                    12345
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            1
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 120.000
-                        </td>
-                        <td class="px-6 py-4">
-                            QR PTEN
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            <!-- Modal toggle -->
-                            <a href="#" type="button"
-                                class="mx-4 font-medium text-indigo-600 dark:text-indigo-500 hover:underline">
-                                <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-500" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                                    <path
-                                        d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z" />
-                                    <path
-                                        d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
-                                </svg>
-                            </a>
-                            <a href="#" type="button"
-                                class="font-medium text-red-600 dark:text-red-500 hover:underline">
-                                <svg class="w-4 h-4 text-red-600 dark:text-red-500" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                                    <path
-                                        d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
-                                </svg>
-                            </a>
-                        </td>
-                    </tr>
-
+                            <td class="px-6 py-4 text-center">
+                                <!-- Modal toggle -->
+                                <a href="korlap/edit/{{ $korlap->id }}" type="button"
+                                    class="mx-4 font-medium text-indigo-600 dark:text-indigo-500 hover:underline">
+                                    <svg class="w-4 h-4 text-indigo-600 dark:text-indigo-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
+                                        <path
+                                            d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z" />
+                                        <path
+                                            d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
+                                    </svg>
+                                </a>
+                                <a href="#" type="button"
+                                    class="font-medium text-red-600 dark:text-red-500 hover:underline">
+                                    <svg class="w-4 h-4 text-red-600 dark:text-red-500" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                                        <path
+                                            d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
