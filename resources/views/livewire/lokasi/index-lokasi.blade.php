@@ -60,7 +60,7 @@
         <div class="relative overflow-x-auto sm:rounded-lg">
             <div class="flex items-center justify-between py-4">
                 <div class="w-20">
-                    <select id="countries"
+                    <select id="perPage"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="25" selected>25</option>
                         <option value="50">50</option>
@@ -71,7 +71,6 @@
                 </div>
 
                 <label for="table-search" class="sr-only">Search</label>
-
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -87,7 +86,7 @@
             </div>
 
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
+                <thead class="text-sm text-white uppercase bg-indigo-500  dark:text-white">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Nama Titik
@@ -118,7 +117,7 @@
                 <tbody>
                     @foreach ($lokasis as $lokasi)
                         <tr
-                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
+                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-200">
                             <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap ">
                                 <div class="pl-3">
                                     <div class="text-base font-semibold">

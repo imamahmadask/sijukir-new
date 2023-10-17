@@ -4,6 +4,7 @@ namespace App\Livewire\Lokasi;
 
 use App\Models\Area;
 use App\Models\Kelurahan;
+use App\Models\Korlap;
 use App\Models\Lokasi;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
@@ -19,8 +20,11 @@ class CreateLokasi extends Component
     public $kel, $korlaps = [];
     public $areas, $keterangan;
 
+    #[Rule('required|min:6|unique:lokasis,titik_parkir')] 
+    public $titik_parkir;
+
     #[Rule('required')] 
-    public $titik_parkir, $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $kordinat, 
+    public $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $kordinat, 
     $pendaftaran, $no_ketetapan, $sisi, $panjang_luas, $google_maps, $tgl_ketetapan, $hari_buka, $kord_long, $kord_lat, $kategori,
     $kecamatan, $kelurahan, $korlap;
     
@@ -83,7 +87,7 @@ class CreateLokasi extends Component
 
     public function mount(){
         $this->areas = Area::all();
-        // $this->korlaps = Korla::select('id', 'nama')->orderBy('nama', 'asc')->get();
+        $this->korlaps = Korlap::select('id', 'nama')->orderBy('nama', 'asc')->get();
     }
 
     public function updatedKecamatan($value){     

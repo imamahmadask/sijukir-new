@@ -11,7 +11,7 @@ class IndexLokasi extends Component
 {
     use WithPagination;
 
-    #[Title('Lokasi')] 
+    #[Title('Lokasi')]
     public function render()
     {        
         $lokasis = Lokasi::orderBy('titik_parkir', 'Asc')->simplePaginate(10);

@@ -2,6 +2,7 @@
 
 use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\Korlap\CreateKorlap;
+use App\Livewire\Korlap\EditKorlap;
 use App\Livewire\Korlap\IndexKorlap;
 use App\Livewire\Lokasi\CreateLokasi;
 use App\Livewire\Lokasi\EditLokasi;
@@ -38,4 +39,6 @@ Route::middleware([
 
     Route::get('admin/korlap', IndexKorlap::class)->name('korlap.index');
     Route::get('admin/korlap/create', CreateKorlap::class)->name('korlap.create');
+    Route::get('admin/korlap/edit/{id}', EditKorlap::class)->name('korlap.edit');
+
 });

@@ -4,24 +4,36 @@ namespace App\Livewire\Lokasi;
 
 use App\Models\Area;
 use App\Models\Kelurahan;
+use App\Models\Korlap;
 use App\Models\Lokasi;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Rule;
 
+#[Title('Edit Lokasi')] 
 class EditLokasi extends Component
 {
     use WithFileUploads;
 
-    public $areas, $lokasiId;
     public $kel, $korlaps = [];
-    public $kecamatan, $kelurahan, $korlap;
-    public $titik_parkir, $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $gambar, $keterangan;
-    public $pendaftaran, $no_ketetapan, $tgl_registrasi, $sisi, $panjang_luas, $google_maps, $tgl_ketetapan, $hari_buka, $kord_long, $kord_lat, $kategori;
-    public $kordinat, $is_jukir, $is_active, $gambar_asli, $area_id_lama;
+    public $areas, $lokasiId, $keterangan, $is_jukir, $is_active, $gambar_asli, $area_id_lama;
 
-    #[Title('Edit Lokasi')] 
+    #[Rule('required|min:6|unique:lokasis,titik_parkir')] 
+    public $titik_parkir;
+
+    #[Rule('required')] 
+    public $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $kordinat, 
+    $pendaftaran, $no_ketetapan, $sisi, $panjang_luas, $google_maps, $tgl_ketetapan, $hari_buka, $kord_long, $kord_lat, $kategori,
+    $kecamatan, $kelurahan, $korlap;
+    
+    #[Rule('required|date|before_or_equal:today')] 
+    public $tgl_registrasi;
+
+    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    public $gambar;
+    
     public function render()
     {        
         return view('livewire.lokasi.edit-lokasi');
@@ -31,10 +43,11 @@ class EditLokasi extends Component
     {
         $this->areas = Area::all();
         $this->kel = Kelurahan::all();
+        $this->korlaps = Korlap::select('id', 'nama')->orderBy('nama', 'asc')->get();
 
         //get post
         $lokasi = Lokasi::find($id);
-
+        
         //assign
         $this->lokasiId = $lokasi->id;
         $this->titik_parkir = $lokasi->titik_parkir;
@@ -55,9 +68,12 @@ class EditLokasi extends Component
         $this->kelurahan = $lokasi->kelurahan_id;        
         $this->kordinat = $lokasi->kord_lat.", ".$lokasi->kord_long;        
         $this->is_active = $lokasi->is_active;        
+        $this->korlap = $lokasi->korlap_id;                
     }
 
     public function updateLokasi(){
+        $this->validate();
+        
         $lokasi = Lokasi::find($this->lokasiId);
         
         $this->area_id_lama = $lokasi->area_id;
@@ -134,7 +150,7 @@ class EditLokasi extends Component
         session()->flash('status', 'Data Lokasi berhasil diupdate!');
 
         $this->redirect('/admin/lokasi');
-    }
+    }    
 
     public function updatedKecamatan($value){     
         if($value){
