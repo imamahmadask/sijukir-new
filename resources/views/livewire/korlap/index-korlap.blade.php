@@ -1,5 +1,8 @@
 <div>
     <div class="px-5 h-screen">
+        <x-toast id="toast-success" type="green" :message="session('status')" />
+        <x-toast id="toast-danger" type="red" :message="session('delete')" />
+
         <nav class="flex mt-3 mb-5" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
@@ -15,33 +18,6 @@
                 </li>
             </ol>
         </nav>
-
-        @if (session('status'))
-            <div id="toast-success"
-                class="fixed flex items-center w-full max-w-xs p-4 mb-4 top-20 right-5 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
-                role="alert">
-                <div
-                    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                    </svg>
-                    <span class="sr-only">Check icon</span>
-                </div>
-                <div class="ml-3 text-sm font-normal">{{ session('status') }}</div>
-                <button type="button"
-                    class="ml-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                    data-dismiss-target="#toast-success" aria-label="Close">
-                    <span class="sr-only">Close</span>
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
-            </div>
-        @endif
 
         <h1 class="mb-5 text-2xl font-bold uppercase dark:text-white">
             Korlap
@@ -135,14 +111,55 @@
                                             d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z" />
                                     </svg>
                                 </a>
-                                <a href="#" type="button"
+                                <button data-modal-target="delete-modal" data-modal-toggle="delete-modal" type="button"
+                                    wire:click="deleteKorlap({{ $korlap->id }})"
                                     class="font-medium text-red-600 dark:text-red-500 hover:underline">
                                     <svg class="w-4 h-4 text-red-600 dark:text-red-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
                                         <path
                                             d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z" />
                                     </svg>
-                                </a>
+                                </button>
+                                {{-- Delete Modal --}}
+                                <div wire:ignore.self id="delete-modal" tabindex="-1"
+                                    class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative w-full max-w-md max-h-full">
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <button type="button"
+                                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                                data-modal-hide="delete-modal">
+                                                <svg class="w-3 h-3" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 14 14">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                            <div class="p-6 text-center">
+                                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+                                                    aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 20 20">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2"
+                                                        d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                </svg>
+                                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                                    Apakah Anda yakin ingin menghapus Korlap {{ $korlap_name }} ini?
+                                                </h3>
+                                                <button wire:click='destroyKorlap()' data-modal-hide="delete-modal"
+                                                    type="button"
+                                                    class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                    Ya, Saya Yakin!
+                                                </button>
+                                                <button data-modal-hide="delete-modal" type="button"
+                                                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
+                                                    Tidak, Batalkan</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -151,3 +168,27 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var successToast = document.getElementById('toast-success');
+        var dangerToast = document.getElementById('toast-danger');
+
+        function closeToast(toastElement) {
+            if (toastElement) {
+                toastElement.style.display = 'none';
+            }
+        }
+
+        if (successToast) {
+            setTimeout(function() {
+                closeToast(successToast);
+            }, 3000);
+        }
+
+        if (dangerToast) {
+            setTimeout(function() {
+                closeToast(dangerToast);
+            }, 3000);
+        }
+    });
+</script>
