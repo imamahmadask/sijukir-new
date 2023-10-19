@@ -114,7 +114,7 @@
                                 {{ $lokasi->kategori }}
                             </td>
                             <td class="px-6 py-4">
-                                M. Zulhaidir
+                                {{ $lokasi->korlap->nama }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $lokasi->is_jukir }}

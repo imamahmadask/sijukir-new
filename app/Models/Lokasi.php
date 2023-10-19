@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Lokasi extends Model
 {
@@ -17,11 +19,23 @@ class Lokasi extends Model
         'is_jukir', 'hari_buka', 'kelurahan_id', 'kord_long', 'kord_lat', 'korlap_id', 'kategori', 'keterangan', 'is_active'
     ];
 
-    public function area(){
-        return $this->belongsTo(Area::class);
+    public function jukir(): HasMany
+    {
+        return $this->hasMany(Jukir::class);
     }
 
-    public function kelurahan(){
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
+    }
+    
+    public function kelurahan(): BelongsTo
+    {
         return $this->belongsTo(Kelurahan::class);
+    }
+    
+    public function korlap(): BelongsTo
+    {
+        return $this->belongsTo(Korlap::class);
     }
 }

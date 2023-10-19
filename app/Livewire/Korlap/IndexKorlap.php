@@ -44,7 +44,7 @@ class IndexKorlap extends Component
         }
 
         //flash message
-        session()->flash('status', 'Data Korlap Berhasil Dihapus.');     
+        session()->flash('delete', 'Data Korlap Berhasil Dihapus.');     
 
         $this->dispatch('korlap-deleted' );
     }

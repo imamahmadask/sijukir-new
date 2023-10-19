@@ -42,9 +42,7 @@ class IndexLokasi extends Component
 
         //flash message
         session()->flash('delete', 'Data Lokasi Berhasil Dihapus.');
-
-        //redirect
-        return redirect()->route('lokasi.index');        
+              
     }
    
 }

@@ -18,20 +18,19 @@ class EditLokasi extends Component
     use WithFileUploads;
 
     public $kel, $korlaps = [];
-    public $areas, $lokasiId, $keterangan, $is_jukir, $is_active, $gambar_asli, $area_id_lama;
+    public $areas, $lokasiId, $keterangan, $is_jukir, $is_active, $gambar_asli, $area_id_lama, $slug, $kord_long, $kord_lat, $no_ketetapan, $tgl_ketetapan;
 
-    #[Rule('required|min:6|unique:lokasis,titik_parkir')] 
+    #[Rule('required|min:6')] 
     public $titik_parkir;
 
     #[Rule('required')] 
-    public $lokasi_parkir, $slug, $jenis_lokasi, $waktu_pelayanan, $dasar_ketetapan, $kordinat, 
-    $pendaftaran, $no_ketetapan, $sisi, $panjang_luas, $google_maps, $tgl_ketetapan, $hari_buka, $kord_long, $kord_lat, $kategori,
-    $kecamatan, $kelurahan, $korlap;
+    public $pendaftaran, $lokasi_parkir, $kecamatan, $kelurahan, $jenis_lokasi, $kategori, 
+    $sisi, $panjang_luas, $korlap, $waktu_pelayanan, $hari_buka, $dasar_ketetapan, $google_maps, $kordinat;
     
     #[Rule('required|date|before_or_equal:today')] 
     public $tgl_registrasi;
 
-    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    // #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
     public $gambar;
     
     public function render()
