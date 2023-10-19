@@ -1,5 +1,8 @@
 <div>
-    <div class="px-5 h-screen">
+    <div class="px-5 h-screen mb-4">
+        <x-toast id="toast-success" type="green" :message="session('status')" />
+        <x-toast id="toast-danger" type="red" :message="session('delete')" />
+
         <nav class="flex mt-3 mb-5" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
@@ -116,19 +119,26 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> {{ $jukir->status }}
+                                    <div
+                                        class="h-2.5 w-2.5 rounded-full 
+                                        {{ $jukir->status === 'Non-Tunai' ? 'bg-green-500' : 'bg-orange-500' }} 
+                                        bg-default-color mr-2">
+                                    </div>
+                                    {{ $jukir->status }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
+                                    <div
+                                        class="h-2.5 w-2.5 rounded-full {{ $jukir->ket_jukir === 'Active' ? 'bg-green-500' : 'bg-orange-500' }} mr-2">
+                                    </div>
                                     {{ $jukir->ket_jukir }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <!-- Modal toggle -->
-                                <a href="#" type="button" data-modal-target="editUserModal"
-                                    data-modal-show="editUserModal"
+                                <a href="jukir/edit/{{ $jukir->id }}" type="button"
+                                    data-modal-target="editUserModal" data-modal-show="editUserModal"
                                     class="mx-2 font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                     <svg class="w-4 h-4 text-blue-600 dark:text-blue-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">

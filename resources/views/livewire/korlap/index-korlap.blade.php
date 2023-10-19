@@ -1,5 +1,5 @@
 <div>
-    <div class="px-5 h-screen">
+    <div class="px-5 h-screen mb-4">
         <x-toast id="toast-success" type="green" :message="session('status')" />
         <x-toast id="toast-danger" type="red" :message="session('delete')" />
 

@@ -2,6 +2,7 @@
 
 use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\Jukir\CreateJukir;
+use App\Livewire\Jukir\EditJukir;
 use App\Livewire\Jukir\IndexJukir;
 use App\Livewire\Korlap\CreateKorlap;
 use App\Livewire\Korlap\EditKorlap;
@@ -37,6 +38,7 @@ Route::middleware([
     
     Route::get('admin/jukir', IndexJukir::class)->name('jukir.index');
     Route::get('admin/jukir/create', CreateJukir::class)->name('jukir.create');
+    Route::get('admin/jukir/edit/{id}', EditJukir::class)->name('jukir.edit');
 
     Route::view('admin/tunai', 'pages.tunai')->name('tunai.index');
     Route::view('admin/nontunai', 'pages.nontunai')->name('nontunai.index');

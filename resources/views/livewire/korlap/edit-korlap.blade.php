@@ -1,5 +1,5 @@
 <div>
-    <div class="px-5 h-screen">
+    <div class="px-5 h-screen mb-4">
         <nav class="flex mt-3 mb-5" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
@@ -25,6 +25,7 @@
         </h1>
 
         <form wire:submit="updateKorlap">
+            <input type="hidden" name="" wire:model="korlapId">
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div class="sm:col-span-2">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama

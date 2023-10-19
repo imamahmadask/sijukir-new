@@ -1,5 +1,5 @@
 <div>
-    <div class="px-5 h-screen">
+    <div class="px-5 h-screen mb-4">
         <nav class="flex mt-3 mb-5" aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">

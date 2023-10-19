@@ -15,7 +15,7 @@ class CreateJukir extends Component
 {
     use WithFileUploads;
 
-    public $lokasis, $tgl_akhir_perjanjian, $status, $tgl_pkh_upl, 
+    public $lokasis, $tgl_akhir_perjanjian, $status, $tgl_pkh_upl, $jenis_jukir,
             $ket_jukir, $area_id, $merchant_id, $jukir_id, $year, $bulan;
     public $hari_libur = [];
 
@@ -37,7 +37,7 @@ class CreateJukir extends Component
 
     #[Rule('required')] 
     public $nama_jukir, $tempat_lahir, $jenis_kelamin, $alamat, $kel_alamat, $kec_alamat, 
-            $kab_kota_alamat, $telepon, $agama, $jenis_jukir, $no_perjanjian, $potensi_harian, 
+            $kab_kota_alamat, $telepon, $agama, $no_perjanjian, $potensi_harian, 
             $potensi_bulanan, $waktu_kerja, $jml_hari_kerja, $hari_kerja_bulan, $lokasi;
 
     #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
@@ -54,11 +54,10 @@ class CreateJukir extends Component
     public function mount(){
         $this->lokasis = Lokasi::select('id', 'titik_parkir')->orderBy('titik_parkir')->get();
         $this->no_perjanjian = "550/".sprintf('%04s', Jukir::count() + 1)."/UPTD.P/PK/".$this->array_bln[date('n')]."/".Carbon::now()->format('Y');
-
     }
 
     public function addJukir(){
-        // $this->validate();
+        $this->validate();
         $area_id = Lokasi::find($this->lokasi)->value('area_id');
         
         $this->tgl_akhir_perjanjian = Carbon::create($this->tgl_perjanjian)->addMonths(6);
