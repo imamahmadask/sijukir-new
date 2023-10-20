@@ -1,20 +1,43 @@
 <div>
     <div class="px-5 mb-4">
-        <nav class="flex mt-3 mb-5" aria-label="Breadcrumb">
+        <!-- Breadcrumb -->
+        <nav class="mt-3 mb-5 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+            aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
-                    <a href="/admin/jukir"
-                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-100 dark:hover:text-white">
+                    <a href="{{ route('dashboard.index') }}"
+                        class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
                         <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="currentColor" viewBox="0 0 20 20">
                             <path
                                 d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                         </svg>
-                        Jukir
+                        Home
                     </a>
-                    <span
-                        class="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-100 dark:hover:text-white">&nbsp;/
-                        Edit Jukir</span>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                        <a href="{{ route('jukir.index') }}"
+                            class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">
+                            Jukir
+                        </a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+                            Edit Jukir</span>
+                    </div>
                 </li>
             </ol>
         </nav>
@@ -26,6 +49,44 @@
         <form wire:submit="updateJukir">
             <input type="hidden" name="" wire:model="jukirId">
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                <div class="sm:col-span-2">
+                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Status
+                    </label>
+                    <select wire:model.live="status" name="status"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="Tunai">Tunai</option>
+                        <option value="Non-Tunai">Non-Tunai</option>
+                    </select>
+                    @error('status')
+                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                    @enderror
+                </div>
+                @if ($status == 'Non-Tunai')
+                    <div>
+                        <label for="merchant_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Merchant
+                        </label>
+                        <select wire:model="merchant_id" name="merchant_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Pilih</option>
+                            <option value="Tunai">Tunai</option>
+                            <option value="Non-Tunai">Non-Tunai</option>
+                        </select>
+                        @error('merchant_id')
+                            <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                    <div>
+                        <label for="tgl_terbit_qr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Tanggal Terbit QR</label>
+                        <input type="date" name="tgl_terbit_qr" wire:model="tgl_terbit_qr"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        @error('tgl_terbit_qr')
+                            <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                @endif
                 <div>
                     <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Lokasi Parkir</label>
@@ -357,7 +418,31 @@
                         </div>
                     </div>
                 </div>
-
+                <div @if ($ket_jukir != 'Non-Active') class="sm:col-span-2" @endif>
+                    <label for="ket_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Ket. Jukir</label>
+                    <select wire:model.live="ket_jukir" name="ket_jukir"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="Active">Active</option>
+                        <option value="Non-Active">Non-Active</option>
+                    </select>
+                    @error('ket_jukir')
+                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                    @enderror
+                </div>
+                @if ($ket_jukir == 'Non-Active')
+                    <div>
+                        <label for="tgl_nonactive"
+                            class="block mb-2 text-sm font-medium text-red-600 dark:text-red-400">
+                            Tanggal Non-Active</label>
+                        <input type="date" name="tgl_nonactive" wire:model="tgl_nonactive"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Cth: 1.400.000">
+                        @error('tgl_nonactive')
+                            <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                        @enderror
+                    </div>
+                @endif
             </div>
             <button type="submit"
                 class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
