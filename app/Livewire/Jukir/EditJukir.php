@@ -4,6 +4,7 @@ namespace App\Livewire\Jukir;
 
 use App\Models\Jukir;
 use App\Models\Lokasi;
+use App\Models\Merchant;
 use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\Title;
@@ -17,8 +18,9 @@ class EditJukir extends Component
 
     public $lokasis, $jukirId, $foto_asli, $document_asli, $uji_petik, $potensi_bulanan_upl,
             $tgl_pkh_upl, $hari_libur, $tgl_akhir_perjanjian, $jenis_jukir, $status;
+
     public $merchant_id, $tgl_terbit_qr, $ket_jukir, $tgl_nonactive;
-    public $bulan, $tahun;
+    public $bulan, $tahun, $merchants;
     public $array_bln = array(1=>"I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
     public $dayList = [
         'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
@@ -162,6 +164,12 @@ class EditJukir extends Component
     private function setYearAndMonth(){
         $this->tahun = Carbon::parse($this->tgl_perjanjian)->format('Y');
         $this->bulan = Carbon::parse($this->tgl_perjanjian)->format('m');
+    }
+
+    public function updatedStatus($value){
+        if($value == 'Non-Tunai'){
+            $this->merchants = Merchant::select('id', 'merchant_name')->orderBy('merchant_name', 'Asc')->get();
+        }
     }
 
 }

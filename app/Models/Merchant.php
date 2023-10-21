@@ -11,6 +11,9 @@ class Merchant extends Model
     use HasFactory;
 
     protected $table = "merchants";
+    protected $primaryKey = 'id'; // or null
+
+    public $incrementing = false;
 
     protected $fillable = [
         'id', 'nmid', 'merchant_name', 'no_rekening', 'vendor', 'qris', 'tgl_terdaftar', 'area_id'

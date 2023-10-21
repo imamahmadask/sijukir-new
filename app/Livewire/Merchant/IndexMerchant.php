@@ -16,9 +16,10 @@ class IndexMerchant extends Component
 
     public function render()
     {
-        $merchants = Merchant::orderBy('id', 'asc')
-                    ->orderBy('vendor', 'desc')
+        $merchants = Merchant::orderBy('vendor', 'desc')
+                    ->orderBy('merchant_name', 'asc')
                     ->simplePaginate(50);
+
         return view('livewire.merchant.index-merchant', [
             'merchants' => $merchants
         ]);

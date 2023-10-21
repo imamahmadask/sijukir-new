@@ -70,8 +70,9 @@
                         <select wire:model="merchant_id" name="merchant_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Pilih</option>
-                            <option value="Tunai">Tunai</option>
-                            <option value="Non-Tunai">Non-Tunai</option>
+                            @foreach ($merchants as $merchant)
+                                <option value={{ $merchant->id }}>{{ $merchant->merchant_name }}</option>
+                            @endforeach
                         </select>
                         @error('merchant_id')
                             <span class="text-xs italic text-red-500"> {{ $message }} </span>
