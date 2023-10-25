@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Rule;
 
-#[Title('Tambah Lokasi')] 
+#[Title('Tambah Lokasi')]
 class CreateLokasi extends Component
 {
     use WithFileUploads;
@@ -20,21 +20,21 @@ class CreateLokasi extends Component
     public $kel, $korlaps = [];
     public $areas, $keterangan, $slug, $kord_long, $kord_lat, $no_ketetapan, $tgl_ketetapan;
 
-    #[Rule('required|min:6|unique:lokasis,titik_parkir')] 
+    #[Rule('required|min:6|unique:lokasis,titik_parkir')]
     public $titik_parkir;
 
-    #[Rule('required')] 
-    public $pendaftaran, $lokasi_parkir, $kecamatan, $kelurahan, $jenis_lokasi, $kategori, 
+    #[Rule('required')]
+    public $pendaftaran, $lokasi_parkir, $kecamatan, $kelurahan, $jenis_lokasi, $kategori,
     $sisi, $panjang_luas, $korlap, $waktu_pelayanan, $hari_buka, $dasar_ketetapan, $google_maps, $kordinat;
-    
-    #[Rule('required|date|before_or_equal:today')] 
+
+    #[Rule('required|date|before_or_equal:today')]
     public $tgl_registrasi;
 
-    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
     public $gambar;
 
     public function render()
-    {                   
+    {
         return view('livewire.lokasi.create-lokasi');
     }
 
@@ -43,12 +43,12 @@ class CreateLokasi extends Component
 
         $this->getDasarKetetapan($this->dasar_ketetapan);
 
-        $this->getKordinat($this->kordinat);        
+        $this->getKordinat($this->kordinat);
 
         // Gambar Lokasi
         $nama_gambar = $this->titik_parkir.'.'.$this->gambar->extension();
         $file_gambar = $this->gambar->storeAs('foto_lokasi', $nama_gambar, 'public');
-        
+
         Lokasi::create([
             'titik_parkir' => $this->titik_parkir,
             'lokasi_parkir' => $this->lokasi_parkir,
@@ -77,7 +77,7 @@ class CreateLokasi extends Component
         ]);
 
         // $this->resetForm();
-        $this->reset(); 
+        $this->reset();
 
         session()->flash('status', 'Data Lokasi berhasil diinput!');
 
@@ -89,13 +89,13 @@ class CreateLokasi extends Component
         $this->korlaps = Korlap::select('id', 'nama')->orderBy('nama', 'asc')->get();
     }
 
-    public function updatedKecamatan($value){     
+    public function updatedKecamatan($value){
         if($value){
             $this->kel = Kelurahan::select('id', 'kelurahan')->where('area_id', $value)->get();
         }
     }
 
-    public function getDasarKetetapan($value){        
+    public function getDasarKetetapan($value){
         if (!is_null($value)) {
             if($value == "SK WALIKOTA"){
                 $this->no_ketetapan = "No. 697/VIII/2021";
@@ -110,11 +110,11 @@ class CreateLokasi extends Component
         }
     }
 
-    public function getKordinat($value){        
+    public function getKordinat($value){
         $pecah = explode(", ", $value);
         $this->kord_lat = $pecah[0];
-        $this->kord_long = $pecah[1];        
-    } 
+        $this->kord_long = $pecah[1];
+    }
 
     public function resetForm(){
         $this->titik_parkir="";
@@ -137,7 +137,7 @@ class CreateLokasi extends Component
         $this->kecamatan = null;
         $this->kelurahan = null;
         $this->korlap = null;
-        $this->kordinat = "";        
+        $this->kordinat = "";
     }
-    
+
 }

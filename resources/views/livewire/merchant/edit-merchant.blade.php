@@ -51,54 +51,38 @@
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div class="sm:col-span-2">
                     <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        ID Merchant</label>
-                    <input type="text" name="id" wire:model="id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Masukkan ID Merchant QRIS">
-                    @error('id')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                        ID Merchant
+                    </label>
+                    <x-input type="number" name="id" model="id" placeholder="Masukkan ID Merchant QRIS" />
+                    <x-input-error for="id" />
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="nmid"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NMID</label>
-                    <input type="text" name="nmid" wire:model="nmid"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Masukkan NMID QRIS">
-                    @error('nmid')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <label for="no_rekening" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        NMID
+                    </label>
+                    <x-input type="text" name="nmid" model="nmid" placeholder="Masukkan NMID Merchant QRIS" />
+                    <x-input-error for="nmid" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="merchant_name"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Merchant Name</label>
-                    <input type="text" name="merchant_name" wire:model="merchant_name"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Contoh: Jukir Dishub 001">
-                    @error('merchant_name')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="merchant_name" model="merchant_name"
+                        placeholder="Contoh: Jukir Dishub 001" />
+                    <x-input-error for="merchant_name" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="no_rekening" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No.
                         Rekening</label>
-                    <input type="text" name="no_rekening" wire:model="no_rekening"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Masukkan No. Rekening">
-                    @error('no_rekening')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="no_rekening" model="no_rekening"
+                        placeholder="Masukkan No. Rekening" />
+                    <x-input-error for="no_rekening" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="tgl_terdaftar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tanggal Terdaftar
                     </label>
-                    <input type="date" name="tgl_terdaftar" wire:model="tgl_terdaftar"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Masukkan No. Rekening">
-                    @error('tgl_terdaftar')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="date" name="tgl_terdaftar" model="tgl_terdaftar" placeholder="" />
+                    <x-input-error for="tgl_terdaftar" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="vendor" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

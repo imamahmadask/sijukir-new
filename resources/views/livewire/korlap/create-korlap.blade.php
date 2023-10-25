@@ -51,42 +51,26 @@
                 <div class="sm:col-span-2">
                     <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                         Lengkap</label>
-                    <input type="text" name="nama" wire:model="nama"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Contoh: Alfamart Pejanggik">
-                    @error('nama')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="nama" model="nama" placeholder="Contoh: Alfamart Pejanggik" />
+                    <x-input-error for="nama" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="nik"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                    <input type="number" name="nik" wire:model="nik"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Contoh: Jl. Pejanggik">
-                    @error('nik')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="nik" model="nik" placeholder="Contoh: 527xxx" />
+                    <x-input-error for="nik" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="alamat"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
-                    <input type="text" name="alamat" wire:model="alamat"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Contoh: Jl. Pejanggik">
-                    @error('alamat')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="alamat" model="alamat" placeholder="Contoh: Mataram" />
+                    <x-input-error for="alamat" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="telepon"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telepon</label>
-                    <input type="number" name="telepon" wire:model="telepon"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Kiri Jalan">
-                    @error('telepon')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="telepon" model="telepon" placeholder="Contoh: 081xxx" />
+                    <x-input-error for="telepon" />
                 </div>
                 <div class="sm:col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="foto">Foto

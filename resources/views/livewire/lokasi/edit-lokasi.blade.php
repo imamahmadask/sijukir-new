@@ -68,29 +68,23 @@
                 <div>
                     <label for="tgl_registrasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tgl
                         Registrasi</label>
-                    <input type="date" name="tgl_registrasi" wire:model="tgl_registrasi"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <x-input type="date" name="tgl_registrasi" model="tgl_registrasi" placeholder="" />
+                    <x-input-error for="tgl_registrasi" />
                 </div>
                 <div>
-                    <label for="titik_parkir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titik
-                        Parkir</label>
-                    <input type="text" name="titik_parkir" wire:model="titik_parkir"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Contoh: Alfamart Pejanggik">
-                    @error('titik_parkir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <label for="titik_parkir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Titik Parkir</label>
+                    <x-input type="text" name="titik_parkir" model="titik_parkir"
+                        placeholder="Contoh: Alfamart Pejanggik" />
+                    <x-input-error for="titik_parkir" />
                 </div>
                 <div>
                     <label for="lokasi_parkir"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi
                         Parkir</label>
-                    <input type="text" name="lokasi_parkir" wire:model="lokasi_parkir"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Contoh: Jl. Pejanggik">
-                    @error('lokasi_parkir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="lokasi_parkir" model="lokasi_parkir"
+                        placeholder="Contoh:  Jl. Pejanggik" />
+                    <x-input-error for="lokasi_parkir" />
                 </div>
                 <div>
                     <label for="kecamatan"
@@ -164,23 +158,15 @@
                 <div>
                     <label for="sisi"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sisi</label>
-                    <input type="text" name="sisi" wire:model="sisi"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Kiri Jalan">
-                    @error('sisi')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="sisi" model="sisi" placeholder="Contoh:  Kiri Jalan" />
+                    <x-input-error for="sisi" />
                 </div>
                 <div>
                     <label for="panjang_luas"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Panjang/Luas
                         (m/m2)</label>
-                    <input type="text" name="panjang_luas" wire:model="panjang_luas"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 8/100">
-                    @error('panjang_luas')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="panjang_luas" model="panjang_luas" placeholder="Contoh:  8/50" />
+                    <x-input-error for="panjang_luas" />
                 </div>
                 <div>
                     <label for="korlap"
@@ -215,15 +201,10 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="hari_buka" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hari
-                        Buka
-                        (Seminggu)</label>
-                    <input type="number" name="hari_buka" wire:model="hari_buka"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="1-7 Hari">
-                    @error('hari_buka')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <label for="hari_buka" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Hari Buka (Seminggu)</label>
+                    <x-input type="number" name="hari_buka" model="hari_buka" placeholder="Contoh:  8/50" />
+                    <x-input-error for="hari_buka" />
                 </div>
                 <div>
                     <label for="dasar_ketetapan"
@@ -240,25 +221,18 @@
                     @enderror
                 </div>
                 <div>
-                    <label for="google_maps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link
-                        Google Maps</label>
-                    <input type="text" name="google_maps" wire:model="google_maps"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="http://">
-                    @error('google_maps')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <label for="google_maps" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Link Google Maps</label>
+                    <x-input type="text" name="google_maps" model="google_maps"
+                        placeholder="Contoh: https://xxx" />
+                    <x-input-error for="google_maps" />
                 </div>
                 <div>
-                    <label for="kordinat"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Latitude
-                        & Longitude</label>
-                    <input type="text" name="kordinat" wire:model="kordinat"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="123, 456">
-                    @error('kordinat')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <label for="kordinat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                        Latitude & Longitude</label>
+                    <x-input type="text" name="kordinat" model="kordinat"
+                        placeholder="Contoh : -8.571916072854874, 116.07651346378012" />
+                    <x-input-error for="kordinat" />
                 </div>
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Foto

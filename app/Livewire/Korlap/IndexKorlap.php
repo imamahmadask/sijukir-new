@@ -11,7 +11,7 @@ use Livewire\Attributes\On;
 class IndexKorlap extends Component
 {
     public $korlapId, $korlap_name;
-    
+
     #[On('korlap-deleted')]
     public function updateList(Korlap $korlap){
 
@@ -33,18 +33,18 @@ class IndexKorlap extends Component
     }
 
     public function destroyKorlap()
-    {       
+    {
         if($this->korlapId){
             $korlap = Korlap::findOrFail($this->korlapId);
-    
+
             //destroy
             $korlap->delete();
-            
+
             unlink("storage/".$korlap->foto);
         }
 
         //flash message
-        session()->flash('delete', 'Data Korlap Berhasil Dihapus.');     
+        session()->flash('delete', 'Data Korlap Berhasil Dihapus.');
 
         $this->dispatch('korlap-deleted' );
     }

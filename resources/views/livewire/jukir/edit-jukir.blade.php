@@ -106,31 +106,20 @@
                     <label for="kode_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kode Jukir
                     </label>
-                    <input type="text" name="kode_jukir" wire:model.live="kode_jukir" placeholder="001-AMP"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @error('kode_jukir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="kode_jukir" model="kode_jukir" placeholder="Contoh: 001-AMP" />
+                    <x-input-error for="kode_jukir" />
                 </div>
                 <div>
                     <label for="nama_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Nama Jukir</label>
-                    <input type="text" name="nama_jukir" wire:model="nama_jukir"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Abdullah">
-                    @error('nama_jukir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="nama_jukir" model="nama_jukir" placeholder="Contoh: Abdul Awal" />
+                    <x-input-error for="nama_jukir" />
                 </div>
                 <div>
                     <label for="nik_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         NIK Jukir</label>
-                    <input type="text" name="nik_jukir" wire:model.live="nik_jukir"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="527xxxx">
-                    @error('nik_jukir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="nik_jukir" model="nik_jukir" placeholder="Contoh: 527xxxx" />
+                    <x-input-error for="nik_jukir" />
                 </div>
                 <div>
                     <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -164,112 +153,76 @@
                 <div>
                     <label for="tempat_lahir"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
-                    <input type="text" name="tempat_lahir" wire:model="tempat_lahir"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Mataram">
-                    @error('tempat_lahir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="tempat_lahir" model="tempat_lahir"
+                        placeholder="Masukkan Tempat Lahir Sesuai KTP" />
+                    <x-input-error for="tempat_lahir" />
                 </div>
                 <div>
                     <label for="tgl_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tanggal Lahir</label>
-                    <input type="date" name="tgl_lahir" wire:model="tgl_lahir"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Mataram">
-                    @error('tgl_lahir')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="date" name="tgl_lahir" model="tgl_lahir" placeholder="" />
+                    <x-input-error for="tgl_lahir" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Alamat</label>
-                    <input type="text" name="alamat" wire:model="alamat"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Jl. Abcdef">
-                    @error('alamat')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="alamat" model="alamat"
+                        placeholder="Masukkan Alamat Sesuai KTP" />
+                    <x-input-error for="alamat" />
                 </div>
                 <div>
                     <label for="kel_alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kelurahan Alamat
                     </label>
-                    <input type="text" name="kel_alamat" wire:model="kel_alamat"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Pagesangan">
-                    @error('kel_alamat')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="kel_alamat" model="kel_alamat"
+                        placeholder="Masukkan Kelurahan Sesuai KTP" />
+                    <x-input-error for="kel_alamat" />
                 </div>
                 <div>
                     <label for="kec_alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kecamatan Alamat</label>
-                    <input type="text" name="kec_alamat" wire:model="kec_alamat"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Mataram">
-                    @error('kec_alamat')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="kec_alamat" model="kec_alamat"
+                        placeholder="Masukkan Kecamatan Sesuai KTP" />
+                    <x-input-error for="kec_alamat" />
                 </div>
                 <div>
                     <label for="kab_kota_alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kab/Kota Alamat</label>
-                    <input type="text" name="kab_kota_alamat" wire:model="kab_kota_alamat"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: Kota Mataram">
-                    @error('kab_kota_alamat')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="kab_kota_alamat" model="kab_kota_alamat"
+                        placeholder="Masukkan Kab/Kota Sesuai KTP" />
+                    <x-input-error for="kab_kota_alamat" />
                 </div>
                 <div>
                     <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         No. Telpon</label>
-                    <input type="number" name="telepon" wire:model="telepon"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="081xxxxx">
-                    @error('telepon')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="telepon" model="telepon" placeholder="Masukkan No. Telp" />
+                    <x-input-error for="telepon" />
                 </div>
                 <div>
                     <label for="no_perjanjian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         No. Perjanjian</label>
-                    <input type="text" name="no_perjanjian" wire:model="no_perjanjian"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @error('no_perjanjian')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="text" name="no_perjanjian" model="no_perjanjian" placeholder="" />
+                    <x-input-error for="no_perjanjian" />
                 </div>
                 <div>
                     <label for="tgl_perjanjian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tanggal Perjanjian</label>
-                    <input type="date" name="tgl_perjanjian" wire:model="tgl_perjanjian"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    @error('tgl_perjanjian')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="date" name="tgl_perjanjian" model="tgl_perjanjian" placeholder="" />
+                    <x-input-error for="tgl_perjanjian" />
                 </div>
                 <div>
                     <label for="jml_hari_kerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Jumlah Hari Kerja (seminggu)</label>
-                    <input type="number" name="jml_hari_kerja" wire:model="jml_hari_kerja"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 7">
-                    @error('jml_hari_kerja')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="jml_hari_kerja" model="jml_hari_kerja" placeholder="Contoh: 7" />
+                    <x-input-error for="jml_hari_kerja" />
                 </div>
                 <div>
                     <label for="hari_kerja_bulan"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Jumlah Hari Kerja (sebulan)</label>
-                    <input type="number" name="hari_kerja_bulan" wire:model="hari_kerja_bulan"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 28">
-                    @error('hari_kerja_bulan')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="hari_kerja_bulan" model="hari_kerja_bulan"
+                        placeholder="Contoh: 28" />
+                    <x-input-error for="hari_kerja_bulan" />
                 </div>
                 <div>
                     <label for="hari_libur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -304,54 +257,37 @@
                 <div>
                     <label for="potensi_harian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Potensi Harian</label>
-                    <input type="number" name="potensi_harian" wire:model="potensi_harian"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 50.000">
-                    @error('potensi_harian')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="potensi_harian" model="potensi_harian"
+                        placeholder="Contoh: 50.000" />
+                    <x-input-error for="potensi_harian" />
                 </div>
                 <div>
                     <label for="potensi_bulanan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Potensi Bulanan</label>
-                    <input type="number" name="potensi_bulanan" wire:model="potensi_bulanan"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 1.400.000">
-                    @error('potensi_bulanan')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="potensi_bulanan" model="potensi_bulanan"
+                        placeholder="Contoh: 1.000.000" />
+                    <x-input-error for="potensi_bulanan" />
                 </div>
                 <div>
                     <label for="uji_petik" class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
                         Uji Petik</label>
-                    <input type="number" name="uji_petik" wire:model="uji_petik"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 50.000">
-                    @error('uji_petik')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="uji_petik" model="uji_petik" placeholder="Contoh: 60.000" />
+                    <x-input-error for="uji_petik" />
                 </div>
                 <div>
                     <label for="potensi_bulanan_upl"
                         class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
                         Potensi Bulanan UPL</label>
-                    <input type="number" name="potensi_bulanan_upl" wire:model="potensi_bulanan_upl"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 1.400.000">
-                    @error('potensi_bulanan_upl')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="number" name="potensi_bulanan_upl" model="potensi_bulanan_upl"
+                        placeholder="Contoh: 1.200.000" />
+                    <x-input-error for="potensi_bulanan_upl" />
                 </div>
                 <div class="sm:col-span-2">
                     <label for="tgl_pkh_upl"
                         class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
                         Tanggal PKH UPL</label>
-                    <input type="date" name="tgl_pkh_upl" wire:model="tgl_pkh_upl"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Cth: 1.400.000">
-                    @error('tgl_pkh_upl')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input type="date" name="tgl_pkh_upl" model="tgl_pkh_upl" placeholder="" />
+                    <x-input-error for="tgl_pkh_upl" />
                 </div>
                 <div class="sm:col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="foto">Foto
@@ -436,12 +372,8 @@
                         <label for="tgl_nonactive"
                             class="block mb-2 text-sm font-medium text-red-600 dark:text-red-400">
                             Tanggal Non-Active</label>
-                        <input type="date" name="tgl_nonactive" wire:model="tgl_nonactive"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Cth: 1.400.000">
-                        @error('tgl_nonactive')
-                            <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                        @enderror
+                        <x-input type="date" name="tgl_nonactive" model="tgl_nonactive" placeholder="" />
+                        <x-input-error for="tgl_nonactive" />
                     </div>
                 @endif
             </div>

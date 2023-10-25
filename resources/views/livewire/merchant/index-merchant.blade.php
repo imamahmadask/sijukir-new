@@ -1,5 +1,5 @@
 <div>
-    <div class="px-5 mb-4">
+    <div class="px-5 mb-4 h-max">
         <x-toast id="toast-success" type="green" :message="session('status')" />
         <x-toast id="toast-danger" type="red" :message="session('delete')" />
 
@@ -59,36 +59,54 @@
             Tambah Merchant
         </a>
 
-        <div class="relative overflow-x-auto sm:rounded-lg">
-            <div class="flex items-center justify-between py-4">
-                <div class="w-20">
-                    <select id="countries"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="25" selected>25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="500">500</option>
-                        <option value="1000">1000</option>
-                    </select>
-                </div>
-
-                <label for="table-search" class="sr-only">Search</label>
-
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <!-- Start coding here -->
+            <div class="my-4 relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+                <div
+                    class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                    <div class="w-full md:w-1/2">
+                        <label for="search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                    fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input type="text" wire:model.live="search"
+                                class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Search Merchant">
+                        </div>
                     </div>
-                    <input type="text" id="table-search-lokasi"
-                        class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search for lokasi">
+                    <div
+                        class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                        <div class="flex items-center w-full space-x-3 md:w-auto">
+                            <div class="w-52">
+                                <select wire:model.live='filter'
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="">Vendor</option>
+                                    <option value="QR PTEN">QREN</option>
+                                    <option value="BNTBS">BNTBS</option>
+                                </select>
+                            </div>
+                            <div class="w-20">
+                                <select wire:model.live='perPage'
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option value="50" selected>50</option>
+                                    <option value="100">100</option>
+                                    <option value="250">250</option>
+                                    <option value="500">500</option>
+                                    <option value="1000">1000</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -112,7 +130,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($merchants as $merchant)
+                    @foreach ($this->merchants as $merchant)
                         <tr
                             class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
                             <td class="px-6 py-4">
@@ -155,7 +173,7 @@
                                     </svg>
                                 </a>
                                 <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
-                                    type="button" wire:click="deletemerchant({{ $merchant->id }})"
+                                    type="button" wire:click="deleteMerchant({{ $merchant->id }})"
                                     class="font-medium text-red-600 dark:text-red-500 hover:underline">
                                     <svg class="w-4 h-4 text-red-600 dark:text-red-500" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
@@ -164,7 +182,7 @@
                                     </svg>
                                 </button>
                                 {{-- Delete Modal --}}
-                                <div wire:ignore.self id="delete-modal" tabindex="-1"
+                                <div wire:ignore id="delete-modal" tabindex="-1"
                                     class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative w-full max-w-md max-h-full">
                                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -211,7 +229,31 @@
             </table>
         </div>
         <div class="mt-4">
-            {{ $merchants->links() }}
+            {{ $this->merchants->links() }}
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var successToast = document.getElementById('toast-success');
+        var dangerToast = document.getElementById('toast-danger');
+
+        function closeToast(toastElement) {
+            if (toastElement) {
+                toastElement.style.display = 'none';
+            }
+        }
+
+        if (successToast) {
+            setTimeout(function() {
+                closeToast(successToast);
+            }, 3000);
+        }
+
+        if (dangerToast) {
+            setTimeout(function() {
+                closeToast(dangerToast);
+            }, 3000);
+        }
+    });
+</script>
