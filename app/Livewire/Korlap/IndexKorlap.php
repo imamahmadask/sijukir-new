@@ -11,6 +11,7 @@ use Livewire\Attributes\On;
 class IndexKorlap extends Component
 {
     public $korlapId, $korlap_name;
+    public $search = '';
 
     #[On('korlap-deleted')]
     public function updateList(Korlap $korlap){
@@ -19,7 +20,9 @@ class IndexKorlap extends Component
 
     public function render()
     {
-        $korlaps = Korlap::all();
+        $korlaps = Korlap::select('id','nama', 'nik', 'telepon', 'alamat')
+        ->where('nama', 'like', '%'.$this->search.'%')
+        ->get();
 
         return view('livewire.korlap.index-korlap', [
             'korlaps' => $korlaps

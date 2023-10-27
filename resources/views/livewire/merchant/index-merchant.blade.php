@@ -59,12 +59,32 @@
             Tambah Merchant
         </a>
 
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <!-- Start coding here -->
-            <div class="my-4 relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+        <!-- Filter -->
+        <div class="my-4 relative bg-white shadow-md dark:bg-gray-800 sm:rounded-lg">
+            <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+                <div class="flex items-center w-full space-x-3 md:w-auto">
+                    <div class="sm:w-20 w-full">
+                        <select wire:model.live='perPage'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="50" selected>50</option>
+                            <option value="100">100</option>
+                            <option value="250">250</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                        </select>
+                    </div>
+                </div>
                 <div
-                    class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
-                    <div class="w-full md:w-1/2">
+                    class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                    <div class="md:w-32 w-full">
+                        <select wire:model.live='filter'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Vendor</option>
+                            <option value="QR PTEN">QREN</option>
+                            <option value="BNTBS">BNTBS</option>
+                        </select>
+                    </div>
+                    <div class="w-full md:w-40">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -80,32 +100,13 @@
                                 placeholder="Search Merchant">
                         </div>
                     </div>
-                    <div
-                        class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                        <div class="flex items-center w-full space-x-3 md:w-auto">
-                            <div class="w-52">
-                                <select wire:model.live='filter'
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="">Vendor</option>
-                                    <option value="QR PTEN">QREN</option>
-                                    <option value="BNTBS">BNTBS</option>
-                                </select>
-                            </div>
-                            <div class="w-20">
-                                <select wire:model.live='perPage'
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="50" selected>50</option>
-                                    <option value="100">100</option>
-                                    <option value="250">250</option>
-                                    <option value="500">500</option>
-                                    <option value="1000">1000</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
+        </div>
 
+        <!-- Table Data -->
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
                     <tr>
