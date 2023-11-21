@@ -19,11 +19,6 @@ class IndexMerchant extends Component
     public $filter = '';
     public $perPage = 50;
 
-    #[On('merchant-deleted')]
-    public function updateList(Merchant $merchants){
-
-    }
-
     #[Computed()]
     public function merchants(){
          return Merchant::select('id', 'merchant_name', 'vendor', 'no_rekening', 'qris')
@@ -43,26 +38,13 @@ class IndexMerchant extends Component
         return view('livewire.merchant.index-merchant');
     }
 
-    public function deleteMerchant($id){
-        $this->merchantId = $id;
+    public function deleteMerchant(Merchant $merchant){
+        //destroy
+        $merchant->delete();
 
-        $this->merchant_name = Merchant::where('id', $id)->value('merchant_name');
-    }
+        unlink("storage/".$merchant->qris);
 
-    public function destroyMerchant()
-    {
-        if($this->merchantId){
-            $merchant = Merchant::findOrFail($this->merchantId);
+        session()->flash('success', 'Data Merchant Berhasil Dihapus.');
 
-            //destroy
-            $merchant->delete();
-
-            unlink("storage/".$merchant->qris);
-        }
-
-        //flash message
-        session()->flash('delete', 'Data Merchant Berhasil Dihapus.');
-
-        $this->dispatch('merchant-deleted' );
     }
 }

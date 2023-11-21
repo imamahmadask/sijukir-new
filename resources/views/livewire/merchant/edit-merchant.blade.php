@@ -53,7 +53,11 @@
                     <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         ID Merchant
                     </label>
-                    <x-input type="number" name="id" model="id" placeholder="Masukkan ID Merchant QRIS" />
+                    <div>
+                        <input type="text" name="merchantId" wire:model="merchantId"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            disabled>
+                    </div>
                     <x-input-error for="id" />
                 </div>
                 <div class="sm:col-span-2">

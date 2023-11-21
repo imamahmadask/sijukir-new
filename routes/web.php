@@ -14,7 +14,10 @@ use App\Livewire\Lokasi\ShowLokasi;
 use App\Livewire\Merchant\CreateMerchant;
 use App\Livewire\Merchant\EditMerchant;
 use App\Livewire\Merchant\IndexMerchant;
+use App\Livewire\Tunai\CreateTunai;
+use App\Livewire\Tunai\EditTunai;
 use App\Livewire\Tunai\IndexTunai;
+use App\Livewire\Nontunai\IndexNonTunai;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,8 +50,10 @@ Route::middleware([
     Route::get('admin/jukir/{id}/edit', EditJukir::class)->name('jukir.edit');
 
     Route::get('admin/tunai', IndexTunai::class)->name('tunai.index');
+    Route::get('admin/tunai/create', CreateTunai::class)->name('tunai.create');
+    Route::get('admin/tunai/{id}/edit', EditTunai::class)->name('tunai.edit');
 
-    Route::view('admin/nontunai', 'pages.nontunai')->name('nontunai.index');
+    Route::get('admin/nontunai', IndexNonTunai::class)->name('nontunai.index');
 
     Route::get('admin/korlap', IndexKorlap::class)->name('korlap.index');
     Route::get('admin/korlap/create', CreateKorlap::class)->name('korlap.create');

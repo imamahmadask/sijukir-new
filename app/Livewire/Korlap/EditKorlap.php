@@ -9,7 +9,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Rule;
 
 
-#[Title('Edit Korlap')] 
+#[Title('Edit Korlap')]
 class EditKorlap extends Component
 {
     use WithFileUploads;
@@ -17,9 +17,9 @@ class EditKorlap extends Component
     public $korlapId, $foto_asli;
     public $foto;
 
-    #[Rule('required')] 
+    #[Rule('required')]
     public $nama, $nik, $telepon, $alamat;
-    
+
 
     public function render()
     {
@@ -30,19 +30,19 @@ class EditKorlap extends Component
     {
         //get korlap
         $korlap = Korlap::find($id);
-        
+
         //assign
         $this->korlapId = $korlap->id;
         $this->nama = $korlap->nama;
         $this->nik = $korlap->nik;
         $this->telepon = $korlap->telepon;
-        $this->alamat = $korlap->alamat;        
-        $this->foto_asli = $korlap->foto;        
+        $this->alamat = $korlap->alamat;
+        $this->foto_asli = $korlap->foto;
     }
 
     public function updateKorlap(){
         $this->validate();
-        
+
         $korlap = Korlap::find($this->korlapId);
 
         // setting Foto Korlap
@@ -57,13 +57,13 @@ class EditKorlap extends Component
             'nama' => $this->nama,
             'nik' => $this->nik,
             'alamat' => $this->alamat,
-            'telepon' => $this->telepon,            
-            'foto' => $file_foto,     
+            'telepon' => $this->telepon,
+            'foto' => $file_foto,
         ]);
 
         $this->reset();
 
-        session()->flash('status', 'Data Korlap berhasil diupdate!');
+        session()->flash('success', 'Data Korlap berhasil diupdate!');
 
         $this->redirect('/admin/korlap');
     }

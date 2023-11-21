@@ -70,7 +70,7 @@
                 <div class="sm:col-span-2">
                     <label for="telepon"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telepon</label>
-                    <x-input type="text" name="telepon" model="telepon" placeholder="Contoh: 081xxx" />
+                    <x-input type="number" name="telepon" model="telepon" placeholder="Contoh: 081xxx" />
                     <x-input-error for="telepon" />
                 </div>
                 <div class="sm:col-span-2">

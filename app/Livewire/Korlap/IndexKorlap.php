@@ -3,6 +3,7 @@
 namespace App\Livewire\Korlap;
 
 use App\Models\Korlap;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\On;
@@ -13,42 +14,26 @@ class IndexKorlap extends Component
     public $korlapId, $korlap_name;
     public $search = '';
 
-    #[On('korlap-deleted')]
-    public function updateList(Korlap $korlap){
-
+    #[Computed()]
+    public function korlaps()
+    {
+        return Korlap::select('id','nama', 'nik', 'telepon', 'alamat')
+                            ->where('nama', 'like', '%'.$this->search.'%')
+                            ->get();
     }
 
     public function render()
     {
-        $korlaps = Korlap::select('id','nama', 'nik', 'telepon', 'alamat')
-        ->where('nama', 'like', '%'.$this->search.'%')
-        ->get();
-
-        return view('livewire.korlap.index-korlap', [
-            'korlaps' => $korlaps
-        ]);
+        return view('livewire.korlap.index-korlap');
     }
 
-    public function deleteKorlap($id){
-        $this->korlapId = $id;
+    public function deleteKorlap(Korlap $korlap){
+        $korlap->delete();
 
-        $this->korlap_name = Korlap::where('id', $id)->value('nama');
-    }
+        unlink("storage/".$korlap->foto);
 
-    public function destroyKorlap()
-    {
-        if($this->korlapId){
-            $korlap = Korlap::findOrFail($this->korlapId);
 
-            //destroy
-            $korlap->delete();
+        session()->flash('success', 'Data Korlap Berhasil Dihapus.');
 
-            unlink("storage/".$korlap->foto);
-        }
-
-        //flash message
-        session()->flash('delete', 'Data Korlap Berhasil Dihapus.');
-
-        $this->dispatch('korlap-deleted' );
     }
 }

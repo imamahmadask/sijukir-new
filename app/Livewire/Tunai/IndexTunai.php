@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\WithPagination;
 
 #[Title('Tunai')]
@@ -19,15 +19,19 @@ class IndexTunai extends Component
     public $search = '';
     public $tunai_name, $tunaiId;
 
-    #[Rule('date|before_or_equal:finish_date')]
+    #[Validate('date|before_or_equal:finish_date')]
     public $date_start;
 
-    #[Rule('date|after_or_equal:start_date|before_or_equal:today')]
+    #[Validate('date|after_or_equal:start_date|before_or_equal:today')]
     public $date_end;
 
-    #[Computed]
-    public function tunais() {
-        return Tunai::with('jukir')->simplePaginate($this->perPage);
+    #[Computed()]
+    public function tunais()
+    {
+        return Tunai::with('jukir')
+                    ->whereBetween('tgl_transaksi', [$this->date_start, $this->date_end])
+                    ->orderBy('tgl_transaksi', 'desc')
+                    ->simplePaginate($this->perPage);
     }
 
     public function render()
@@ -36,11 +40,16 @@ class IndexTunai extends Component
     }
 
     public function mount(){
-        // $this->date_start = Carbon::today()->toDateString();
-        // $this->date_end =  Carbon::today()->subDays(14)->toDateString();
+        $this->date_start =  Carbon::today()->subDays(14)->toDateString();
+        $this->date_end = Carbon::today()->toDateString();
     }
 
-    public function updatedDateStart($value){
-        dd($value);
+    public function deleteTunai(Tunai $tunai){
+        //destroy
+        $tunai->delete();
+
+        //flash message
+        session()->flash('success', 'Data Transaksi Tunai Berhasil Dihapus.');
+
     }
 }

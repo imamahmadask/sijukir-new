@@ -28,6 +28,7 @@ class EditMerchant extends Component
 
         $merchant = Merchant::findOrFail($id);
 
+        $this->id = $merchant->id;
         $this->merchantId = $merchant->id;
         $this->nmid = $merchant->nmid;
         $this->merchant_name = $merchant->merchant_name;
@@ -45,9 +46,9 @@ class EditMerchant extends Component
 
         // setting File QRIS
         if($this->qris == $merchant->qris || $this->qris == null){
-            $file_qris = $merchant->qris;
+            $this->qris = $merchant->qris;
         }else{
-            $nama_qris = $this->nama.'.'.$this->qris->extension();
+            $nama_qris = $this->merchant_name.'.'.$this->qris->extension();
             $this->qris = $this->qris->storeAs('qris', $nama_qris, 'public');
         }
 
@@ -64,7 +65,7 @@ class EditMerchant extends Component
 
         $this->reset();
 
-        session()->flash('status', 'Data Merchant berhasil diubah!');
+        session()->flash('success', 'Data Merchant berhasil diubah!');
 
         $this->redirect('/admin/merchant');
     }

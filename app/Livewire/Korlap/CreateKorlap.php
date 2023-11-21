@@ -13,12 +13,12 @@ class CreateKorlap extends Component
 {
     use WithFileUploads;
 
-    #[Rule('required')] 
+    #[Rule('required')]
     public $nama, $nik, $telepon, $alamat;
 
-    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
     public $foto;
-    
+
     public function render()
     {
         return view('livewire.korlap.create-korlap');
@@ -30,18 +30,18 @@ class CreateKorlap extends Component
         // Foto Korlap
         $nama_foto = $this->nama.'.'.$this->foto->extension();
         $file_foto = $this->foto->storeAs('foto_korlap', $nama_foto, 'public');
-    
+
         Korlap::create([
             'nama' => $this->nama,
             'nik' => $this->nik,
             'alamat' => $this->alamat,
-            'telepon' => $this->telepon,            
-            'foto' => $file_foto,            
+            'telepon' => $this->telepon,
+            'foto' => $file_foto,
         ]);
-        
-        $this->reset(); 
 
-        session()->flash('status', 'Data Korlap berhasil diinput!');
+        $this->reset();
+
+        session()->flash('success', 'Data Korlap berhasil diinput!');
 
         $this->redirect('/admin/korlap');
     }
