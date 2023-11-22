@@ -1,7 +1,7 @@
 <div>
     <div class="px-5 mb-4">
         <!-- Breadcrumb -->
-        <nav class="mt-3 mb-5 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+        <nav class="mt-3 mb-5 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 shadow-sm"
             aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
@@ -35,7 +35,7 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m1 9 4-4-4-4" />
                         </svg>
-                        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+                        <span class="ml-1 text-sm font-medium text-blue-500 md:ml-2 dark:text-blue-400">
                             Edit Jukir</span>
                     </div>
                 </li>
@@ -62,6 +62,7 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 @if ($status == 'Non-Tunai')
                     <div>
                         <label for="merchant_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -78,6 +79,7 @@
                             <span class="text-xs italic text-red-500"> {{ $message }} </span>
                         @enderror
                     </div>
+
                     <div>
                         <label for="tgl_terbit_qr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Tanggal Terbit QR</label>
@@ -88,6 +90,7 @@
                         @enderror
                     </div>
                 @endif
+
                 <div>
                     <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Lokasi Parkir</label>
@@ -102,25 +105,37 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 <div>
                     <label for="kode_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kode Jukir
                     </label>
-                    <x-input type="text" name="kode_jukir" model="kode_jukir" placeholder="Contoh: 001-AMP" />
+                    <div>
+                        <input type="text" name="kode_jukir" wire:model.live="kode_jukir"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Contoh: 001-AMP">
+                    </div>
                     <x-input-error for="kode_jukir" />
                 </div>
+
                 <div>
                     <label for="nama_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Nama Jukir</label>
                     <x-input type="text" name="nama_jukir" model="nama_jukir" placeholder="Contoh: Abdul Awal" />
                     <x-input-error for="nama_jukir" />
                 </div>
+
                 <div>
                     <label for="nik_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         NIK Jukir</label>
-                    <x-input type="number" name="nik_jukir" model="nik_jukir" placeholder="Contoh: 527xxxx" />
+                    <div>
+                        <input type="number" name="nik_jukir" wire:model.live="nik_jukir"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Contoh: 527xxxxxx">
+                    </div>
                     <x-input-error for="nik_jukir" />
                 </div>
+
                 <div>
                     <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Jenis Kelamin</label>
@@ -134,6 +149,7 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 <div>
                     <label for="agama"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
@@ -150,6 +166,7 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 <div>
                     <label for="tempat_lahir"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tempat Lahir</label>
@@ -157,12 +174,14 @@
                         placeholder="Masukkan Tempat Lahir Sesuai KTP" />
                     <x-input-error for="tempat_lahir" />
                 </div>
+
                 <div>
                     <label for="tgl_lahir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tanggal Lahir</label>
                     <x-input type="date" name="tgl_lahir" model="tgl_lahir" placeholder="" />
                     <x-input-error for="tgl_lahir" />
                 </div>
+
                 <div class="sm:col-span-2">
                     <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Alamat</label>
@@ -170,6 +189,7 @@
                         placeholder="Masukkan Alamat Sesuai KTP" />
                     <x-input-error for="alamat" />
                 </div>
+
                 <div>
                     <label for="kel_alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kelurahan Alamat
@@ -178,6 +198,7 @@
                         placeholder="Masukkan Kelurahan Sesuai KTP" />
                     <x-input-error for="kel_alamat" />
                 </div>
+
                 <div>
                     <label for="kec_alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kecamatan Alamat</label>
@@ -185,6 +206,7 @@
                         placeholder="Masukkan Kecamatan Sesuai KTP" />
                     <x-input-error for="kec_alamat" />
                 </div>
+
                 <div>
                     <label for="kab_kota_alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Kab/Kota Alamat</label>
@@ -192,30 +214,39 @@
                         placeholder="Masukkan Kab/Kota Sesuai KTP" />
                     <x-input-error for="kab_kota_alamat" />
                 </div>
+
                 <div>
                     <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         No. Telpon</label>
                     <x-input type="number" name="telepon" model="telepon" placeholder="Masukkan No. Telp" />
                     <x-input-error for="telepon" />
                 </div>
+
                 <div>
                     <label for="no_perjanjian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         No. Perjanjian</label>
                     <x-input type="text" name="no_perjanjian" model="no_perjanjian" placeholder="" />
                     <x-input-error for="no_perjanjian" />
                 </div>
+
                 <div>
                     <label for="tgl_perjanjian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tanggal Perjanjian</label>
                     <x-input type="date" name="tgl_perjanjian" model="tgl_perjanjian" placeholder="" />
                     <x-input-error for="tgl_perjanjian" />
                 </div>
+
                 <div>
                     <label for="jml_hari_kerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Jumlah Hari Kerja (seminggu)</label>
-                    <x-input type="number" name="jml_hari_kerja" model="jml_hari_kerja" placeholder="Contoh: 7" />
+                    <div>
+                        <input type="number" name="jml_hari_kerja" wire:model.live="jml_hari_kerja"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan Jml Hari Kerja/minggu" min="1" max="7">
+                    </div>
                     <x-input-error for="jml_hari_kerja" />
                 </div>
+
                 <div>
                     <label for="hari_kerja_bulan"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -224,6 +255,7 @@
                         placeholder="Contoh: 28" />
                     <x-input-error for="hari_kerja_bulan" />
                 </div>
+
                 <div>
                     <label for="hari_libur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Hari Libur (Jika Ada)</label>
@@ -237,6 +269,7 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 <div>
                     <label for="waktu_kerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Waktu Kerja</label>
@@ -254,13 +287,18 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 <div>
                     <label for="potensi_harian" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Potensi Harian</label>
-                    <x-input type="number" name="potensi_harian" model="potensi_harian"
-                        placeholder="Contoh: 50.000" />
+                    <div>
+                        <input type="number" name="potensi_harian" wire:model.live="potensi_harian"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukkan Potensi Harian">
+                    </div>
                     <x-input-error for="potensi_harian" />
                 </div>
+
                 <div>
                     <label for="potensi_bulanan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Potensi Bulanan</label>
@@ -268,20 +306,7 @@
                         placeholder="Contoh: 1.000.000" />
                     <x-input-error for="potensi_bulanan" />
                 </div>
-                <div>
-                    <label for="uji_petik" class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
-                        Uji Petik</label>
-                    <x-input type="number" name="uji_petik" model="uji_petik" placeholder="Contoh: 60.000" />
-                    <x-input-error for="uji_petik" />
-                </div>
-                <div>
-                    <label for="potensi_bulanan_upl"
-                        class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
-                        Potensi Bulanan UPL</label>
-                    <x-input type="number" name="potensi_bulanan_upl" model="potensi_bulanan_upl"
-                        placeholder="Contoh: 1.200.000" />
-                    <x-input-error for="potensi_bulanan_upl" />
-                </div>
+
                 <div class="sm:col-span-2">
                     <label for="tgl_pkh_upl"
                         class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
@@ -289,6 +314,30 @@
                     <x-input type="date" name="tgl_pkh_upl" model="tgl_pkh_upl" placeholder="" />
                     <x-input-error for="tgl_pkh_upl" />
                 </div>
+
+                @if ($tgl_pkh_upl)
+                    <div>
+                        <label for="uji_petik"
+                            class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
+                            Potensi Harian UPL</label>
+                        <div>
+                            <input type="number" name="uji_petik" wire:model.live="uji_petik"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Masukkan Potensi Harian Uji Petik Lapangan">
+                        </div>
+                        <x-input-error for="uji_petik" />
+                    </div>
+
+                    <div>
+                        <label for="potensi_bulanan_upl"
+                            class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
+                            Potensi Bulanan UPL</label>
+                        <x-input type="number" name="potensi_bulanan_upl" model="potensi_bulanan_upl"
+                            placeholder="Contoh: 1.200.000" />
+                        <x-input-error for="potensi_bulanan_upl" />
+                    </div>
+                @endif
+
                 <div class="sm:col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="foto">Foto
                         Jukir</label>
@@ -325,6 +374,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="sm:col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="document">
                         Dokumen Jukir</label>
@@ -355,6 +405,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div @if ($ket_jukir != 'Non-Active') class="sm:col-span-2" @endif>
                     <label for="ket_jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Ket. Jukir</label>
@@ -367,6 +418,7 @@
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>
+
                 @if ($ket_jukir == 'Non-Active')
                     <div>
                         <label for="tgl_nonactive"
@@ -377,10 +429,12 @@
                     </div>
                 @endif
             </div>
+
             <button type="submit"
                 class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                 Edit
             </button>
+
             <a type="button" href="{{ route('jukir.index') }}"
                 class="text-white inline-flex items-center bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                 Cancel

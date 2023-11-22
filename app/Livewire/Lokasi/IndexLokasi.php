@@ -43,9 +43,6 @@ class IndexLokasi extends Component
                 ->where(function ($query) {
                     $query->where('area_id', 'like', '%'.$this->filter_area.'%');
                 })
-                // ->where(function ($query) {
-                //     $query->orWhere('pendaftaran', 'like', '%'.$this->pendaftaran.'%');
-                // })
                 ->orderBy('titik_parkir', 'asc')
                 ->paginate($this->perPage);
     }
@@ -55,26 +52,16 @@ class IndexLokasi extends Component
         return view('livewire.lokasi.index-lokasi');
     }
 
-    public function deleteLokasi($id){
-        $this->lokasiId = $id;
-
-        $this->lokasi_name = Lokasi::where('id', $id)->value('titik_parkir');
-    }
-
-    public function destroyLokasi()
-    {
-        if($this->lokasiId){
-            $lokasi = Lokasi::findOrFail($this->lokasiId);
-
+    public function deleteLokasi(Lokasi $lokasi){
+        if($lokasi)
+        {
             //destroy
             $lokasi->delete();
 
             unlink("storage/".$lokasi->gambar);
+
+            session()->flash('success', 'Data Lokasi Berhasil Dihapus!');
         }
-
-        //flash message
-        session()->flash('delete', 'Data Lokasi Berhasil Dihapus.');
-
     }
 
     public function mount(){

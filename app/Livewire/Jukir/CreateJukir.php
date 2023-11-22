@@ -26,24 +26,24 @@ class CreateJukir extends Component
         'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
     ];
 
-    #[Rule('required|min:7|unique:jukirs,kode_jukir')] 
-    public $kode_jukir; 
+    #[Rule('required|min:7|unique:jukirs,kode_jukir')]
+    public $kode_jukir;
 
-    #[Rule('required|min:16|numeric|unique:jukirs,nik_jukir')] 
-    public $nik_jukir; 
-    
-    #[Rule('required|date|before_or_equal:today')] 
-    public $tgl_lahir, $tgl_perjanjian; 
+    #[Rule('required|min:16|numeric|unique:jukirs,nik_jukir')]
+    public $nik_jukir;
 
-    #[Rule('required')] 
-    public $nama_jukir, $tempat_lahir, $jenis_kelamin, $alamat, $kel_alamat, $kec_alamat, 
-            $kab_kota_alamat, $telepon, $agama, $no_perjanjian, $potensi_harian, 
+    #[Rule('required|date|before_or_equal:today')]
+    public $tgl_lahir, $tgl_perjanjian;
+
+    #[Rule('required')]
+    public $nama_jukir, $tempat_lahir, $jenis_kelamin, $alamat, $kel_alamat, $kec_alamat,
+            $kab_kota_alamat, $telepon, $agama, $no_perjanjian, $potensi_harian,
             $potensi_bulanan, $waktu_kerja, $jml_hari_kerja, $hari_kerja_bulan, $lokasi;
 
-    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
     public $foto;
 
-    #[Rule('required|mimes:pdf|max:2000')] 
+    #[Rule('required|mimes:pdf|max:2000')]
     public $document;
 
     public function render()
@@ -59,7 +59,7 @@ class CreateJukir extends Component
     public function addJukir(){
         $this->validate();
         $area_id = Lokasi::find($this->lokasi)->value('area_id');
-        
+
         $this->tgl_akhir_perjanjian = Carbon::create($this->tgl_perjanjian)->addMonths(6);
 
         $this->setFotoJukir();
@@ -110,7 +110,7 @@ class CreateJukir extends Component
 
         $this->reset();
 
-        session()->flash('status', 'Data Jukir berhasil diinput!');
+        session()->flash('success', 'Data Jukir berhasil diinput!');
 
         $this->redirect('/admin/jukir');
     }

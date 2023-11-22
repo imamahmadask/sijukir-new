@@ -10,7 +10,7 @@ use Livewire\Component;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 
 #[Title('Tambah Lokasi')]
 class CreateLokasi extends Component
@@ -20,17 +20,17 @@ class CreateLokasi extends Component
     public $kel, $korlaps = [];
     public $areas, $keterangan, $slug, $kord_long, $kord_lat, $no_ketetapan, $tgl_ketetapan;
 
-    #[Rule('required|min:6|unique:lokasis,titik_parkir')]
+    #[Validate('required|min:6|unique:lokasis,titik_parkir')]
     public $titik_parkir;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $pendaftaran, $lokasi_parkir, $kecamatan, $kelurahan, $jenis_lokasi, $kategori,
     $sisi, $panjang_luas, $korlap, $waktu_pelayanan, $hari_buka, $dasar_ketetapan, $google_maps, $kordinat;
 
-    #[Rule('required|date|before_or_equal:today')]
+    #[Validate('required|date|before_or_equal:today')]
     public $tgl_registrasi;
 
-    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
+    #[Validate('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
     public $gambar;
 
     public function render()
@@ -79,7 +79,7 @@ class CreateLokasi extends Component
         // $this->resetForm();
         $this->reset();
 
-        session()->flash('status', 'Data Lokasi berhasil diinput!');
+        session()->flash('success', 'Data Lokasi berhasil diinput!');
 
         $this->redirect('/admin/lokasi');
     }

@@ -10,6 +10,7 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 
 #[Title('Tambah Jukir')]
 class EditJukir extends Component
@@ -20,39 +21,43 @@ class EditJukir extends Component
             $tgl_pkh_upl, $hari_libur, $tgl_akhir_perjanjian, $jenis_jukir, $status;
 
     public $merchant_id, $tgl_terbit_qr, $ket_jukir, $tgl_nonactive;
-    public $bulan, $tahun, $merchants;
+    public $bulan, $tahun;
+    public $foto, $document;
+    public $merchants = [];
     public $array_bln = array(1=>"I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
     public $dayList = [
         'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
     ];
 
-    #[Rule('required|min:7')]
-    public $kode_jukir;
+    #[Validate('required|min:7')]
+    public $kode_jukir, $nik_jukir;
 
-    #[Rule('required|min:16')]
-    public $nik_jukir;
+    #[Validate('required|numeric|min:1|max:7')]
+    public $jml_hari_kerja;
 
-    #[Rule('required|date|before_or_equal:today')]
+    #[Validate('required|numeric|min:1|max:30')]
+    public $hari_kerja_bulan;
+
+    #[Validate('required|numeric|min:1')]
+    public $potensi_harian, $potensi_bulanan;
+
+    #[Validate('required|date|before_or_equal:today')]
     public $tgl_lahir, $tgl_perjanjian;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $nama_jukir, $tempat_lahir, $jenis_kelamin, $alamat, $kel_alamat, $kec_alamat,
-            $kab_kota_alamat, $telepon, $agama, $no_perjanjian, $potensi_harian,
-            $potensi_bulanan, $waktu_kerja, $jml_hari_kerja, $hari_kerja_bulan, $lokasi;
-
-    // #[Rule('image|mimes:jpeg,png,jpg,webp|max:2000')]
-    public $foto;
-
-    // #[Rule('mimes:pdf|max:2000')]
-    public $document;
+            $kab_kota_alamat, $telepon, $agama, $no_perjanjian, $waktu_kerja, $lokasi;
 
     public function render()
     {
         return view('livewire.jukir.edit-jukir');
     }
 
-    public function mount($id){
+    public function mount($id)
+    {
         $this->lokasis = Lokasi::select('id', 'titik_parkir')->orderBy('titik_parkir')->get();
+
+        $this->merchants = Merchant::select('id', 'merchant_name')->orderBy('merchant_name', 'Asc')->get();
 
         //get Jukir
         $jukir = Jukir::find($id);
@@ -92,7 +97,8 @@ class EditJukir extends Component
         $this->tgl_nonactive = $jukir->tgl_nonactive;
     }
 
-    public function updateJukir(){
+    public function updateJukir()
+    {
         $this->validate();
 
         $jukir = Jukir::find($this->jukirId);
@@ -156,20 +162,52 @@ class EditJukir extends Component
 
         $this->reset();
 
-        session()->flash('status', 'Data Jukir berhasil diupdate!');
+        session()->flash('success', 'Data Jukir berhasil diupdate!');
 
         $this->redirect('/admin/jukir');
     }
 
-    private function setYearAndMonth(){
+    private function setYearAndMonth()
+    {
         $this->tahun = Carbon::parse($this->tgl_perjanjian)->format('Y');
         $this->bulan = Carbon::parse($this->tgl_perjanjian)->format('m');
     }
 
-    public function updatedStatus($value){
-        if($value == 'Non-Tunai'){
+    public function updatedStatus($value)
+    {
+        if($value == 'Non-Tunai')
+        {
             $this->merchants = Merchant::select('id', 'merchant_name')->orderBy('merchant_name', 'Asc')->get();
         }
     }
 
+    public function updatedJmlHariKerja($value)
+    {
+        if($value <=7 && $value > 0)
+        {
+            $this->hari_kerja_bulan = $this->jml_hari_kerja * 4;
+            $this->potensi_bulanan = $this->potensi_harian * $this->hari_kerja_bulan;
+
+            if($this->uji_petik > 0)
+            {
+                $this->potensi_bulanan_upl = $this->uji_petik * $this->hari_kerja_bulan;
+            }
+        }
+    }
+
+    public function updatedPotensiHarian($value)
+    {
+        if($value > 0)
+        {
+            $this->potensi_bulanan = $this->potensi_harian * $this->hari_kerja_bulan;
+        }
+    }
+
+    public function updatedUjiPetik($value)
+    {
+        if($value > 0)
+        {
+            $this->potensi_bulanan_upl = $this->uji_petik * $this->hari_kerja_bulan;
+        }
+    }
 }

@@ -10,9 +10,9 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 
-#[Title('Edit Lokasi')] 
+#[Title('Edit Lokasi')]
 class EditLokasi extends Component
 {
     use WithFileUploads;
@@ -20,21 +20,21 @@ class EditLokasi extends Component
     public $kel, $korlaps = [];
     public $areas, $lokasiId, $keterangan, $is_jukir, $is_active, $gambar_asli, $area_id_lama, $slug, $kord_long, $kord_lat, $no_ketetapan, $tgl_ketetapan;
 
-    #[Rule('required|min:6')] 
+    #[Validate('required|min:6')]
     public $titik_parkir;
 
-    #[Rule('required')] 
-    public $pendaftaran, $lokasi_parkir, $kecamatan, $kelurahan, $jenis_lokasi, $kategori, 
+    #[Validate('required')]
+    public $pendaftaran, $lokasi_parkir, $kecamatan, $kelurahan, $jenis_lokasi, $kategori,
     $sisi, $panjang_luas, $korlap, $waktu_pelayanan, $hari_buka, $dasar_ketetapan, $google_maps, $kordinat;
-    
-    #[Rule('required|date|before_or_equal:today')] 
+
+    #[Validate('required|date|before_or_equal:today')]
     public $tgl_registrasi;
 
-    // #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')] 
+    // #[Validate('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
     public $gambar;
-    
+
     public function render()
-    {        
+    {
         return view('livewire.lokasi.edit-lokasi');
     }
 
@@ -46,7 +46,7 @@ class EditLokasi extends Component
 
         //get post
         $lokasi = Lokasi::find($id);
-        
+
         //assign
         $this->lokasiId = $lokasi->id;
         $this->titik_parkir = $lokasi->titik_parkir;
@@ -64,23 +64,23 @@ class EditLokasi extends Component
         $this->hari_buka = $lokasi->hari_buka;
         $this->kategori = $lokasi->kategori;
         $this->kecamatan = $lokasi->area_id;
-        $this->kelurahan = $lokasi->kelurahan_id;        
-        $this->kordinat = $lokasi->kord_lat.", ".$lokasi->kord_long;        
-        $this->is_active = $lokasi->is_active;        
-        $this->korlap = $lokasi->korlap_id;                
+        $this->kelurahan = $lokasi->kelurahan_id;
+        $this->kordinat = $lokasi->kord_lat.", ".$lokasi->kord_long;
+        $this->is_active = $lokasi->is_active;
+        $this->korlap = $lokasi->korlap_id;
     }
 
     public function updateLokasi(){
         $this->validate();
-        
+
         $lokasi = Lokasi::find($this->lokasiId);
-        
+
         $this->area_id_lama = $lokasi->area_id;
 
         $this->getDasarKetetapan($this->dasar_ketetapan);
 
-        $this->getKordinat($this->kordinat); 
-        
+        $this->getKordinat($this->kordinat);
+
         // setting Gambar Lokasi
         if($this->gambar == $lokasi->gambar || $this->gambar == null){
             $file_gambar = $lokasi->gambar;
@@ -88,11 +88,11 @@ class EditLokasi extends Component
             $nama_gambar = $this->titik_parkir.'.'.$this->gambar->extension();
             $file_gambar = $this->gambar->storeAs('foto_lokasi', $nama_gambar, 'public');
         }
-        
+
         $lokasi->update([
             'titik_parkir' => $this->titik_parkir,
             'lokasi_parkir' => $this->lokasi_parkir,
-            'slug' => Str::slug($this->titik_parkir, '-'),            
+            'slug' => Str::slug($this->titik_parkir, '-'),
             'jenis_lokasi' => $this->jenis_lokasi,
             'waktu_pelayanan' => $this->waktu_pelayanan,
             'dasar_ketetapan' => $this->dasar_ketetapan,
@@ -106,13 +106,13 @@ class EditLokasi extends Component
             'google_maps' => $this->google_maps,
             'pendaftaran' => $this->pendaftaran,
             'gambar' => $file_gambar,
-            'status' => "Tunai",            
+            'status' => "Tunai",
             'hari_buka' => $this->hari_buka,
             'area_id' => $this->kecamatan,
             'kelurahan_id' => $this->kelurahan,
             'korlap_id' => $this->korlap,
             'kategori' => $this->kategori,
-            'keterangan' => $this->keterangan, 
+            'keterangan' => $this->keterangan,
         ]);
 
         //update area on jukir, merchant dan transaksi Non Tunai
@@ -146,18 +146,18 @@ class EditLokasi extends Component
 
         $this->resetForm();
 
-        session()->flash('status', 'Data Lokasi berhasil diupdate!');
+        session()->flash('success', 'Data Lokasi berhasil diupdate!');
 
         $this->redirect('/admin/lokasi');
-    }    
+    }
 
-    public function updatedKecamatan($value){     
+    public function updatedKecamatan($value){
         if($value){
             $this->kel = Kelurahan::select('id', 'kelurahan')->where('area_id', $value)->get();
         }
     }
 
-    public function getDasarKetetapan($value){        
+    public function getDasarKetetapan($value){
         if (!is_null($value)) {
             if($value == "SK WALIKOTA"){
                 $this->no_ketetapan = "No. 697/VIII/2021";
@@ -172,11 +172,11 @@ class EditLokasi extends Component
         }
     }
 
-    public function getKordinat($value){        
+    public function getKordinat($value){
         $pecah = explode(", ", $value);
         $this->kord_lat = $pecah[0];
-        $this->kord_long = $pecah[1];        
-    } 
+        $this->kord_long = $pecah[1];
+    }
 
     public function resetForm(){
         $this->titik_parkir="";
@@ -199,6 +199,6 @@ class EditLokasi extends Component
         $this->kecamatan = null;
         $this->kelurahan = null;
         $this->korlap = null;
-        $this->kordinat = "";        
+        $this->kordinat = "";
     }
 }
