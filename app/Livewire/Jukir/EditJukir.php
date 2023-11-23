@@ -9,10 +9,9 @@ use Carbon\Carbon;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
 
-#[Title('Tambah Jukir')]
+#[Title('Edit Jukir')]
 class EditJukir extends Component
 {
     use WithFileUploads;
@@ -164,7 +163,7 @@ class EditJukir extends Component
 
         session()->flash('success', 'Data Jukir berhasil diupdate!');
 
-        $this->redirect('/admin/jukir');
+        $this->redirectRoute('jukir.show', ['jukir' => $jukir->id]);
     }
 
     private function setYearAndMonth()

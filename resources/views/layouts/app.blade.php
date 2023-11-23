@@ -41,7 +41,7 @@
             class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 pt-14 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700" />
 
         <!-- Page Content -->
-        <main class="p-4 md:ml-64 h-auto pt-20 pb-16 overflow-y-auto">
+        <main class="p-4 md:ml-64 h-auto min-h-screen pt-20 pb-16">
             {{ $slot }}
         </main>
     </div>

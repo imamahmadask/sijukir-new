@@ -133,12 +133,15 @@
                 </thead>
                 <tbody>
                     @foreach ($jukirs as $jukir)
-                        <tr
+                        <tr wire:key="{{ $jukir->id }}"
                             class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
                             <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap">
                                 <div class="pl-3">
                                     <div class="text-base font-semibold">
-                                        {{ $jukir->nama_jukir }}
+                                        <a href="/admin/jukir/{{ $jukir->id }}" class="hover:text-blue-500"
+                                            target="_blank">
+                                            {{ $jukir->nama_jukir }}
+                                        </a>
                                     </div>
                                     <div class="italic font-normal">
                                         {{ $jukir->merchant_id }}

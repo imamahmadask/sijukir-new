@@ -11,10 +11,6 @@ class ShowLokasi extends Component
 {
     public Lokasi $lokasi;
 
-    public function mount($id){
-        $this->lokasi = Lokasi::findOrFail($id);
-    }
-
     public function render()
     {
         return view('livewire.lokasi.show-lokasi');

@@ -4,6 +4,7 @@ use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\Jukir\CreateJukir;
 use App\Livewire\Jukir\EditJukir;
 use App\Livewire\Jukir\IndexJukir;
+use App\Livewire\Jukir\ShowJukir;
 use App\Livewire\Korlap\CreateKorlap;
 use App\Livewire\Korlap\EditKorlap;
 use App\Livewire\Korlap\IndexKorlap;
@@ -43,11 +44,12 @@ Route::middleware([
     Route::get('admin/lokasi', IndexLokasi::class)->name('lokasi.index');
     Route::get('admin/lokasi/create', CreateLokasi::class)->name('lokasi.create');
     Route::get('admin/lokasi/{id}/edit', EditLokasi::class)->name('lokasi.edit');
-    Route::get('admin/lokasi/{id}', ShowLokasi::class)->name('lokasi.show');
+    Route::get('admin/lokasi/{lokasi}', ShowLokasi::class)->name('lokasi.show');
 
     Route::get('admin/jukir', IndexJukir::class)->name('jukir.index');
     Route::get('admin/jukir/create', CreateJukir::class)->name('jukir.create');
     Route::get('admin/jukir/{id}/edit', EditJukir::class)->name('jukir.edit');
+    Route::get('admin/jukir/{jukir}', ShowJukir::class)->name('jukir.show');
 
     Route::get('admin/tunai', IndexTunai::class)->name('tunai.index');
     Route::get('admin/tunai/create', CreateTunai::class)->name('tunai.create');

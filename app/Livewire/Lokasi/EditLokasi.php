@@ -148,7 +148,8 @@ class EditLokasi extends Component
 
         session()->flash('success', 'Data Lokasi berhasil diupdate!');
 
-        $this->redirect('/admin/lokasi');
+        $this->redirectRoute('lokasi.show', ['lokasi' => $lokasi->id]);
+
     }
 
     public function updatedKecamatan($value){
