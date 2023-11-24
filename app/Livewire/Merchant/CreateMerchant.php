@@ -55,7 +55,7 @@ class CreateMerchant extends Component
 
         session()->flash('success', 'Data Merchant berhasil ditambahkan!');
 
-        $this->redirect('/admin/merchant');
+        return redirect()->route('merchant.index');
 
     }
 }

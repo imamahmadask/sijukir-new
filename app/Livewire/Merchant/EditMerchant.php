@@ -67,6 +67,6 @@ class EditMerchant extends Component
 
         session()->flash('success', 'Data Merchant berhasil diubah!');
 
-        $this->redirect('/admin/merchant');
+        return redirect()->route('merchant.index');
     }
 }

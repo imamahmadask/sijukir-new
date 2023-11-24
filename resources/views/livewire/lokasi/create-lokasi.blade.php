@@ -240,13 +240,11 @@
                         aria-describedby="gambar_help" wire:model="gambar" type="file">
                     <p class="mt-1 text-sm italic text-gray-500 dark:text-gray-300" id="gambar_help">PNG, JPG or Webp
                         (Max. 2Mb)</p>
-                    @error('gambar')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input-error for="gambar" />
                     @if ($gambar)
                         <img src="{{ $gambar->temporaryUrl() }}" width="100px">
                     @endif
-                    <div wire:loading>
+                    <div wire:loading wire:target='gambar'>
                         <div role="status">
                             <svg aria-hidden="true" class="w-5 h-5 ml-2 text-gray-200 animate-spin fill-blue-600"
                                 viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -267,9 +265,7 @@
                     <textarea wire:model="keterangan" name="keterangan" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Tambahkan keterangan jika ada"></textarea>
-                    @error('keterangan')
-                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                    @enderror
+                    <x-input-error for="keterangan" />
                 </div>
             </div>
             <button type="submit"
