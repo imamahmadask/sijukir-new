@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\Berlangganan\CreateBerlangganan;
+use App\Livewire\Berlangganan\EditBerlangganan;
+use App\Livewire\Berlangganan\IndexBerlangganan;
 use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\Jukir\CreateJukir;
 use App\Livewire\Jukir\EditJukir;
@@ -64,5 +67,9 @@ Route::middleware([
     Route::get('admin/merchant', IndexMerchant::class)->name('merchant.index');
     Route::get('admin/merchant/create', CreateMerchant::class)->name('merchant.create');
     Route::get('admin/merchant/{id}/edit', EditMerchant::class)->name('merchant.edit');
+
+    Route::get('admin/berlangganan', IndexBerlangganan::class)->name('berlangganan.index');
+    Route::get('admin/berlangganan/create', CreateBerlangganan::class)->name('berlangganan.create');
+    Route::get('admin/berlangganan/{id}/edit', EditBerlangganan::class)->name('berlangganan.edit');
 
 });
