@@ -113,6 +113,7 @@ class EditLokasi extends Component
             'korlap_id' => $this->korlap,
             'kategori' => $this->kategori,
             'keterangan' => $this->keterangan,
+            'is_active' => $this->is_active
         ]);
 
         //update area on jukir, merchant dan transaksi Non Tunai

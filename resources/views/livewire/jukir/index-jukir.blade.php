@@ -166,20 +166,27 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div
-                                        class="h-2.5 w-2.5 rounded-full
-                                        {{ $jukir->status === 'Non-Tunai' ? 'bg-green-500' : 'bg-orange-500' }}
-                                        bg-default-color mr-2">
-                                    </div>
-                                    {{ $jukir->status }}
+                                    <span
+                                        class="px-2 py-1 font-semibold leading-tight
+                                        {{ $jukir->status == 'Non-Tunai' ? 'text-green-700 bg-green-100 rounded-full dark:text-green-50 dark:bg-green-600' : 'text-orange-700 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-600' }}">
+                                        {{ $jukir->status }}
+                                    </span>
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    <div
-                                        class="h-2.5 w-2.5 rounded-full {{ $jukir->ket_jukir === 'Active' ? 'bg-green-500' : 'bg-orange-500' }} mr-2">
-                                    </div>
-                                    {{ $jukir->ket_jukir }}
+                                    @php
+                                        $styles = [
+                                            'Active' => 'text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-50',
+                                            'Pending' => 'text-orange-700 bg-orange-100 rounded-full dark:bg-orange-700 dark:text-orange-50',
+                                            'Non Active' => 'text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-50',
+                                        ];
+                                        $style = $styles[$jukir->ket_jukir] ?? '';
+                                    @endphp
+
+                                    <span class="px-2 py-1 font-semibold leading-tight {{ $style }}">
+                                        {{ $jukir->ket_jukir }}
+                                    </span>
                                 </div>
                             </td>
                             <td class="px-6 py-4">

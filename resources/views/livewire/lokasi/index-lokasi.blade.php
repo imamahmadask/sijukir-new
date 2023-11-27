@@ -168,7 +168,7 @@
                             <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap ">
                                 <div class="pl-3">
                                     <div class="text-base font-semibold">
-                                        <a href="/admin/lokasi/{{ $lokasi->id }}" class="hover:text-indigo-500">
+                                        <a href="/admin/lokasi/{{ $lokasi->id }}" class="hover:text-blue-500">
                                             {{ $lokasi->titik_parkir }}
                                         </a>
                                     </div>
@@ -194,11 +194,11 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
-                                    @if ($lokasi->is_active == 1)
-                                        <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Active
-                                    @elseif($lokasi->is_active == 0)
-                                        <div class="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div> Non-Active
-                                    @endif
+                                    <span
+                                        class="px-2 py-1 font-semibold leading-tight
+                                        {{ $lokasi->is_active == '1' ? 'text-green-700 bg-green-100 rounded-full dark:text-green-50 dark:bg-green-600' : 'text-orange-700 bg-orange-100 rounded-full dark:text-orange-50 dark:bg-orange-600' }}">
+                                        {{ $lokasi->is_active == '1' ? 'Active' : 'Non-Active' }}
+                                    </span>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-center">

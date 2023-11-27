@@ -143,9 +143,13 @@
                                 {{ $tunai->jumlah_transaksi }}
                             </td>
                             <td class="px-6 py-4">
-                                Lunas
+                                <span
+                                    class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:text-green-50 dark:bg-green-600">
+                                    Lunas
+                                </span>
                             </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="px-6
+                                    py-4 text-center">
                                 <a type="button" href="tunai/{{ $tunai->id }}/edit"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
