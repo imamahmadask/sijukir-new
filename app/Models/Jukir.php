@@ -41,4 +41,32 @@ class Jukir extends Model
     {
         return $this->hasMany(Tunai::class);
     }
+
+    public function totalSetoran(){
+        return $this->totalTunai() + $this->totalNonTunai();
+    }
+
+    public function totalTap(){
+        if($this->status == "Non-Tunai"){
+            $total_tap = $this->merchant->nontunai()->where('status', 'SUCCEED')->count('id');
+        }else{
+            $total_tap = 0;
+        }
+        return $total_tap;
+    }
+
+    public function totalNonTunai(){
+        if($this->status == "Non-Tunai"){
+            $non_tunai = $this->merchant->nontunai()->where('status', 'SUCCEED')->sum('total_nilai');
+        }else{
+            $non_tunai = 0;
+        }
+
+        return $non_tunai;
+    }
+
+    public function totalTunai(){
+        $tunai = $this->tunai()->sum('jumlah_transaksi');
+        return $tunai;
+    }
 }

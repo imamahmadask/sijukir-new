@@ -110,9 +110,9 @@ class CreateJukir extends Component
 
         $this->reset();
 
-        session()->flash('success', 'Data Jukir berhasil diinput!');
+        session()->flash('success', 'Data Jukir berhasil diupdate!');
 
-        $this->redirect('/admin/jukir');
+        $this->redirectRoute('jukir.show', ['jukir' => $jukir->id]);
     }
 
     private function setFotoJukir(){

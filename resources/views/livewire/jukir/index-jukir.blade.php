@@ -144,7 +144,11 @@
                                         </a>
                                     </div>
                                     <div class="italic font-normal">
-                                        {{ $jukir->merchant->merchant_name }}
+                                        @if ($jukir->ket_jukir == 'Active')
+                                            {{ $jukir->merchant->merchant_name }}
+                                        @else
+                                            {{ $jukir->kode_jukir }}
+                                        @endif
                                     </div>
                                 </div>
                             </td>

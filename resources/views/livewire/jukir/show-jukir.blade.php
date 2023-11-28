@@ -54,7 +54,13 @@
                     {{ $jukir->nama_jukir }}
                 </span>
             </h1>
-            <h4 class="text-2xl font-bold dark:text-white text-center">{{ $jukir->merchant->merchant_name }}</h4>
+            <h4 class="text-2xl font-bold dark:text-white text-center">
+                @if ($jukir->ket_jukir == 'Active')
+                    {{ $jukir->merchant->merchant_name }}
+                @else
+                    {{ $jukir->kode_jukir }}
+                @endif
+            </h4>
             <h3 class="text-3xl font-bold dark:text-white text-center">
                 {{ $jukir->lokasi->titik_parkir }} - {{ $jukir->lokasi->lokasi_parkir }}
                 <a type="button" href="/admin/lokasi/{{ $jukir->lokasi->id }}" target="_blank"
@@ -198,7 +204,8 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Tanggal Awal Taping
                         </label>
-                        <input type="text" value="{{ $jukir->tgl_terbit_qr }}"
+                        <input type="text"
+                            value="@if ($jukir->ket_jukr == 'Active') {{ $jukir->tgl_terbit_qr }} @else - @endif"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
@@ -347,7 +354,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Perolehan Tunai
                         </label>
-                        <input type="text" value="Rp. {{ number_format($jukir->tunai->sum('jumlah_transaksi')) }}"
+                        <input type="text" value="Rp. {{ number_format($jukir->totalTunai()) }}"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
@@ -356,8 +363,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Perolehan Non-Tunai
                         </label>
-                        <input type="text"
-                            value="Rp. {{ number_format($jukir->merchant->nontunai->sum('total_nilai')) }}"
+                        <input type="text" value="Rp. {{ number_format($jukir->totalNontunai()) }}"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
@@ -366,8 +372,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Total Perolehan
                         </label>
-                        <input type="text"
-                            value="Rp. {{ number_format($jukir->tunai->sum('jumlah_transaksi') + $jukir->merchant->nontunai->sum('total_nilai')) }}"
+                        <input type="text" value="Rp. {{ number_format($jukir->totalSetoran()) }}"
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
