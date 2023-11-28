@@ -104,7 +104,7 @@
                             Nama Lengkap
                         </label>
                         <input type="text" value="{{ $jukir->nama_jukir }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -112,7 +112,7 @@
                             NIK
                         </label>
                         <input type="text" value="{{ $jukir->nik_jukir }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -120,7 +120,7 @@
                             Jenis Kelamin
                         </label>
                         <input type="text" value="{{ $jukir->jenis_kelamin }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -129,7 +129,7 @@
                             Tempat, Tgl Lahir
                         </label>
                         <input type="text" value="{{ $jukir->tempat_lahir }}, {{ $jukir->tgl_lahir }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -137,7 +137,7 @@
                             Alamat
                         </label>
                         <input type="text" value="{{ $jukir->alamat }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -145,7 +145,7 @@
                             Kelurahan/Kecamatan
                         </label>
                         <input type="text" value="{{ $jukir->kel_alamat }} / {{ $jukir->kec_alamat }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -153,7 +153,7 @@
                             Kota/Kabupaten
                         </label>
                         <input type="text" value="{{ $jukir->kab_kota_alamat }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -161,7 +161,7 @@
                             Telepon
                         </label>
                         <input type="text" value="{{ $jukir->telepon }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                             No. Perjanjian
                         </label>
                         <input type="text" value="{{ $jukir->no_perjanjian }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -190,7 +190,7 @@
                             Tanggal Perjanjian
                         </label>
                         <input type="text" value="{{ $jukir->tgl_perjanjian }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -199,7 +199,7 @@
                             Tanggal Awal Taping
                         </label>
                         <input type="text" value="{{ $jukir->tgl_terbit_qr }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -207,7 +207,7 @@
                             Korlap
                         </label>
                         <input type="text" value="{{ $jukir->lokasi->korlap->nama }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -215,7 +215,7 @@
                             Hari Kerja (Perminggu)
                         </label>
                         <input type="text" value="{{ $jukir->jml_hari_kerja }} Hari"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -224,7 +224,7 @@
                             Hari Kerja (Perbulan)
                         </label>
                         <input type="text" value="{{ $jukir->hari_kerja_bulan }} Hari"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -232,7 +232,7 @@
                             Waktu Kerja
                         </label>
                         <input type="text" value="{{ $jukir->waktu_kerja }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                     <div class="w-full">
@@ -240,7 +240,7 @@
                             Hari Libur
                         </label>
                         <input type="text" value="{{ implode(', ', json_decode($jukir->hari_libur)) }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
                 </div>
@@ -271,6 +271,233 @@
                 </div>
             </div>
         </section>
+
+        <section class="bg-white dark:bg-gray-900 mt-5">
+            <div class="py-8 px-5 mx-auto max-w-full lg:py-10 dark:bg-gray-800 shadow-lg rounded-lg">
+                <div class="flex justify-between text-center align-middle">
+                    <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                        <span
+                            class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                            Potensi & Perolehan
+                        </span>
+                    </h2>
+
+                    {{-- <a type="button" href="/admin/jukir/{{ $jukir->id }}/edit"
+                        class="text-white justify-end mb-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z" />
+                            <path
+                                d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z" />
+                            <path
+                                d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
+                        </svg>
+                        <span class="sr-only">Edit Jukir</span>
+                    </a> --}}
+                </div>
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    <div class="w-full">
+                        <label for="potensi_harian"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Potensi Harian
+                        </label>
+                        <input type="text" value="Rp. {{ number_format($jukir->potensi_harian) }}"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            disabled>
+                    </div>
+                    <div class="w-full">
+                        <label for="potensi_bulanan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Potensi Bulanan
+                            <span class="text-xs">
+                                ({{ number_format($jukir->potensi_harian) }} x
+                                {{ $jukir->hari_kerja_bulan }})
+                            </span>
+                        </label>
+                        <input type="text" value="Rp. {{ number_format($jukir->potensi_bulanan) }}"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            disabled>
+                    </div>
+                    @if ($jukir->uji_petik > 0)
+                        <div class="w-full">
+                            <label for="potensi_uji_petik"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Potensi Uji Petik
+                            </label>
+                            <input type="text" value="Rp. {{ number_format($jukir->uji_petik) }}"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                disabled>
+                        </div>
+                        <div class="w-full">
+                            <label for="potensi_upl_bulanan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Potensi Bulanan UPL
+                                <span class="text-xs">
+                                    ({{ number_format($jukir->uji_petik) }} x
+                                    {{ $jukir->hari_kerja_bulan }})
+                                </span>
+                            </label>
+                            <input type="text" value="Rp. {{ number_format($jukir->potensi_bulanan_upl) }}"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                disabled>
+                        </div>
+                    @endif
+                    <div class="w-full">
+                        <label for="perolehan_tunai"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Perolehan Tunai
+                        </label>
+                        <input type="text" value="Rp. {{ number_format($jukir->tunai->sum('jumlah_transaksi')) }}"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            disabled>
+                    </div>
+                    <div class="w-full">
+                        <label for="perolehan_non_tunai"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Perolehan Non-Tunai
+                        </label>
+                        <input type="text"
+                            value="Rp. {{ number_format($jukir->merchant->nontunai->sum('total_nilai')) }}"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            disabled>
+                    </div>
+                    <div class="w-full sm:col-span-2">
+                        <label for="total_perolehan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Total Perolehan
+                        </label>
+                        <input type="text"
+                            value="Rp. {{ number_format($jukir->tunai->sum('jumlah_transaksi') + $jukir->merchant->nontunai->sum('total_nilai')) }}"
+                            class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            disabled>
+                    </div>
+                </div>
+
+                <hr class="my-6">
+
+                <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                    <span
+                        class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                        Perolehan Per Bulan
+                    </span>
+                </h2>
+
+                <div class="py-2.5 mb-3">
+                    <select wire:model.live="perYear" name="perYear"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block lg:w-32 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Bulan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Jumlah Trx
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Non-Tunai
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Potensi Bulanan
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Kurang Setor
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4">
+                                    Jan-2023
+                                </th>
+                                <td class="px-6 py-4">
+                                    123
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. 2.500.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. 2.000.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:text-white dark:bg-green-600">
+                                        Rp. 500.000
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4">
+                                    Feb-2023
+                                </th>
+                                <td class="px-6 py-4">
+                                    232
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. 1.400.00
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. 2.000.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-white dark:bg-yellow-600">
+                                        Rp. -600.000
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4">
+                                    Mar-2023
+                                </th>
+                                <td class="px-6 py-4">
+                                    222
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. 500.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    Rp. 2.000.000
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span
+                                        class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-white dark:bg-yellow-600">
+                                        Rp. -1.500.000
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
+                                <th class="px-6 py-4">Total</th>
+                                <th class="px-6 py-4">100</th>
+                                <th class="px-6 py-4">Rp. 3.400.000</th>
+                                <th class="px-6 py-4">Rp. 6.000.000</th>
+                                <th class="px-6 py-4">Rp. -3.100.000</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        @if ($jukir->status == 'Non-Tunai')
+            @livewire('nontunai.show-nontunai', [
+                'merchant_id' => $jukir->merchant_id,
+            ])
+        @else
+            Jukir Masih Tunai
+        @endif
+
     </div>
 </div>
 <script>

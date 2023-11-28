@@ -22,6 +22,7 @@ use App\Livewire\Tunai\CreateTunai;
 use App\Livewire\Tunai\EditTunai;
 use App\Livewire\Tunai\IndexTunai;
 use App\Livewire\Nontunai\IndexNonTunai;
+use App\Livewire\Nontunai\ShowNontunai;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,10 +60,12 @@ Route::middleware([
     Route::get('admin/tunai/{id}/edit', EditTunai::class)->name('tunai.edit');
 
     Route::get('admin/nontunai', IndexNonTunai::class)->name('nontunai.index');
+    Route::view('admin/nontunai/{merchant_id}', 'pages.nontunai')->name('nontunai.show');
+    // Route::get('admin/nontunai/{merchant_id}', ShowNontunai::class, 'detailNonTunai')->name('nontunai.show');
 
     Route::get('admin/korlap', IndexKorlap::class)->name('korlap.index');
     Route::get('admin/korlap/create', CreateKorlap::class)->name('korlap.create');
-    Route::get('admin/korlap/{id}/edit', EditKorlap::class)->name('korlap.edit');
+    Route::view('admin/korlap/{id}/edit', EditKorlap::class)->name('korlap.edit');
 
     Route::get('admin/merchant', IndexMerchant::class)->name('merchant.index');
     Route::get('admin/merchant/create', CreateMerchant::class)->name('merchant.create');

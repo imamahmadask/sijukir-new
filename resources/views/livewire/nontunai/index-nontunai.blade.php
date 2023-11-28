@@ -173,7 +173,8 @@
                                 {{ $nontunai->info }}
                             </td>
                             <td class="px-4 py-3 text-center">
-                                <a type="button" href="#"
+                                <a type="button"
+                                    href="{{ route('nontunai.show', ['merchant_id' => $nontunai->merchant_id, 'start_date' => $date_start, 'end_date' => $date_end]) }}"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                         fill="none" viewBox="0 0 20 14">

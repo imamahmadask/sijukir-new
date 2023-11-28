@@ -38,6 +38,12 @@ class CreateTunai extends Component
             'area_id' => $this->area_id
         ]);
 
+        if($this->type == 'Migrasi'){
+            $jukir->update([
+                'ket_jukir' => 'Active'
+            ]);
+        }
+
         $this->reset();
 
         session()->flash('success', 'Data Tunai berhasil ditambah!');

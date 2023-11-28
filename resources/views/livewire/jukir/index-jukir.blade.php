@@ -144,7 +144,7 @@
                                         </a>
                                     </div>
                                     <div class="italic font-normal">
-                                        {{ $jukir->merchant_id }}
+                                        {{ $jukir->merchant->merchant_name }}
                                     </div>
                                 </div>
                             </td>
