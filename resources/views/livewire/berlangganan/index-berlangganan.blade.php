@@ -104,7 +104,7 @@
         <div class="relative overflow-x-auto shadow-md rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:rounded-lg">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
-                    <tr>
+                    <tr class="items-center whitespace-nowrap">
                         <th scope="col" class="px-6 py-3">
                             No. Kwitansi
                         </th>
@@ -128,7 +128,7 @@
                 <tbody>
                     @foreach ($this->berlangganans as $berlangganan)
                         <tr wire:key="{{ $berlangganan->id }}"
-                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
+                            class="items-center whitespace-nowrap text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
                             <td class="px-6 py-4">
                                 {{ $berlangganan->nomor }}
                             </td>

@@ -122,7 +122,7 @@
         <div class="relative overflow-x-auto rounded-lg shadow-md bg-white dark:bg-gray-800">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
-                    <tr>
+                    <tr class="items-center whitespace-nowrap">
                         <th scope="col" class="px-6 py-3">
                             No.
                         </th>
@@ -149,18 +149,16 @@
                     @endphp
                     @foreach ($this->nontunai as $nontunai)
                         <tr wire:key="{{ $nontunai->id }}"
-                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
+                            class="items-center whitespace-nowrap text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
                             <td class="px-4 py-3">
                                 {{ $no++ }}
                             </td>
-                            <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap ">
-                                <div class="pl-3">
-                                    <div class="text-base font-semibold">
-                                        {{ $nontunai->merchant_name }}
-                                    </div>
-                                    <div class="italic font-normal">
-                                        {{ $nontunai->merchant_id }}
-                                    </div>
+                            <td class="px-4 py-3">
+                                <div class="text-base font-semibold">
+                                    {{ $nontunai->merchant_name }}
+                                </div>
+                                <div class="italic font-normal">
+                                    {{ $nontunai->merchant_id }}
                                 </div>
                             </td>
                             <td class="px-4 py-3 text-center">

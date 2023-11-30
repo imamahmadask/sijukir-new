@@ -59,13 +59,13 @@
             Tambah Juru Parkir
         </a>
 
-        <div class="my-4 relative bg-white shadow-md dark:bg-gray-800 rounded-lg">
+        <div class="overflow-x-auto my-4 relative bg-white shadow-md dark:bg-gray-800 rounded-lg">
             <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
                 <div class="flex items-center w-full space-x-3 md:w-auto">
                     <div class="sm:w-20 w-full">
                         <select wire:model.live='perPage'
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="50" selected>50</option>
+                            <option value="25" selected>25</option>
                             <option value="100">100</option>
                             <option value="250">250</option>
                             <option value="500">500</option>
@@ -75,14 +75,34 @@
                 </div>
                 <div
                     class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
-                    {{-- <div class="md:w-32 w-full">
+                    <div class="md:w-32 w-full">
+                        <select wire:model.live='filterArea'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Area</option>
+                            @foreach ($areas as $area)
+                                <option value={{ $area->kode }}>{{ $area->kecamatan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="md:w-32 w-full">
                         <select wire:model.live='filter'
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option value="">Vendor</option>
+                            <option value="">Filter</option>
+                            <option value="Tunai">Tunai</option>
+                            <option value="Non-Tunai">Non-Tunai</option>
                             <option value="QR PTEN">QREN</option>
                             <option value="BNTBS">BNTBS</option>
                         </select>
-                    </div> --}}
+                    </div>
+                    <div class="md:w-32 w-full">
+                        <select wire:model.live='filterStatus'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Status</option>
+                            <option value="Active">Active</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Non-Active">Non-Active</option>
+                        </select>
+                    </div>
                     <div class="w-full md:w-48">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
@@ -107,7 +127,7 @@
         <div class="relative overflow-x-auto rounded-lg shadow-md">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
-                    <tr>
+                    <tr class="items-center whitespace-nowrap">
                         <th scope="col" class="px-6 py-3">
                             Nama Jukir
                         </th>
@@ -132,41 +152,37 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($jukirs as $jukir)
+                    @foreach ($this->jukirs as $jukir)
                         <tr wire:key="{{ $jukir->id }}"
-                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
-                            <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap">
-                                <div class="pl-3">
-                                    <div class="text-base font-semibold">
-                                        <a href="/admin/jukir/{{ $jukir->id }}" class="hover:text-blue-500"
-                                            target="_blank">
-                                            {{ $jukir->nama_jukir }}
-                                        </a>
-                                    </div>
-                                    <div class="italic font-normal">
-                                        @if ($jukir->ket_jukir == 'Active')
-                                            {{ $jukir->merchant->merchant_name }}
-                                        @else
-                                            {{ $jukir->kode_jukir }}
-                                        @endif
-                                    </div>
+                            class="items-center whitespace-nowrap text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
+                            <td class="px-6 py-4">
+                                <div class="text-base font-semibold">
+                                    <a href="/admin/jukir/{{ $jukir->id }}" class="hover:text-blue-500"
+                                        target="_blank">
+                                        {{ $jukir->nama_jukir }}
+                                    </a>
                                 </div>
-                            </td>
-                            <td class="py-4">
-                                <div class="pl-3">
-                                    <div class="text-base font-semibold">
-                                        {{ $jukir->lokasi->titik_parkir }}
-                                    </div>
-                                    <div class="italic font-normal">
-                                        {{ $jukir->lokasi->lokasi_parkir }}
-                                    </div>
+                                <div class="italic font-normal">
+                                    @if ($jukir->ket_jukir == 'Active')
+                                        {{ $jukir->merchant_name }}
+                                    @else
+                                        {{ $jukir->kode_jukir }}
+                                    @endif
                                 </div>
+
                             </td>
                             <td class="px-6 py-4">
-                                {{ $jukir->lokasi->area->kecamatan }}
+                                <div class="text-base font-semibold">
+                                    {{ $jukir->titik_parkir }}
+                                </div>
+                                <div class="italic font-normal">
+                                    {{ $jukir->lokasi_parkir }}
+                                </div>
+                            <td class="px-6 py-4">
+                                {{ $jukir->kecamatan }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $jukir->lokasi->korlap->nama }}
+                                {{ $jukir->nama }}
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">
@@ -212,6 +228,10 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+
+        <div class="mt-4">
+            {{ $this->jukirs()->links() }}
         </div>
     </div>
 </div>

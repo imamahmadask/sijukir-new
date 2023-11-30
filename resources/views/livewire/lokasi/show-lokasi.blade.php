@@ -174,7 +174,11 @@
                                 {{ $jukir->nama_jukir }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $jukir->merchant->merchant_name }}
+                                @if ($jukir->status == 'Non-Tunai')
+                                    {{ $jukir->merchant->merchant_name }}
+                                @else
+                                    {{ $jukir->kode_jukir }}
+                                @endif
                             </td>
                             <td class="px-6 py-4">
                                 {{ $jukir->ket_jukir }}

@@ -163,18 +163,16 @@
                 </thead>
                 <tbody>
                     @foreach ($this->lokasis as $lokasi)
-                        <tr
-                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-200">
-                            <td scope="row" class="flex items-center py-4 pr-5 whitespace-nowrap ">
-                                <div class="pl-3">
-                                    <div class="text-base font-semibold">
-                                        <a href="/admin/lokasi/{{ $lokasi->id }}" class="hover:text-blue-500">
-                                            {{ $lokasi->titik_parkir }}
-                                        </a>
-                                    </div>
-                                    <div class="italic font-normal">
-                                        {{ $lokasi->lokasi_parkir }}
-                                    </div>
+                        <tr wire:key="{{ $lokasi->id }}"
+                            class="items-center py-4 pr-5 whitespace-nowrap text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-200">
+                            <td class="px-6 py-4">
+                                <div class="text-base font-semibold">
+                                    <a href="/admin/lokasi/{{ $lokasi->id }}" class="hover:text-blue-500">
+                                        {{ $lokasi->titik_parkir }}
+                                    </a>
+                                </div>
+                                <div class="italic font-normal">
+                                    {{ $lokasi->lokasi_parkir }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">

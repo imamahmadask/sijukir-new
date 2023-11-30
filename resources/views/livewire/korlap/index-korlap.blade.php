@@ -91,7 +91,7 @@
         <div class="relative overflow-x-auto rounded-lg shadow-md">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">
-                    <tr>
+                    <tr class="items-center whitespace-nowrap">
                         <th scope="col" class="px-6 py-3">
                             Nama
                         </th>
@@ -112,7 +112,7 @@
                 <tbody>
                     @foreach ($this->korlaps as $korlap)
                         <tr wire:key="{{ $korlap->id }}""
-                            class="text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
+                            class="items-center whitespace-nowrap text-gray-900 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 dark:text-gray-200">
                             <td class="px-6 py-4">
                                 {{ $korlap->nama }}
                             </td>
