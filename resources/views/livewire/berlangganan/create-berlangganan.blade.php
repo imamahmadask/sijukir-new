@@ -1,5 +1,5 @@
 <div>
-    <div class="px-5 mb-4 h-screen">
+    <div class="px-5 mb-4 h-max">
         <!-- Breadcrumb -->
         <nav class="mt-3 mb-5 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 shadow-sm"
             aria-label="Breadcrumb">

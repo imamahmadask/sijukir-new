@@ -65,7 +65,7 @@ Route::middleware([
 
     Route::get('admin/korlap', IndexKorlap::class)->name('korlap.index');
     Route::get('admin/korlap/create', CreateKorlap::class)->name('korlap.create');
-    Route::view('admin/korlap/{id}/edit', EditKorlap::class)->name('korlap.edit');
+    Route::get('admin/korlap/{id}/edit', EditKorlap::class)->name('korlap.edit');
 
     Route::get('admin/merchant', IndexMerchant::class)->name('merchant.index');
     Route::get('admin/merchant/create', CreateMerchant::class)->name('merchant.create');

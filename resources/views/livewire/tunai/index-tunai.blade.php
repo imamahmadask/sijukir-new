@@ -1,5 +1,5 @@
 <div>
-    <div class="px-5 mb-4 h-screen">
+    <div class="px-5 mb-4 h-max">
         <x-toast :message="session('success')" />
 
         <!-- Breadcrumb -->

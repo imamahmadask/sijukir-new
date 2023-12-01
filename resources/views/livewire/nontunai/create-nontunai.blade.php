@@ -30,8 +30,10 @@
                 </div>
             </button>
         </form>
-        <p class="mt-1 text-xs text-gray-500 dark:text-gray-300 italic" id="file_input_help">
-            Last Upload : "{{ $latestFile->filename }}" ({{ $latestFile->created_at }})
-        </p>
+        @if ($latestFile)
+            <p class="mt-1 text-xs text-gray-500 dark:text-gray-300 italic" id="file_input_help">
+                Last Upload : "{{ $latestFile->filename }}" ({{ $latestFile->created_at }})
+            </p>
+        @endif
     </div>
 </div>

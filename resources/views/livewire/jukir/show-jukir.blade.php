@@ -73,9 +73,17 @@
                     <span class="sr-only">Show Location</span>
                 </a>
                 <br>
-                <span
-                    class="text-center bg-green-100 text-green-800 text-lg font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-800 ms-2">
-                    Active
+                @php
+                    $styles = [
+                        'Active' => 'text-green-700 bg-green-100 dark:bg-green-700 dark:text-green-50',
+                        'Pending' => 'text-orange-700 bg-orange-100 dark:bg-orange-700 dark:text-orange-50',
+                        'Non Active' => 'text-red-700 bg-red-100 dark:bg-red-700 dark:text-red-50',
+                    ];
+                    $style = $styles[$jukir->ket_jukir] ?? '';
+                @endphp
+
+                <span class="text-center text-lg font-semibold me-2 px-2.5 py-0.5 rounded ms-2 {{ $style }}">
+                    {{ $jukir->ket_jukir }}
                 </span>
             </h3>
         </div>
