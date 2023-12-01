@@ -1,6 +1,6 @@
 <div>
     {{-- Tambah NonTunai --}}
-    <div class="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg shadow-md">
+    <div class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-md">
         <form wire:submit="addNontunai">
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">
                 Import File (.xls, .xlsx)

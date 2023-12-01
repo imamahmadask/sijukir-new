@@ -1,7 +1,7 @@
 <div>
     <div class="px-5 mb-4">
         <!-- Breadcrumb -->
-        <nav class="mt-3 mb-5 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 shadow-sm"
+        <nav class="mt-3 mb-5 flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 shadow-sm"
             aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-3">
                 <li class="inline-flex items-center">
@@ -52,7 +52,7 @@
                     <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Lokasi Parkir</label>
                     <select name="lokasi" wire:model="lokasi"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Lokasi Parkir</option>
                         @foreach ($lokasis as $lokasi)
                             <option value={{ $lokasi->id }}>{{ $lokasi->titik_parkir }}</option>
@@ -85,7 +85,7 @@
                     <label for="jenis_kelamin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Jenis Kelamin</label>
                     <select wire:model="jenis_kelamin" name="jenis_kelamin"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Jenis Kelamin</option>
                         <option value="Laki-laki">Laki-Laki</option>
                         <option value="Perempuan">Perempuan</option>
@@ -98,7 +98,7 @@
                     <label for="agama"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Agama</label>
                     <select wire:model="agama" name="agama"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Agama</option>
                         <option value="Islam">Islam</option>
                         <option value="Hindu">Hindu</option>
@@ -188,7 +188,7 @@
                     <label for="hari_libur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Hari Libur (Jika Ada)</label>
                     <select multiple wire:model="hari_libur" name="hari_libur"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         @foreach ($dayList as $data)
                             <option value="{{ $data }}">{{ $data }}</option>
                         @endforeach
@@ -201,7 +201,7 @@
                     <label for="waktu_kerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Waktu Kerja</label>
                     <select wire:model="waktu_kerja" name="waktu_kerja"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilih Waktu Kerja</option>
                         <option value="Pagi-Siang">Pagi-Siang</option>
                         <option value="Pagi-Sore">Pagi-Sore</option>
@@ -253,7 +253,7 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="foto">Foto
                         Jukir</label>
                     <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         aria-describedby="foto_help" wire:model="foto" type="file">
                     <p class="mt-1 text-sm italic text-gray-500 dark:text-gray-300" id="foto_help">PNG, JPG or Webp
                         (Max. 2Mb)</p>
@@ -282,7 +282,7 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="document">
                         Dokumen Jukir</label>
                     <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                         aria-describedby="document_help" wire:model="document" type="file">
                     <p class="mt-1 text-sm italic text-gray-500 dark:text-gray-300" id="document_help">
                         PDF (Max. 5Mb)</p>
