@@ -104,6 +104,9 @@
                         <th scope="col" class="px-6 py-3">
                             Alamat
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Jumlah Titik
+                        </th>
                         <th scope="col" class="px-6 py-3 text-center">
                             Action
                         </th>
@@ -124,6 +127,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $korlap->alamat }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $korlap->lokasi->count() }}
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <a type="button" href="korlap/{{ $korlap->id }}/edit"

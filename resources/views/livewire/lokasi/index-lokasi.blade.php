@@ -188,7 +188,7 @@
                                 {{ $lokasi->korlap->nama }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $lokasi->is_jukir }}
+                                {{ $lokasi->jukir->count() }} Jukir
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center">

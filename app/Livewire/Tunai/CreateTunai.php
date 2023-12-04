@@ -54,7 +54,9 @@ class CreateTunai extends Component
     public function updatedType($value){
         if($value == 'Migrasi'){
             $this->jukirs = Jukir::select('id', 'nama_jukir')
-                            ->where('status', 'Non-Tunai')->get();
+                                ->where('status', 'Non-Tunai')
+                                ->where('ket_jukir', 'Pending')
+                                ->get();
         }elseif($value == 'Non-Migrasi'){
             $this->jukirs = [];
         }

@@ -36,7 +36,7 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="ml-1 text-sm font-medium text-blue-500 md:ml-2 dark:text-blue-400">
-                            Tambah Berlangganan</span>
+                            Edit Berlangganan</span>
                     </div>
                 </li>
             </ol>

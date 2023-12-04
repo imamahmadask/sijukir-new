@@ -137,10 +137,16 @@
                                 {{ \Carbon\carbon::parse($tunai->tgl_transaksi)->format('d-m-Y') }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $tunai->jukir->nama_jukir }}
+                                <div class="text-base font-semibold">
+                                    {{ $tunai->jukir->nama_jukir }}
+                                </div>
+                                <div class="italic font-normal">
+                                    {{ $tunai->jukir->lokasi->titik_parkir }}
+                                </div>
+
                             </td>
                             <td class="px-6 py-4">
-                                {{ $tunai->jumlah_transaksi }}
+                                Rp. {{ number_format($tunai->jumlah_transaksi) }}
                             </td>
                             <td class="px-6 py-4">
                                 <span

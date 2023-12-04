@@ -86,7 +86,7 @@
                                     {{ $nontunai->issuer_name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $nontunai->total_nilai }}
+                                    Rp. {{ number_format($nontunai->total_nilai) }}
                                 </td>
                                 <td class="px-6 py-4">
                                     Succeed

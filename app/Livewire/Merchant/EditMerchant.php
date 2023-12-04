@@ -46,10 +46,10 @@ class EditMerchant extends Component
 
         // setting File QRIS
         if($this->qris == $merchant->qris || $this->qris == null){
-            $this->qris = $merchant->qris;
+            $file_qris = $merchant->qris;
         }else{
             $nama_qris = $this->merchant_name.'.'.$this->qris->extension();
-            $this->qris = $this->qris->storeAs('qris', $nama_qris, 'public');
+            $file_qris = $this->qris->storeAs('qris', $nama_qris, 'public');
         }
 
         $merchant->update([
@@ -60,7 +60,7 @@ class EditMerchant extends Component
             'no_rekening' => $this->no_rekening,
             'tgl_terdaftar' => $this->tgl_terdaftar,
             'area_id' => $this->area_id,
-            'qris' => $this->qris
+            'qris' => $file_qris
         ]);
 
         $this->reset();
