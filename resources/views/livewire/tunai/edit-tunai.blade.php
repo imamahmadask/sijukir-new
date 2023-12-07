@@ -36,14 +36,14 @@
                                 d="m1 9 4-4-4-4" />
                         </svg>
                         <span class="ml-1 text-sm font-medium text-blue-500 md:ml-2 dark:text-blue-400">
-                            Tambah Tunai</span>
+                            Edit Tunai</span>
                     </div>
                 </li>
             </ol>
         </nav>
 
         <h1 class="mb-5 text-2xl font-bold uppercase dark:text-white">
-            Tambah Tunai
+            Edit Tunai
         </h1>
 
         <form wire:submit="updateTunai">
@@ -65,17 +65,17 @@
                     @enderror
                 </div>
                 <div class="sm:col-span-2">
-                    <label for="jukir_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label for="jukir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Pilih Jukir
                     </label>
-                    <select name="jukir_id" wire:model="jukir_id" disabled
+                    <select name="jukir" wire:model="jukir" disabled
                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Jukir</option>
                         @foreach ($jukirs as $jukir)
                             <option value={{ $jukir->id }}>{{ $jukir->nama_jukir }}</option>
                         @endforeach
                     </select>
-                    @error('jukir_id')
+                    @error('jukir')
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
                 </div>

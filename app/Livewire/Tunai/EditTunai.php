@@ -15,7 +15,7 @@ class EditTunai extends Component
     public $tunaiId, $area_id, $keterangan;
 
     #[Rule('required')]
-    public $type, $tgl_transaksi, $no_kwitansi, $jumlah_transaksi, $jukir_id;
+    public $type, $tgl_transaksi, $no_kwitansi, $jumlah_transaksi, $jukir;
 
     public function render()
     {
@@ -24,7 +24,8 @@ class EditTunai extends Component
 
     public function mount($id){
         $this->jukirs = Jukir::select('id', 'nama_jukir')
-                            ->where('status', 'tunai')->get();
+                            ->orderBy('nama_jukir', 'asc')
+                            ->get();
 
         $tunais = Tunai::find($id);
 
@@ -33,7 +34,7 @@ class EditTunai extends Component
         $this->tgl_transaksi = $tunais->tgl_transaksi;
         $this->no_kwitansi = $tunais->no_kwitansi;
         $this->jumlah_transaksi = $tunais->jumlah_transaksi;
-        $this->jukir_id = $tunais->jukir_id;
+        $this->jukir = $tunais->jukir_id;
         $this->area_id = $tunais->area_id;
         $this->keterangan = $tunais->keterangan;
     }
