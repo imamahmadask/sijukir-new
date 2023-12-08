@@ -5,7 +5,7 @@
 <div>
     <template x-if="darkMode">
         <button type="button" @click="darkMode = !darkMode"
-            class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+            class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-yellow-200 dark:hover:bg-yellow-300 dark:focus:ring-yellow-400 dark:text-gray-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-{{ $size }} h-{{ $size }}">
                 <path stroke-linecap="round" stroke-linejoin="round"
