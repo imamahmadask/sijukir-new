@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Analisa\IndexAnalisa;
 use App\Livewire\Berlangganan\CreateBerlangganan;
 use App\Livewire\Berlangganan\EditBerlangganan;
 use App\Livewire\Berlangganan\IndexBerlangganan;
@@ -44,6 +45,8 @@ Route::middleware([
         'auth:sanctum', config('jetstream.auth_session'), 'verified',
     ])->group(function () {
     Route::get('admin/dashboard', IndexDashboard::class)->name('dashboard.index');
+
+    Route::get('admin/analisa', IndexAnalisa::class)->name('analisa.index');
 
     Route::get('admin/lokasi', IndexLokasi::class)->name('lokasi.index');
     Route::get('admin/lokasi/create', CreateLokasi::class)->name('lokasi.create');
