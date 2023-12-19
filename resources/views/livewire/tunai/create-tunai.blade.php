@@ -53,7 +53,7 @@
                         Type Transaksi
                     </label>
                     <select name="type" wire:model.live="type"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Type</option>
                         <option value="Migrasi">Migrasi</option>
                         <option value="Non-Migrasi">Non-Migrasi</option>
@@ -67,7 +67,7 @@
                         Pilih Jukir
                     </label>
                     <select name="jukir" wire:model.live="jukir"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Jukir</option>
                         @foreach ($jukirs as $jukir)
                             <option value={{ $jukir->id }}>{{ $jukir->nama_jukir }}</option>
@@ -84,7 +84,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Tgl Perjanjian</label>
                         <input type="date" name="tgl_perjanjian" wire:model="tgl_perjanjian"
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                         <x-input-error for="tgl_perjanjian" />
                     </div>
@@ -94,7 +94,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tgl Terbit
                             QR</label>
                         <input type="date" name="tgl_terbit_qr" wire:model="tgl_terbit_qr"
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                         <x-input-error for="tgl_terbit_qr" />
                     </div>
@@ -103,7 +103,7 @@
                         <label for="jml_hari"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Hari</label>
                         <input type="text" name="jml_hari" wire:model="jml_hari"
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                         <x-input-error for="jml_hari" />
                     </div>
@@ -122,7 +122,7 @@
                                 </svg>
                             </div>
                             <input type="text" id="potensi_harian" wire:model="potensi_harian"
-                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Potensi Harian" disabled>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                     <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Keterangan</label>
                     <textarea id="keterangan" wire:model="keterangan" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Masukkan keterangan jika ada"></textarea>
                 </div>
             </div>

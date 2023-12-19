@@ -52,7 +52,7 @@
                     <label for="pendaftaran" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
                         Pendaftaran</label>
                     <select name="pendaftaran" wire:model="pendaftaran"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Jenis Pendaftaran</option>
                         <option value="Baru">Pendaftaran Baru</option>
                         <option value="Ulang">Registrasi Ulang</option>
@@ -87,7 +87,7 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
                     <div wire:ignore>
                         <select wire:model.live="kecamatan" name="kecamatan"
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option>Pilh Kecamatan</option>
                             @foreach ($areas as $area)
                                 <div wire:key="{{ $area->id }}">
@@ -104,7 +104,7 @@
                     <label for="kelurahan"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kelurahan</label>
                     <select wire:model="kelurahan" name="kelurahan"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Kelurahan</option>
                         @if ($kel)
                             @foreach ($kel as $data)
@@ -122,7 +122,7 @@
                     <label for="jenis_lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis
                         Lokasi</label>
                     <select wire:model="jenis_lokasi" name="jenis_lokasi"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Jenis Lokasi</option>
                         <option value="TJU">Tepi Jalan Umum</option>
                         <option value="TKP">Tempat Khusus Parkir</option>
@@ -135,7 +135,7 @@
                     <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori
                         Lokasi</label>
                     <select wire:model="kategori" name="kategori"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Kategori Lokasi</option>
                         <option value="Apotek">Apotek</option>
                         <option value="Bank">Bank</option>
@@ -170,7 +170,7 @@
                     <label for="korlap"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Korlap</label>
                     <select wire:model="korlap" name="korlap"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Korlap</option>
                         @foreach ($korlaps as $korlap)
                             <option value="{{ $korlap->id }}">{{ $korlap->nama }}</option>
@@ -185,7 +185,7 @@
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Waktu
                         Pelayanan</label>
                     <select wire:model="waktu_pelayanan" name="waktu_pelayanan"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Pilh Waktu Pelayanan</option>
                         <option value="Pagi-Siang">Pagi - Siang</option>
                         <option value="Pagi-Sore">Pagi - Sore</option>
@@ -208,7 +208,7 @@
                     <label for="dasar_ketetapan"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dasar Ketetapan</label>
                     <select wire:model="dasar_ketetapan"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                         <option selected>Pilih Dasar Ketetapan</option>
                         <option value="PERWAL">PERWAL </option>
                         <option value="SK WALIKOTA">SK WALIKOTA</option>
@@ -236,7 +236,7 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Foto
                         Lokasi</label>
                     <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-white dark:text-gray-400 focus:outline-none dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400"
                         aria-describedby="gambar_help" wire:model="gambar" type="file">
                     <p class="mt-1 text-sm italic text-gray-500 dark:text-gray-300" id="gambar_help">PNG, JPG or Webp
                         (Max. 2Mb)</p>
@@ -263,7 +263,7 @@
                     <label for="keterangan"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
                     <textarea wire:model="keterangan" name="keterangan" rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Tambahkan keterangan jika ada"></textarea>
                     <x-input-error for="keterangan" />
                 </div>
