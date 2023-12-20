@@ -124,6 +124,21 @@
             </div>
         </div>
 
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="m-2 text-md font-semibold text-gray-700 dark:text-gray-200">
+                List Data Juru Parkir
+            </h3>
+            <button
+                class="mr-3 px-1 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-green-600 border border-transparent rounded-md active:bg-green-600 hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
+                type="button" wire:click="exportNonTunai">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path fill-rule="evenodd"
+                        d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm4.75 6.75a.75.75 0 011.5 0v2.546l.943-1.048a.75.75 0 011.114 1.004l-2.25 2.5a.75.75 0 01-1.114 0l-2.25-2.5a.75.75 0 111.114-1.004l.943 1.048V8.75z"
+                        clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+
         <div class="relative overflow-x-auto rounded-lg shadow-md">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-sm text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-200">

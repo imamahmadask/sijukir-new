@@ -3,6 +3,7 @@
 namespace App\Livewire\Jukir;
 
 use App\Models\Jukir;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 

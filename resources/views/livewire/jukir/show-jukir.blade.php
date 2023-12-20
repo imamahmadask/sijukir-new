@@ -287,6 +287,76 @@
             </div>
         </section>
 
+        <section class="mt-5">
+            <div class="grid gap-4 my-4 lg:grid-cols-2">
+                {{-- Histori Jukir --}}
+                <div class="py-8 px-5 w-full lg:py-10 dark:bg-gray-800 shadow-lg rounded-lg bg-white">
+                    <div class="flex justify-between text-center align-middle">
+                        <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                            <span
+                                class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                                Histori Jukir
+                            </span>
+                        </h2>
+
+                        {{-- Modal --}}
+                        <button data-modal-target="create-histori-modal" data-modal-toggle="create-histori-modal"
+                            class="text-white justify-end mb-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 18 18">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M9 1v16M1 9h16" />
+                            </svg>
+                            <span class="sr-only">Add Histori Jukir</span>
+                        </button>
+
+                        @teleport('body')
+                            <!-- Tambah Histori Modal -->
+                            @livewire('jukir.histori.create-histori', ['jukir_id' => $jukir->id])
+                        @endteleport
+                    </div>
+
+                    {{-- List Histori --}}
+                    <div class="ml-3 mt-3">
+                        @livewire('jukir.histori.list-histori', ['jukir_id' => $jukir->id])
+                    </div>
+                </div>
+
+                {{-- Jukir Pembantu --}}
+                <div class="py-8 px-5 w-full lg:py-10 dark:bg-gray-800 shadow-lg rounded-lg bg-white">
+                    <div class="flex justify-between text-center align-middle">
+                        <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                            <span
+                                class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                                Jukir Pembantu
+                            </span>
+                        </h2>
+
+                        {{-- Modal --}}
+                        <button data-modal-target="create-jukpem-modal" data-modal-toggle="create-jukpem-modal"
+                            class="text-white justify-end mb-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-3 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 18 18">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M9 1v16M1 9h16" />
+                            </svg>
+                            <span class="sr-only">Add Jukir Pembantu</span>
+                        </button>
+
+                        @teleport('body')
+                            <!-- Tambah Histori Modal -->
+                            @livewire('jukir.pembantu.create-pembantu', ['jukir_id' => $jukir->id])
+                        @endteleport
+                    </div>
+
+                    {{-- List Pembantu --}}
+                    @livewire('jukir.pembantu.list-pembantu', ['jukir_id' => $jukir->id])
+
+                </div>
+
+            </div>
+        </section>
+
         <section class="bg-white dark:bg-gray-900 mt-5">
             <div class="py-8 px-5 mx-auto max-w-full lg:py-10 dark:bg-gray-800 shadow-lg rounded-lg">
                 <div class="flex justify-between text-center align-middle">
@@ -508,9 +578,10 @@
                 'merchant_id' => $jukir->merchant_id,
             ])
         @else
-            Jukir Masih Tunai
+            <div class="m-3 dark:text-white">
+                Jukir Masih Tunai
+            </div>
         @endif
-
     </div>
 </div>
 <script>

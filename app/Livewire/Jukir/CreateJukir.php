@@ -9,6 +9,7 @@ use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 
 #[Title('Tambah Jukir')]
 class CreateJukir extends Component
@@ -26,24 +27,24 @@ class CreateJukir extends Component
         'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
     ];
 
-    #[Rule('required|min:7|unique:jukirs,kode_jukir')]
+    #[Validate('required|min:7|unique:jukirs,kode_jukir')]
     public $kode_jukir;
 
-    #[Rule('required|min:16|numeric|unique:jukirs,nik_jukir')]
+    #[Validate('required|min:16|numeric|unique:jukirs,nik_jukir')]
     public $nik_jukir;
 
-    #[Rule('required|date|before_or_equal:today')]
+    #[Validate('required|date|before_or_equal:today')]
     public $tgl_lahir, $tgl_perjanjian;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $nama_jukir, $tempat_lahir, $jenis_kelamin, $alamat, $kel_alamat, $kec_alamat,
             $kab_kota_alamat, $telepon, $agama, $no_perjanjian, $potensi_harian,
             $potensi_bulanan, $waktu_kerja, $jml_hari_kerja, $hari_kerja_bulan, $lokasi;
 
-    #[Rule('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
+    #[Validate('required|image|mimes:jpeg,png,jpg,webp|max:2000')]
     public $foto;
 
-    #[Rule('required|mimes:pdf|max:2000')]
+    #[Validate('required|mimes:pdf|max:2000')]
     public $document;
 
     public function render()
@@ -110,7 +111,7 @@ class CreateJukir extends Component
 
         $this->reset();
 
-        session()->flash('success', 'Data Jukir berhasil diupdate!');
+        session()->flash('success', 'Data Jukir berhasil dibuat!');
 
         $this->redirectRoute('jukir.show', ['jukir' => $jukir->id]);
     }
