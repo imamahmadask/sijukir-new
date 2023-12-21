@@ -20,9 +20,9 @@ class ListHistori extends Component
                             ->get();
     }
 
-    // #[On('histori-created')]
+    // #[On('refresh-histori')]
     // public function updateList(){
-    //     return HistoriJukir::where('jukir_id', $this->jukir_id)->get();
+
     // }
 
     public function render()

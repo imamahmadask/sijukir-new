@@ -10,7 +10,6 @@
                         {{ date('d F Y', strtotime($histori->tgl_histori)) }}
                     </time>
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        {{-- {{ $histori->jenis_histori }} --}}
                         <button wire:click="$dispatch('edit-histori', { id: {{ $histori->id }} })"
                             data-modal-target="edit-histori-modal" data-modal-toggle="edit-histori-modal"
                             class="items-center font-semibold text-md hover:text-purple-700 focus:outline-none focus:shadow-outline-purple"
@@ -30,5 +29,4 @@
             </div>
         @endforeach
     </ol>
-
 </div>

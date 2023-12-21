@@ -38,10 +38,8 @@ class CreateHistori extends Component
 
         // $this->dispatch('histori-created');
 
-        $jukir_id = $this->jukir_id;
-
         session()->flash('success', 'Histori berhasil ditambahkan!');
 
-        $this->redirectRoute('jukir.show', ['jukir' => $jukir_id]);
+        $this->redirectRoute('jukir.show', ['jukir' => $this->jukir_id]);
     }
 }
