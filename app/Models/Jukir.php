@@ -47,6 +47,11 @@ class Jukir extends Model
         return $this->hasMany(HistoriJukir::class)->orderBy('tgl_histori', 'Desc');
     }
 
+    public function peringatan(): HasMany
+    {
+        return $this->hasMany(Peringatan::class);
+    }
+
     public function totalSetoran(){
         return $this->totalTunai() + $this->totalNonTunai();
     }

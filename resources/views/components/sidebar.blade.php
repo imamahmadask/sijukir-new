@@ -119,6 +119,17 @@
                     <span class="ml-3">Merchant</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('peringatan.index') }}"
+                    class="flex items-center p-2 text-base font-medium text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m19 2-8.4 7.05a1 1 0 0 1-1.2 0L1 2m18 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1m18 0v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2" />
+                    </svg>
+                    <span class="ml-3">Peringatan</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

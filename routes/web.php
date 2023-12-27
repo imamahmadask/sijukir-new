@@ -24,6 +24,10 @@ use App\Livewire\Tunai\EditTunai;
 use App\Livewire\Tunai\IndexTunai;
 use App\Livewire\Nontunai\IndexNonTunai;
 use App\Livewire\Nontunai\ShowNontunai;
+use App\Livewire\Peringatan\CreatePeringatan;
+use App\Livewire\Peringatan\EditPeringatan;
+use App\Livewire\Peringatan\IndexPeringatan;
+use App\Livewire\Peringatan\ShowPeringatan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,4 +82,8 @@ Route::middleware([
     Route::get('admin/berlangganan/create', CreateBerlangganan::class)->name('berlangganan.create');
     Route::get('admin/berlangganan/{id}/edit', EditBerlangganan::class)->name('berlangganan.edit');
 
+    Route::get('admin/peringatan', IndexPeringatan::class)->name('peringatan.index');
+    Route::get('admin/peringatan/create', CreatePeringatan::class)->name('peringatan.create');
+    Route::get('admin/peringatan/{id}/edit', EditPeringatan::class)->name('peringatan.edit');
+    Route::get('admin/peringatan/{peringatan}', ShowPeringatan::class)->name('peringatan.show');
 });
