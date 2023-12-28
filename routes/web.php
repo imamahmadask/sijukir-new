@@ -91,8 +91,6 @@ Route::group(['middleware' => ['auth', 'cekRole:admin,user']], function () {
 
     Route::get('admin/gallery', IndexGallery::class)->name('gallery.index');
 
-    // Route::get('admin/users', IndexUser::class)->name('users.index');
-
     Route::get('admin/pengaduan', IndexPengaduan::class)->name('pengaduan.index');
 
     Route::get('admin/insidentil', IndexInsidentil::class)->name('insidentil.index');
