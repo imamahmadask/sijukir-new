@@ -52,7 +52,7 @@
                     <label for="tgl_pendaftaran" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Tgl Pendaftaran
                     </label>
-                    <x-input type="date" name="tgl_pendaftaran" model="tgl_pendaftara" placeholder="" />
+                    <x-input type="date" name="tgl_pendaftaran" model="tgl_pendaftaran" placeholder="" />
                     <x-input-error for="tgl_pendaftaran" />
                 </div>
 
@@ -232,7 +232,7 @@
 
                 <div>
                     <label for="jumlah_hari" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Alamat Acara
+                        Jumlah Hari
                     </label>
                     <x-input type="number" name="jumlah_hari" model="jumlah_hari"
                         placeholder="Masukkan Jumlah Hari Acara" />
@@ -277,7 +277,7 @@
 
                 <div>
                     <label for="kriteria_lokasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Waktu Acara
+                        Kriteria Lokasi
                     </label>
                     <select name="kriteria_lokasi" wire:model.live="kriteria_lokasi"
                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -291,7 +291,7 @@
 
                 <div>
                     <label for="jenis_izin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Waktu Acara
+                        Jenis Izin
                     </label>
                     <select name="jenis_izin" wire:model.live="jenis_izin"
                         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
