@@ -6,15 +6,21 @@ use App\Models\User;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 #[Title('Users')]
 class IndexUser extends Component
 {
+    use WithPagination;
+
+    public $search;
+    public $perPage = 10;
 
     #[Computed()]
     public function users()
     {
-        return User::all();
+        return User::where('name', 'like' ,'%'.$this->search.'%')
+                    ->simplePaginate($this->perPage);
     }
 
     public function render()
