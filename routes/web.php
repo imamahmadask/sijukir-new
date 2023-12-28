@@ -5,6 +5,8 @@ use App\Livewire\Berlangganan\CreateBerlangganan;
 use App\Livewire\Berlangganan\EditBerlangganan;
 use App\Livewire\Berlangganan\IndexBerlangganan;
 use App\Livewire\Dashboard\IndexDashboard;
+use App\Livewire\Gallery\IndexGallery;
+use App\Livewire\Insidentil\IndexInsidentil;
 use App\Livewire\Jukir\CreateJukir;
 use App\Livewire\Jukir\EditJukir;
 use App\Livewire\Jukir\IndexJukir;
@@ -24,10 +26,12 @@ use App\Livewire\Tunai\EditTunai;
 use App\Livewire\Tunai\IndexTunai;
 use App\Livewire\Nontunai\IndexNonTunai;
 use App\Livewire\Nontunai\ShowNontunai;
+use App\Livewire\Pengaduan\IndexPengaduan;
 use App\Livewire\Peringatan\CreatePeringatan;
 use App\Livewire\Peringatan\EditPeringatan;
 use App\Livewire\Peringatan\IndexPeringatan;
 use App\Livewire\Peringatan\ShowPeringatan;
+use App\Livewire\User\IndexUser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,9 +49,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-        'auth:sanctum', config('jetstream.auth_session'), 'verified',
-    ])->group(function () {
+Route::group(['middleware' => ['auth', 'cekRole:admin,user']], function () {
     Route::get('admin/dashboard', IndexDashboard::class)->name('dashboard.index');
 
     Route::get('admin/analisa', IndexAnalisa::class)->name('analisa.index');
@@ -86,4 +88,17 @@ Route::middleware([
     Route::get('admin/peringatan/create', CreatePeringatan::class)->name('peringatan.create');
     Route::get('admin/peringatan/{id}/edit', EditPeringatan::class)->name('peringatan.edit');
     Route::get('admin/peringatan/{peringatan}', ShowPeringatan::class)->name('peringatan.show');
+
+    Route::get('admin/gallery', IndexGallery::class)->name('gallery.index');
+
+    // Route::get('admin/users', IndexUser::class)->name('users.index');
+
+    Route::get('admin/pengaduan', IndexPengaduan::class)->name('pengaduan.index');
+
+    Route::get('admin/insidentil', IndexInsidentil::class)->name('insidentil.index');
 });
+
+Route::group(['middleware' => ['auth', 'cekRole:admin']], function() {
+    Route::get('admin/users', IndexUser::class)->name('users.index');
+});
+
