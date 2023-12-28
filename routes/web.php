@@ -6,7 +6,10 @@ use App\Livewire\Berlangganan\EditBerlangganan;
 use App\Livewire\Berlangganan\IndexBerlangganan;
 use App\Livewire\Dashboard\IndexDashboard;
 use App\Livewire\Gallery\IndexGallery;
+use App\Livewire\Insidentil\CreateInsidentil;
+use App\Livewire\Insidentil\EditInsidentil;
 use App\Livewire\Insidentil\IndexInsidentil;
+use App\Livewire\Insidentil\ShowInsidentil;
 use App\Livewire\Jukir\CreateJukir;
 use App\Livewire\Jukir\EditJukir;
 use App\Livewire\Jukir\IndexJukir;
@@ -94,6 +97,9 @@ Route::group(['middleware' => ['auth', 'cekRole:admin,user']], function () {
     Route::get('admin/pengaduan', IndexPengaduan::class)->name('pengaduan.index');
 
     Route::get('admin/insidentil', IndexInsidentil::class)->name('insidentil.index');
+    Route::get('admin/insidentil/create', CreateInsidentil::class)->name('insidentil.create');
+    Route::get('admin/insidentil/{id}/edit', EditInsidentil::class)->name('insidentil.edit');
+    Route::get('admin/insidentil/{insidentil}', ShowInsidentil::class)->name('insidentil.show');
 });
 
 Route::group(['middleware' => ['auth', 'cekRole:admin']], function() {
