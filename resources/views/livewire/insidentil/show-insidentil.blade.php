@@ -104,6 +104,22 @@
                     </div>
 
                     <div>
+                        <label for="no_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Nomor Surat
+                        </label>
+                        <input type="text" value="{{ $insidentil->no_surat }}" disabled
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+
+                    <div>
+                        <label for="tgl_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Tgl Surat
+                        </label>
+                        <input type="text" value="{{ $insidentil->tgl_surat }}" disabled
+                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    </div>
+
+                    <div>
                         <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Nama Pengelola
                         </label>
@@ -347,22 +363,6 @@
                             Setoran
                         </label>
                         <input type="text" value="{{ $insidentil->setoran }}" disabled
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </div>
-
-                    <div>
-                        <label for="no_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Nomor Surat
-                        </label>
-                        <input type="text" value="{{ $insidentil->no_surat }}" disabled
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    </div>
-
-                    <div>
-                        <label for="tgl_surat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Tgl Surat
-                        </label>
-                        <input type="text" value="{{ $insidentil->tgl_surat }}" disabled
                             class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     </div>
 
