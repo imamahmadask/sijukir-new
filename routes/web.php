@@ -5,7 +5,10 @@ use App\Livewire\Berlangganan\CreateBerlangganan;
 use App\Livewire\Berlangganan\EditBerlangganan;
 use App\Livewire\Berlangganan\IndexBerlangganan;
 use App\Livewire\Dashboard\IndexDashboard;
+use App\Livewire\Gallery\CreateGallery;
+use App\Livewire\Gallery\EditGallery;
 use App\Livewire\Gallery\IndexGallery;
+use App\Livewire\Gallery\ShowGallery;
 use App\Livewire\Insidentil\CreateInsidentil;
 use App\Livewire\Insidentil\EditInsidentil;
 use App\Livewire\Insidentil\IndexInsidentil;
@@ -93,6 +96,9 @@ Route::group(['middleware' => ['auth', 'cekRole:admin,user']], function () {
     Route::get('admin/peringatan/{peringatan}', ShowPeringatan::class)->name('peringatan.show');
 
     Route::get('admin/gallery', IndexGallery::class)->name('gallery.index');
+    Route::get('admin/gallery/create', CreateGallery::class)->name('gallery.create');
+    Route::get('admin/gallery/{id}/edit', EditGallery::class)->name('gallery.edit');
+    Route::get('admin/gallery/{gallery}', ShowGallery::class)->name('gallery.show');
 
     Route::get('admin/pengaduan', IndexPengaduan::class)->name('pengaduan.index');
 
