@@ -206,7 +206,7 @@
                     <label for="lokasi_acara" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Alamat Acara
                     </label>
-                    <x-input type="number" name="lokasi_acara" model="lokasi_acara"
+                    <x-input type="text" name="lokasi_acara" model="lokasi_acara"
                         placeholder="Masukkan Lokasi Acara" />
                     <x-input-error for="lokasi_acara" />
                 </div>
@@ -261,7 +261,7 @@
                     <label for="lokasi_parkir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                         Lokasi Parkir
                     </label>
-                    <x-input type="number" name="lokasi_parkir" model="lokasi_parkir"
+                    <x-input type="text" name="lokasi_parkir" model="lokasi_parkir"
                         placeholder="Masukkan Lokasi Parkir" />
                     <x-input-error for="lokasi_parkir" />
                 </div>

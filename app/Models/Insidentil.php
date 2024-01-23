@@ -17,7 +17,7 @@ class Insidentil extends Model
         'nama_perusahaan', 'alamat_perusahaan', 'akta_perusahaan', 'npwp_perusahaan',
         'nama_acara', 'lokasi_acara', 'jumlah_hari', 'tgl_awal_acara', 'tgl_akhir_acara',
         'waktu_acara', 'lokasi_parkir', 'kriteria_lokasi', 'luas_lokasi', 'r2', 'r4',
-        'potensi', 'setoran', 'dokumen', 'keterangan', 'status', 'merchant_id', 'tg_surat', 'no_surat'
+        'potensi', 'setoran', 'dokumen', 'keterangan', 'status', 'merchant_id', 'tgl_surat', 'no_surat'
     ];
 
 }

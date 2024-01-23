@@ -44,6 +44,11 @@ class CreateInsidentil extends Component
             $this->status = 'Pending';
         }
 
+        if($this->dokumen){
+            $nama_dokumen = $this->nama_acara.'.'.$this->dokumen->extension();
+            $file_dokumen = $this->dokumen->storeAs('file_insidentil', $nama_dokumen, 'public');
+        }
+
         Insidentil::create([
             'tgl_pendaftaran' => $this->tgl_pendaftaran,
             'nik' => $this->nik,

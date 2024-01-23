@@ -143,7 +143,17 @@
                                 {{ $insidentil->jenis_izin }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $insidentil->status }}
+                                @if ($insidentil->status == 'Succeed')
+                                    <span
+                                        class="bg-green-100 text-green-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded-lg dark:bg-green-200 dark:text-green-800 ms-2">
+                                        {{ $insidentil->status }}
+                                    </span>
+                                @elseif($insidentil->status == 'Pending')
+                                    <span
+                                        class="bg-orange-100 text-orange-800 text-sm font-semibold me-2 px-2.5 py-0.5 rounded-lg dark:bg-orange-200 dark:text-orange-800 ms-2">
+                                        {{ $insidentil->status }}
+                                    </span>
+                                @endif
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <a type="button" href="insidentil/{{ $insidentil->id }}"
