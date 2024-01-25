@@ -76,11 +76,41 @@
                 </div>
                 <div
                     class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+                    <div class="sm:w-50 w-full">
+                        <select wire:model.live='filterKorlap'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Filter Korlap</option>
+                            @foreach ($korlaps as $korlap)
+                                <option value={{ $korlap->id . '' . $korlap->nama }}>{{ $korlap->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="sm:w-50 w-full">
+                        <select wire:model.live='filterTipe'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Filter Tipe</option>
+                            <option value="Surat Kurang Setor">Surat Kurang Setor</option>
+                            <option value="Surat Konfirmasi">Surat Konfirmasi</option>
+                            <option value="SP 1">SP 1</option>
+                            <option value="SP 2">SP 2</option>
+                            <option value="Surat Panggilan">Surat Panggilan</option>
+                        </select>
+                    </div>
+                    <div class="w-full">
+                        <select wire:model.live='filterLunas'
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="">Filter Status</option>
+                            <option value="0">On Prosess</option>
+                            <option value="1">Success</option>
+                        </select>
+                    </div>
+                    <input type="month" wire:model.live="filterBatas"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <input type="date" wire:model.live="date_start"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <input type="date" wire:model.live="date_end"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <div class="w-full ">
+                    <div class="w-full">
                         <label for="search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -92,8 +122,8 @@
                                 </svg>
                             </div>
                             <input type="text" wire:model.live="search"
-                                class="block lg:w-48 w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Search Berlangganan ...">
+                                class="block lg:w-48 w-full p-2.5 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Search...">
                         </div>
                     </div>
                 </div>
@@ -148,22 +178,22 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-base font-semibold">
-                                    {{ $peringatan->jukir->nama_jukir }}
+                                    {{ $peringatan->nama_jukir }}
                                 </div>
                                 <div class="italic font-normal">
-                                    {{ $peringatan->jukir->kode_jukir }}
+                                    {{ $peringatan->merchant_name }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="text-base font-semibold">
-                                    {{ $peringatan->jukir->lokasi->titik_parkir }}
+                                    {{ $peringatan->titik_parkir }}
                                 </div>
                                 <div class="italic font-normal">
-                                    {{ $peringatan->jukir->lokasi->lokasi_parkir }}
+                                    {{ $peringatan->lokasi_parkir }}
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                {{ $peringatan->jukir->lokasi->korlap->nama }}
+                                {{ $peringatan->nama }}
                             </td>
                             <td class="px-6 py-4">
                                 Rp. {{ number_format($peringatan->jml_kurang_setor) }}

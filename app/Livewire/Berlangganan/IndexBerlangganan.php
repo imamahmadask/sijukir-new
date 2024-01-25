@@ -27,7 +27,8 @@ class IndexBerlangganan extends Component
     #[Computed()]
     public function berlangganans()
     {
-        return Berlangganan::orderBy('tgl_dikeluarkan', 'desc')
+        return Berlangganan::where('nomor', 'like', '%'.$this->search.'%')
+                        ->orderBy('tgl_dikeluarkan', 'desc')
                         ->whereBetween('tgl_dikeluarkan', [$this->date_start, $this->date_end])
                         ->simplePaginate($this->perPage);
     }
@@ -38,7 +39,7 @@ class IndexBerlangganan extends Component
     }
 
     public function mount(){
-        $this->date_start =  Carbon::today()->subDays(14)->toDateString();
+        $this->date_start =  Carbon::today()->subMonth()->toDateString();
         $this->date_end = Carbon::today()->toDateString();
     }
 }

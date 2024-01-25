@@ -29,6 +29,12 @@ class IndexTunai extends Component
     public function tunais()
     {
         return Tunai::with('jukir')
+                    ->where(function ($query) {
+                        $query->where('no_kwitansi', 'like', '%' . $this->search . '%')
+                            ->orWhereHas('jukir', function ($query) {
+                                $query->where('nama_jukir', 'like', '%' . $this->search . '%');
+                            });
+                    })
                     ->whereBetween('tgl_transaksi', [$this->date_start, $this->date_end])
                     ->orderBy('tgl_transaksi', 'desc')
                     ->simplePaginate($this->perPage);
@@ -40,7 +46,7 @@ class IndexTunai extends Component
     }
 
     public function mount(){
-        $this->date_start =  Carbon::today()->subDays(14)->toDateString();
+        $this->date_start =  Carbon::today()->subMonth()->toDateString();
         $this->date_end = Carbon::today()->toDateString();
     }
 
