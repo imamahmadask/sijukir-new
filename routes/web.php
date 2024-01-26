@@ -20,6 +20,7 @@ use App\Livewire\Jukir\ShowJukir;
 use App\Livewire\Korlap\CreateKorlap;
 use App\Livewire\Korlap\EditKorlap;
 use App\Livewire\Korlap\IndexKorlap;
+use App\Livewire\Korlap\ShowKorlap;
 use App\Livewire\Lokasi\CreateLokasi;
 use App\Livewire\Lokasi\EditLokasi;
 use App\Livewire\Lokasi\IndexLokasi;
@@ -81,6 +82,7 @@ Route::group(['middleware' => ['auth', 'cekRole:admin,user']], function () {
     Route::get('admin/korlap', IndexKorlap::class)->name('korlap.index');
     Route::get('admin/korlap/create', CreateKorlap::class)->name('korlap.create');
     Route::get('admin/korlap/{id}/edit', EditKorlap::class)->name('korlap.edit');
+    Route::get('admin/korlap/{korlap}', ShowKorlap::class)->name('korlap.show');
 
     Route::get('admin/merchant', IndexMerchant::class)->name('merchant.index');
     Route::get('admin/merchant/create', CreateMerchant::class)->name('merchant.create');

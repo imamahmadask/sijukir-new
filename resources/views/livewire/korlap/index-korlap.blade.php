@@ -132,6 +132,19 @@
                                 {{ $korlap->lokasi->count() }}
                             </td>
                             <td class="px-6 py-4 text-center">
+                                <a type="button" href="korlap/{{ $korlap->id }}"
+                                    class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">
+                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 20 14">
+                                        <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2">
+                                            <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                            <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z" />
+                                        </g>
+                                    </svg>
+                                    <span class="sr-only">Show</span>
+                                </a>
+
                                 <a type="button" href="korlap/{{ $korlap->id }}/edit"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <svg class="w-4 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

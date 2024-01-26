@@ -65,6 +65,6 @@ class EditKorlap extends Component
 
         session()->flash('success', 'Data Korlap berhasil diupdate!');
 
-        $this->redirect('/admin/korlap');
+        $this->redirectRoute('korlap.show', ['korlap' => $korlap->id]);
     }
 }
