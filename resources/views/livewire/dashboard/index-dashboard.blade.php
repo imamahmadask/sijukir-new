@@ -456,7 +456,7 @@
                         Juru Parkir dengan setoran retribusi parkir terbanyak di Kota Mataram.
                     </p>
                 </caption>
-                <thead class="text-xs text-teal-700 dark:text-teal-50 uppercase bg-teal-200 dark:bg-teal-700">
+                <thead class="text-xs text-green-700 dark:text-green-50 uppercase bg-green-200 dark:bg-green-700">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Nama Jukir
@@ -577,7 +577,7 @@
                         Kecamatan dengan setoran retribusi parkir terbanyak di Kota Mataram.
                     </p>
                 </caption>
-                <thead class="text-xs text-yellow-700 dark:text-yellow-50 uppercase bg-yellow-200 dark:bg-yellow-700">
+                <thead class="text-xs text-yellow-700 dark:text-yellow-800 uppercase bg-yellow-200 dark:bg-yellow-300">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Kecamatan
