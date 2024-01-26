@@ -24,7 +24,7 @@ class EditInsidentil extends Component
             $waktu_acara, $lokasi_parkir, $kriteria_lokasi,  $jenis_izin, $luas_lokasi, $r2, $r4,
             $potensi, $setoran;
 
-    public $insidentilId, $keterangan, $dokumen, $merchant_id, $status, $no_surat, $tgl_surat;
+    public $insidentilId, $keterangan, $dokumen, $dokumen_asli, $merchant_id, $status, $no_surat, $tgl_surat;
 
     public function render()
     {
@@ -64,7 +64,7 @@ class EditInsidentil extends Component
             $this->r4 = $insidentil->r4;
             $this->potensi = $insidentil->potensi;
             $this->setoran = $insidentil->setoran;
-            $this->dokumen = $insidentil->dokumen;
+            $this->dokumen_asli = $insidentil->dokumen;
             $this->keterangan = $insidentil->keterangan;
             $this->status = $insidentil->status;
             $this->merchant_id = $insidentil->merchant_id;
@@ -88,7 +88,9 @@ class EditInsidentil extends Component
 
         $insidentil = Insidentil::find($this->insidentilId);
 
-        if($this->dokumen){
+        if($this->dokumen == $insidentil->dokumen || $this->dokumen == null){
+            $file_dokumen = $insidentil->dokumen;
+        }else{
             $nama_dokumen = $this->nama_acara.'.'.$this->dokumen->extension();
             $file_dokumen = $this->dokumen->storeAs('file_insidentil', $nama_dokumen, 'public');
         }

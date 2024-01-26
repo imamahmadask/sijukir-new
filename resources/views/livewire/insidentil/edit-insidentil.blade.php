@@ -364,6 +364,15 @@
                     @error('dokumen')
                         <span class="text-xs italic text-red-500"> {{ $message }} </span>
                     @enderror
+                    @if ($dokumen_asli)
+                        <div class="w-full lg:w-1/2">
+                            <iframe src="/storage/{{ $dokumen_asli }}" class="mt-2" frameborder="0" width="100%"
+                                height="400px"></iframe>
+                        </div>
+                    @endif
+                    @error('document')
+                        <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                    @enderror
                     <div wire:loading wire:target="dokumen">
                         <div role="status">
                             <svg aria-hidden="true" class="w-5 h-5 ml-2 text-gray-200 animate-spin fill-blue-600"
