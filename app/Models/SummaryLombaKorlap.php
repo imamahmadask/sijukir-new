@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SummaryLombaKorlap extends Model
 {
@@ -25,4 +26,14 @@ class SummaryLombaKorlap extends Model
         'perolehan_nominal',
         'persentase'
     ];
+
+    /**
+     * Get the korlap that owns the SummaryLombaKorlap
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function korlap(): BelongsTo
+    {
+        return $this->belongsTo(Korlap::class);
+    }
 }

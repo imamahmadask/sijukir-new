@@ -33,7 +33,7 @@ class ImportNontunai implements ToModel, WithHeadingRow, WithBatchInserts, WithC
 
             $bulan = Carbon::parse($dt)->format('m');
             $tahun = Carbon::parse($dt)->format('Y');
-            // dd($row);
+
             return new NonTunai([
                 'tgl_transaksi'     => $dt,
                 'bulan'             => $bulan,
@@ -57,12 +57,12 @@ class ImportNontunai implements ToModel, WithHeadingRow, WithBatchInserts, WithC
 
     public function batchSize(): int
     {
-        return 1000;
+        return 100;
     }
 
     public function chunkSize(): int
     {
-        return 1000;
+        return 100;
     }
 
     public function uniqueBy()

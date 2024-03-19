@@ -13,8 +13,20 @@ class HistoriJukir extends Model
     protected $table = "histori_jukir";
 
     protected $fillable = [
-        'jukir_id', 'tgl_histori', 'no_surat', 'jenis_histori', 'histori',
-        'created_by', 'edited_by'
+        'jukir_id',
+        'tgl_histori',
+        'no_surat',
+        'jenis_histori',
+        'histori',
+        'jml_hari_libur',
+        'tahun_libur',
+        'tgl_awal_libur',
+        'tgl_akhir_libur',
+        'potensi_harian',
+        'kompensasi',
+        'created_by',
+        'edited_by',
+
     ];
 
     public function jukir(): BelongsTo

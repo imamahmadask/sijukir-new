@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Jukir extends Model
 {
@@ -14,12 +15,42 @@ class Jukir extends Model
     protected $table = 'jukirs';
 
     protected $fillable = [
-        'kode_jukir', 'nik_jukir', 'nama_jukir', 'tempat_lahir', 'tgl_lahir', 'jenis_kelamin',
-        'alamat', 'kel_alamat', 'kec_alamat', 'kab_kota_alamat', 'telepon', 'agama', 'jenis_jukir',
-        'no_perjanjian', 'tgl_perjanjian', 'tgl_akhir_perjanjian', 'tgl_terbit_qr', 'status',
-        'potensi_harian', 'potensi_bulanan', 'uji_petik', 'potensi_bulanan_upl', 'tgl_pkh_upl',
-        'waktu_kerja', 'jml_hari_kerja', 'hari_kerja_bulan', 'hari_libur', 'foto', 'document',
-        'ket_jukir', 'area_id', 'lokasi_id', 'merchant_id', 'tgl_nonactive'
+        'kode_jukir',
+        'nik_jukir',
+        'nama_jukir',
+        'tempat_lahir',
+        'tgl_lahir',
+        'jenis_kelamin',
+        'alamat',
+        'kel_alamat',
+        'kec_alamat',
+        'kab_kota_alamat',
+        'telepon',
+        'agama',
+        'jenis_jukir',
+        'no_perjanjian',
+        'tgl_perjanjian',
+        'tgl_akhir_perjanjian',
+        'tgl_terbit_qr',
+        'status',
+        'potensi_harian',
+        'potensi_bulanan',
+        'uji_petik',
+        'potensi_bulanan_upl',
+        'tgl_pkh_upl',
+        'waktu_kerja',
+        'jml_hari_kerja',
+        'hari_kerja_bulan',
+        'hari_libur',
+        'foto',
+        'document',
+        'ket_jukir',
+        'area_id',
+        'lokasi_id',
+        'merchant_id',
+        'tgl_nonactive',
+        'old_merchant_id',
+        'is_migration'
     ];
 
     public function lokasi(): BelongsTo
@@ -37,6 +68,16 @@ class Jukir extends Model
         return $this->belongsTo(Merchant::class);
     }
 
+    public function oldMerchant(): BelongsTo
+    {
+        return $this->belongsTo(Merchant::class, 'old_merchant_id');
+    }
+
+    public function historiMerchant(): HasOne
+    {
+        return $this->hasOne(HistoriMerchant::class);
+    }
+
     public function tunai(): HasMany
     {
         return $this->hasMany(Tunai::class);
@@ -47,13 +88,24 @@ class Jukir extends Model
         return $this->hasMany(HistoriJukir::class)->orderBy('tgl_histori', 'Desc');
     }
 
+    public function jukir_pembantu(): HasMany
+    {
+        return $this->hasMany(JukirPembantu::class);
+    }
+
     public function peringatan(): HasMany
     {
         return $this->hasMany(Peringatan::class);
     }
 
-    public function totalSetoran(){
+    public function totalSetoran()
+    {
         return $this->totalTunai() + $this->totalNonTunai();
+    }
+
+    public function summaryJukirMonth(): HasMany
+    {
+        return $this->hasMany(SummaryJukirMonth::class);
     }
 
     public function totalTap(){

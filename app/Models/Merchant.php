@@ -18,7 +18,14 @@ class Merchant extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'id', 'nmid', 'merchant_name', 'no_rekening', 'vendor', 'qris', 'tgl_terdaftar', 'area_id'
+        'id',
+        'nmid',
+        'merchant_name',
+        'no_rekening',
+        'vendor',
+        'qris',
+        'tgl_terdaftar',
+        'area_id'
     ];
 
     public function jukir(): HasOne
@@ -34,5 +41,10 @@ class Merchant extends Model
     public function nontunai(): HasMany
     {
         return $this->hasMany(NonTunai::class);
+    }
+
+    public function historiMerchant(): HasOne
+    {
+        return $this->hasOne(HistoriMerchant::class);
     }
 }

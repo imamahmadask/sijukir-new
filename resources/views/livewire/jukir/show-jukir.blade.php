@@ -560,7 +560,8 @@
                             </tr>
                         </tbody>
                         <tfoot>
-                            <tr class="text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
+                            <tr
+                                class="text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 whitespace-nowrap">
                                 <th class="px-6 py-4">Total</th>
                                 <th class="px-6 py-4">100</th>
                                 <th class="px-6 py-4">Rp. 3.400.000</th>

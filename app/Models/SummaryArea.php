@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SummaryArea extends Model
 {
@@ -22,4 +23,14 @@ class SummaryArea extends Model
         'area_id',
         'jukirs',
     ];
+
+    /**
+     * Get the area that owns the SummaryArea
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function area(): BelongsTo
+    {
+        return $this->belongsTo(Area::class);
+    }
 }

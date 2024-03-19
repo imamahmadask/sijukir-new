@@ -12,6 +12,8 @@ class ShowJukir extends Component
 {
     public Jukir $jukir;
 
+    public $perYear;
+
     public function render()
     {
         return view('livewire.jukir.show-jukir');

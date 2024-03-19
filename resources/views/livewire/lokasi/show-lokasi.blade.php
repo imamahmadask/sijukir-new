@@ -171,7 +171,10 @@
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $jukir->nama_jukir }}
+                                <a href="/admin/jukir/{{ $jukir->id }}" class="hover:text-purple-600"
+                                    target="_blank">
+                                    {{ $jukir->nama_jukir }}
+                                </a>
                             </th>
                             <td class="px-6 py-4">
                                 @if ($jukir->status == 'Non-Tunai')
