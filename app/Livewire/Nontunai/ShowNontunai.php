@@ -17,7 +17,7 @@ class ShowNontunai extends Component
 {
     use WithPagination;
 
-    public $perPage = 10;
+    public $perPage = 50;
     public $merchant_name, $merchant_id;
 
     #[Validate('date|before_or_equal:finish_date')]

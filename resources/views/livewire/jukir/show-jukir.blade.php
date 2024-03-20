@@ -225,6 +225,29 @@
                             class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             disabled>
                     </div>
+                    @if ($jukir->old_merchant_id)
+                        <div class="w-full">
+                            <label for="merchant_id"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Merchant Baru
+                                <span class="text-green-700 dark:text-green-400">
+                                    ({{ date('d-M-Y', strtotime($jukir->historiMerchant->tanggal_perubahan)) }})
+                                </span>
+                            </label>
+                            <input type="text" value="{{ $jukir->merchant->merchant_name }}"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                disabled>
+                        </div>
+                        <div class="w-full">
+                            <label for="old_merchant_id"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Merchant Lama
+                            </label>
+                            <input type="text" value="{{ $jukir->oldMerchant->merchant_name }}"
+                                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                disabled>
+                        </div>
+                    @endif
                     <div class="w-full">
                         <label for="hari_kerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Hari Kerja (Perminggu)
@@ -461,6 +484,96 @@
                 <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
                     <span
                         class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+                        Perolehan Per Tahun
+                    </span>
+                </h2>
+
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    @if ($jukir->status == 'Non-Tunai')
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Tahun
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Jumlah Trx
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Non-Tunai
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Potensi Tahunan
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Kurang Setor
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($this->perTahun() as $data)
+                                    <tr
+                                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
+                                        <th scope="row" class="px-6 py-4">
+                                            {{ $data->tahun }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{ number_format($data->Jml_Trx) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Rp. {{ number_format($data->NonTunai) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Rp. {{ number_format($data->Potensi) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            @if ($data->Kurang_Setor > 0)
+                                                <span
+                                                    class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-600">
+                                                    Rp. {{ number_format($data->Kurang_Setor) }}
+                                                </span>
+                                            @else
+                                                <span
+                                                    class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-600">
+                                                    Rp. {{ number_format($data->Kurang_Setor) }}
+                                                </span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr
+                                    class="text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 whitespace-nowrap">
+                                    <th class="px-6 py-4">Total</th>
+                                    <th class="px-6 py-4">
+                                        {{ number_format($this->perTahun()->sum('Jml_Trx')) }}
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Rp. {{ number_format($this->perTahun()->sum('NonTunai')) }}
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Rp. {{ number_format($this->perTahun()->sum('Potensi')) }}
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Rp. {{ number_format($this->perTahun()->sum('Kurang_Setor')) }}
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    @else
+                        <div class="m-2 dark:text-white">
+                            Jukir Masih Tunai
+                        </div>
+                    @endif
+                </div>
+
+                <hr class="my-6">
+
+                <h2 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                    <span
+                        class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
                         Perolehan Per Bulan
                     </span>
                 </h2>
@@ -468,108 +581,86 @@
                 <div class="py-2.5 mb-3">
                     <select wire:model.live="perYear" name="perYear"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block lg:w-32 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="2023">2023</option>
                         <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
                     </select>
                 </div>
 
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Bulan
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Jumlah Trx
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Non-Tunai
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Potensi Bulanan
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Kurang Setor
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr
-                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4">
-                                    Jan-2023
-                                </th>
-                                <td class="px-6 py-4">
-                                    123
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 2.500.000
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 2.000.000
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:text-white dark:bg-green-600">
-                                        Rp. 500.000
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr
-                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4">
-                                    Feb-2023
-                                </th>
-                                <td class="px-6 py-4">
-                                    232
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 1.400.00
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 2.000.000
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-white dark:bg-yellow-600">
-                                        Rp. -600.000
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr
-                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4">
-                                    Mar-2023
-                                </th>
-                                <td class="px-6 py-4">
-                                    222
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 500.000
-                                </td>
-                                <td class="px-6 py-4">
-                                    Rp. 2.000.000
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:text-white dark:bg-yellow-600">
-                                        Rp. -1.500.000
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr
-                                class="text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 whitespace-nowrap">
-                                <th class="px-6 py-4">Total</th>
-                                <th class="px-6 py-4">100</th>
-                                <th class="px-6 py-4">Rp. 3.400.000</th>
-                                <th class="px-6 py-4">Rp. 6.000.000</th>
-                                <th class="px-6 py-4">Rp. -3.100.000</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    @if ($jukir->status == 'Non-Tunai')
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Bulan
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Jumlah Trx
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Non-Tunai
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Potensi Bulanan
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Kurang Setor
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($this->perBulan($perYear) as $data)
+                                    <tr
+                                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b font-medium text-gray-900 whitespace-nowrap dark:text-white dark:border-gray-700">
+                                        <th scope="row" class="px-6 py-4">
+                                            {{ date('F', mktime(0, 0, 0, $data->bulan, 1)) }}-{{ $data->tahun }}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{ number_format($data->jml_trx) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Rp. {{ number_format($data->non_tunai) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            Rp. {{ number_format($data->potensi) }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="px-2 py-1 font-semibold leading-tight
+                                            {{ $data->kurang_setor > 0 ? 'text-green-700 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-600' : 'text-yellow-700 bg-yellow-100 rounded-full dark:text-yellow-100 dark:bg-yellow-600' }}">
+                                                Rp.
+                                                {{ $data->kurang_setor > 0 ? '+' . number_format($data->kurang_setor) : number_format($data->kurang_setor) }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr
+                                    class="text-sm text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 whitespace-nowrap">
+                                    <th class="px-6 py-4">Total</th>
+                                    <th class="px-6 py-4">
+                                        {{ number_format($this->perBulan($perYear)->sum('jml_trx')) }}
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Rp. {{ number_format($this->perBulan($perYear)->sum('non_tunai')) }}
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Rp. {{ number_format($this->perBulan($perYear)->sum('potensi')) }}
+                                    </th>
+                                    <th class="px-6 py-4">
+                                        Rp. {{ number_format($this->perBulan($perYear)->sum('kurang_setor')) }}
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    @else
+                        <div class="m-2 dark:text-white">
+                            Jukir Masih Tunai
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>
@@ -578,6 +669,12 @@
             @livewire('nontunai.show-nontunai', [
                 'merchant_id' => $jukir->merchant_id,
             ])
+
+            @if ($jukir->old_merchant_id)
+                @livewire('non-tunai.show-nontunai', [
+                    'merchant_id' => $jukir->old_merchant_id,
+                ])
+            @endif
         @else
             <div class="m-3 dark:text-white">
                 Jukir Masih Tunai

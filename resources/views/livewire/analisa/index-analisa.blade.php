@@ -169,7 +169,7 @@
                                 Rp. {{ number_format($data->PotensiBulanan) }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ number_format($data->Total_Tap) }}
+                                {{ number_format($data->TotalTap) }}
                             </td>
                             <td class="px-6 py-4">
                                 @if ($data->status = 'Non-Tunai')
@@ -205,10 +205,10 @@
                                         class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:bg-red-700 dark:text-red-100">
                                         Rp. {{ number_format($data->PotensiBulanan) }}
                                     </span>
-                                @elseif ($data->PotensiBulanan - $data->Total > 0)
+                                @elseif ($data->KurangSetor < 0)
                                     <span
                                         class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full dark:bg-yellow-700 dark:text-yellow-100">
-                                        Rp. {{ number_format($data->PotensiBulanan - $data->Total) }}
+                                        Rp. {{ number_format($data->KurangSetor) }}
                                     </span>
                                 @else
                                     <span

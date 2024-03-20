@@ -18,7 +18,7 @@
         </nav>
 
         <div class="mb-3">
-            <select id="filterYear"
+            <select id="filterYear" wire:model="filterYear"
                 class="lg:w-24 w-full bg-white border border-gray-200 text-gray-900 text-sm rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 <option value="2022">2022</option>
                 <option value="2023">2023</option>
@@ -50,7 +50,8 @@
             </div>
             <div class="p-4 bg-white rounded-lg shadow-md dark:bg-gray-800 sm:p-6 xl:p-8">
                 <div class="flex items-center">
-                    <div class="p-3 mr-5 rounded-full bg-yellow-400 dark:bg-yellow-400">
+                    <div data-popover-target="popover-default"
+                        class="p-3 mr-5 rounded-full bg-yellow-400 dark:bg-yellow-400">
                         <svg class="w-7 h-7 text-white dark:text-yellow-50" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -59,9 +60,28 @@
                     </div>
                     <div class="flex-shrink-0">
                         <span
-                            class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl md:text-2xl dark:text-white">Rp.
-                            6.000.000.000</span>
-                        <h3 class="text-base font-semibold mt-2 text-gray-700 dark:text-gray-200">Total Pencapaian</h3>
+                            class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl md:text-2xl dark:text-white">
+                            Rp. 6.000.000.000
+                        </span>
+                        <h3 class="text-base font-semibold mt-2 text-gray-700 dark:text-gray-200">
+                            Total Pencapaian
+                        </h3>
+                        <div data-popover id="popover-default" role="tooltip"
+                            class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-100 dark:border-gray-600 dark:bg-gray-800">
+                            <div
+                                class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+                                <h3 class="font-semibold text-gray-900 dark:text-white">Informasi Tambahan</h3>
+                            </div>
+                            <div class="px-3 py-2">
+                                <p>
+                                    Belum termasuk pendapatan yang ditangguhkan sebesar <br>
+                                    <b>
+                                        Rp. 60.000.000
+                                    </b>
+                                </p>
+                            </div>
+                            <div data-popper-arrow></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -376,7 +396,8 @@
                             class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl md:text-2xl dark:text-white">
                             922
                         </span>
-                        <h3 class="text-base font-semibold mt-2 text-gray-700 dark:text-gray-200">Jumlah Jukir (Active)
+                        <h3 class="text-base font-semibold mt-2 text-gray-700 dark:text-gray-200">Jumlah Jukir
+                            <i>(Active)</i>
                         </h3>
                     </div>
                 </div>
@@ -399,7 +420,8 @@
                             class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl md:text-2xl dark:text-white">
                             743
                         </span>
-                        <h3 class="text-base font-semibold mt-2 text-gray-700 dark:text-gray-200">Jumlah Titik (Active)
+                        <h3 class="text-base font-semibold mt-2 text-gray-700 dark:text-gray-200">Jumlah Titik
+                            <i>(Active)</i>
                         </h3>
                     </div>
                 </div>
@@ -452,11 +474,12 @@
                 <caption
                     class="p-5 text-2xl font-bold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     Top 5 Jukir
-                    <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    <p class="mt-2 text-sm font-normal text-gray-800 dark:text-gray-100">
                         Juru Parkir dengan setoran retribusi parkir terbanyak di Kota Mataram.
                     </p>
                 </caption>
-                <thead class="text-xs text-green-700 dark:text-green-50 uppercase bg-green-200 dark:bg-green-700">
+                <thead
+                    class="text-xs text-green-700 dark:text-green-50 uppercase bg-green-200 dark:bg-green-700 whitespace-nowrap">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Nama Jukir
@@ -477,16 +500,15 @@
                 </thead>
                 <tbody>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4">
                             <div class="text-base font-semibold">
                                 Saepudin
                             </div>
                             <div class="italic font-normal">
-                                Jukir Dishub 333
+                                Jukir Dishub 269
                             </div>
-                        </th>
+                        </td>
                         <td class="px-6 py-4">
                             <div class="text-base font-semibold">
                                 Toko Mirasa
@@ -495,27 +517,26 @@
                                 Jl. AA Gede Ngurah
                             </div>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 0
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 125.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 125.000.000
                         </td>
                     </tr>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4">
                             <div class="text-base font-semibold">
                                 Muhalibin
                             </div>
                             <div class="italic font-normal">
-                                Jukir Dishub 333
+                                Jukir Dishub 269
                             </div>
-                        </th>
+                        </td>
                         <td class="px-6 py-4">
                             <div class="text-base font-semibold">
                                 Bank BCA Pejanggik
@@ -524,27 +545,26 @@
                                 Jl. Pejanggik
                             </div>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 0
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 125.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 125.000.000
                         </td>
                     </tr>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4">
                             <div class="text-base font-semibold">
                                 Hardianto
                             </div>
                             <div class="italic font-normal">
-                                Jukir Dishub 333
+                                Jukir Dishub 269
                             </div>
-                        </th>
+                        </td>
                         <td class="px-6 py-4">
                             <div class="text-base font-semibold">
                                 Toko Nefos
@@ -553,13 +573,13 @@
                                 Jl. AA Gede Ngurah
                             </div>
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 0
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 125.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 125.000.000
                         </td>
                     </tr>
@@ -573,11 +593,12 @@
                 <caption
                     class="p-5 text-2xl font-bold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     Data Area
-                    <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    <p class="mt-2 text-sm font-normal text-gray-800 dark:text-gray-100">
                         Kecamatan dengan setoran retribusi parkir terbanyak di Kota Mataram.
                     </p>
                 </caption>
-                <thead class="text-xs text-yellow-700 dark:text-yellow-800 uppercase bg-yellow-200 dark:bg-yellow-300">
+                <thead
+                    class="text-xs text-yellow-700 dark:text-yellow-800 uppercase bg-yellow-200 dark:bg-yellow-300 whitespace-nowrap">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Kecamatan
@@ -598,125 +619,118 @@
                 </thead>
                 <tbody>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Cakranegara
-                        </th>
-                        <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-base">
                             200
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 10.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 1.000.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 1.010.000.000
                         </td>
                     </tr>
                     <tr
                         class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Mataram
-                        </th>
-                        <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-base">
                             150
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 9.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 250.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 259.000.000
                         </td>
                     </tr>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Ampenan
-                        </th>
-                        <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-base">
                             144
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 10.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 300.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 310.000.000
                         </td>
                     </tr>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Selaparang
-                        </th>
-                        <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-base">
                             60
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 10.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 300.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 310.000.000
                         </td>
                     </tr>
                     <tr
                         class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Sandubaya
-                        </th>
-                        <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-base">
                             90
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 10.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 300.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 310.000.000
                         </td>
                     </tr>
                     <tr
                         class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Sekarbela
-                        </th>
-                        <td class="px-6 py-4">
+                        </td>
+                        <td class="px-6 py-4 font-semibold text-base">
                             80
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 10.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 300.000.000
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 font-semibold text-base">
                             Rp. 310.000.000
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">#Total</th>
+                        class="text-base text-gray-800 bg-gray-100 border-b dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200 font-medium whitespace-nowrap">
+                        <th class="px-6 py-4">#Total</th>
                         <th class="px-6 py-4">900</th>
                         <th class="px-6 py-4">Rp. 50.000.000</th>
                         <th class="px-6 py-4">Rp. 1.000.000.000</th>
@@ -732,7 +746,7 @@
                 <caption
                     class="p-5 text-2xl font-bold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     Data Bulan
-                    <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    <p class="mt-2 text-sm font-normal text-gray-800 dark:text-gray-100">
                         Rincian pendapatan realisasi berdasarkan bulan
                     </p>
                 </caption>
@@ -763,11 +777,10 @@
                 </thead>
                 <tbody>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-base font-semibold text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4">
                             Jan-2023
-                        </th>
+                        </td>
                         <td class="px-6 py-4">
                             Rp. 20.000.000
                         </td>
@@ -775,24 +788,23 @@
                             Rp. 10.000.000
                         </td>
                         <td class="px-6 py-4">
-                            Rp. 1.000.000.000
+                            1234
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4">
                             Rp. 1.010.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4">
                             Rp. 1.010.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4">
                             5%
                         </td>
                     </tr>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                        class="text-base font-semibold text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 whitespace-nowrap">
+                        <td class="px-6 py-4">
                             Feb-2023
-                        </th>
+                        </td>
                         <td class="px-6 py-4">
                             Rp. 20.000.000
                         </td>
@@ -800,27 +812,26 @@
                             Rp. 10.000.000
                         </td>
                         <td class="px-6 py-4">
-                            Rp. 1.000.000.000
+                            1.234
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4">
                             Rp. 1.010.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
+                        <td class="px-6 py-4">
                             Rp. 1.010.000.000
                         </td>
-                        <td class="px-6 py-4 font-semibold">
-                            6%
+                        <td class="px-6 py-4">
+                            5%
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr
-                        class="text-gray-800 bg-white border-b dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">#Total</th>
+                        class="text-base font-semibold text-gray-800 bg-gray-100 border-b dark:bg-gray-700 dark:border-gray-700 dark:text-gray-200">
+                        <th class="px-6 py-4">#Total</th>
                         <th class="px-6 py-4">Rp. 20.000.000</th>
                         <th class="px-6 py-4">Rp. 50.000.000</th>
-                        <th class="px-6 py-4">Rp. 1.000.000.000</th>
+                        <th class="px-6 py-4">1.234</th>
                         <th class="px-6 py-4">Rp. 1.050.000.000</th>
                         <th class="px-6 py-4">Rp. 1.050.000.000</th>
                         <th class="px-6 py-4">11%</th>

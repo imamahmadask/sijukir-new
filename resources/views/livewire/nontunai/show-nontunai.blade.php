@@ -94,6 +94,20 @@
                             </tr>
                         @endforeach
                     </tbody>
+                    <tfoot class="dark:bg-gray-800">
+                        <tr class="text-gray-700 dark:text-gray-50">
+                            <td class="px-6 py-4 text-sm italic font-bold">#</td>
+                            <td class="px-6 py-4 text-sm italic font-bold">
+                                Total Transaksi ({{ number_format($this->nontunais($merchant_id)->count()) }})
+                            </td>
+                            <td class="px-6 py-4 text-sm"></td>
+                            <td class="px-6 py-4 text-sm"></td>
+                            <td class="px-6 py-4 text-sm"></td>
+                            <td class="px-6 py-4 text-sm italic font-bold">
+                                Rp. {{ number_format($this->nontunais($merchant_id)->sum('total_nilai')) }}
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <div class="mt-4">
