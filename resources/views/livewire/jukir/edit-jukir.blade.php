@@ -64,21 +64,75 @@
                 </div>
 
                 @if ($status == 'Non-Tunai')
-                    <div>
-                        <label for="merchant_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            Merchant
-                        </label>
-                        <select wire:model="merchant_id" name="merchant_id"
-                            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Pilih</option>
-                            @foreach ($merchants as $merchant)
-                                <option value={{ $merchant->id }}>{{ $merchant->merchant_name }}</option>
-                            @endforeach
-                        </select>
-                        @error('merchant_id')
-                            <span class="text-xs italic text-red-500"> {{ $message }} </span>
-                        @enderror
+                    <div class="sm:col-span-2">
+                        <input wire:model.live="migrasi_qr" type="checkbox"
+                            @if ($migrasi_qr) checked @endif
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="migrasi_qr" class="ms-2 text-sm font-medium text-red-600">
+                            Migrasi QR (QREN ke BNTBS)</label>
                     </div>
+
+                    @if (!$migrasi_qr)
+                        <div>
+                            <label for="merchant_id"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Merchant
+                            </label>
+                            <select wire:model="merchant_id" name="merchant_id"
+                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>Pilih</option>
+                                @foreach ($merchants as $merchant)
+                                    <option value={{ $merchant->id }}>{{ $merchant->merchant_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('merchant_id')
+                                <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                            @enderror
+                        </div>
+                    @elseif($migrasi_qr)
+                        <div>
+                            <label for="merchant_lama" class="block mb-2 text-sm font-medium text-red-600">
+                                Merchant Lama
+                            </label>
+                            <select wire:model="merchant_lama" name="merchant_lama"
+                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>Pilih</option>
+                                @foreach ($merchants as $merchant)
+                                    <option value={{ $merchant->id }}>{{ $merchant->merchant_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('merchant_lama')
+                                <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="merchant_baru" class="block mb-2 text-sm font-medium text-red-600">
+                                Merchant Baru
+                            </label>
+                            <select wire:model="merchant_baru" name="merchant_baru"
+                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option selected>Pilih</option>
+                                @foreach ($merchants as $merchant)
+                                    <option value={{ $merchant->id }}>{{ $merchant->merchant_name }}</option>
+                                @endforeach
+                            </select>
+                            @error('merchant_baru')
+                                <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="tgl_migrasi_qr" class="block mb-2 text-sm font-medium text-red-600">
+                                Tanggal Migrasi QR</label>
+                            <input type="datetime-local" name="tgl_migrasi_qr" wire:model="tgl_migrasi_qr"
+                                class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            @error('tgl_migrasi_qr')
+                                <span class="text-xs italic text-red-500"> {{ $message }} </span>
+                            @enderror
+                        </div>
+                    @endif
+
 
                     <div>
                         <label for="tgl_terbit_qr" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -311,7 +365,8 @@
                     <label for="tgl_pkh_upl"
                         class="block mb-2 text-sm font-medium text-green-600 dark:text-green-400">
                         Tanggal PKH UPL</label>
-                    <x-input type="date" name="tgl_pkh_upl" model="tgl_pkh_upl" placeholder="" />
+                    <input type="date" name="tgl_pkh_upl" wire:model.live="tgl_pkh_upl"
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                     <x-input-error for="tgl_pkh_upl" />
                 </div>
 

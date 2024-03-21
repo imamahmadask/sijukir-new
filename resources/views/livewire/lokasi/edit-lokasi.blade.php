@@ -94,7 +94,7 @@
                         <option selected>Pilh Kecamatan</option>
                         @foreach ($areas as $area)
                             <div wire:key="{{ $area->id }}">
-                                <option value="{{ $area->id }}">{{ $area->kecamatan }}</option>
+                                <option value="{{ $area->id }}">{{ $area->Kecamatan }}</option>
                             </div>
                         @endforeach
                     </select>

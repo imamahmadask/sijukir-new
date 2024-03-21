@@ -176,7 +176,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                {{ $lokasi->area->kecamatan }}
+                                {{ $lokasi->area->Kecamatan }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $lokasi->jenis_lokasi }}

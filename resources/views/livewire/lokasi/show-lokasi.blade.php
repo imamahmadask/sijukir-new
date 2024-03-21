@@ -73,10 +73,7 @@
 
             {{-- Frame Maps --}}
             <div class="w-full lg:w-1/2 p-4">
-                <iframe class="h-full w-full"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7890.387824444109!2d116.0805198120852!3d-8.577345821109502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdc064fa24c449%3A0x43302e6135d8899f!2sMalomba%20Legend%20Stadium!5e0!3m2!1sen!2sid!4v1700703194453!5m2!1sen!2sid"
-                    style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div id="map"></div>
             </div>
         </div>
 
@@ -115,6 +112,11 @@
             <div class="w-full lg:w-1/2 lg:p-4">
                 <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
                     <div class="flex flex-col pt-3">
+                        <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Kel./Kec.</dt>
+                        <dd class="text-lg font-semibold">{{ $lokasi->kelurahan->kelurahan }} /
+                            {{ $lokasi->area->Kecamatan }}</dd>
+                    </div>
+                    <div class="flex flex-col pt-3">
                         <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Jenis Pendaftaran</dt>
                         <dd class="text-lg font-semibold">{{ $lokasi->pendaftaran }}</dd>
                     </div>
@@ -131,7 +133,10 @@
                     <div class="flex flex-col pt-3">
                         <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Google Maps</dt>
                         <dd class="text-lg font-semibold">
-                            {{ $lokasi->google_maps }}</dd>
+                            <a href="{{ $lokasi->google_maps }}">
+                                Lihat Maps
+                            </a>
+                        </dd>
                     </div>
                     <div class="flex flex-col pt-3">
                         <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Latitude, Longitude</dt>
@@ -176,17 +181,17 @@
                                     {{ $jukir->nama_jukir }}
                                 </a>
                             </th>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 dark:text-white">
                                 @if ($jukir->status == 'Non-Tunai')
                                     {{ $jukir->merchant->merchant_name }}
                                 @else
                                     {{ $jukir->kode_jukir }}
                                 @endif
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 dark:text-white">
                                 {{ $jukir->ket_jukir }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 dark:text-white">
                                 Tidak Ada
                             </td>
                         </tr>
@@ -194,7 +199,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
 <script>
@@ -212,5 +216,73 @@
                 closeToast(successToast);
             }, 3000);
         }
+    });
+</script>
+
+<script>
+    // Initialize and add the map
+    let map;
+
+    async function initMap() {
+        // The location of Uluru
+        const position = {
+            lat: -25.344,
+            lng: 131.031
+        };
+        // Request needed libraries.
+        //@ts-ignore
+        const {
+            Map
+        } = await google.maps.importLibrary("maps");
+        const {
+            AdvancedMarkerElement
+        } = await google.maps.importLibrary("marker");
+
+        // The map, centered at Uluru
+        map = new Map(document.getElementById("map"), {
+            zoom: 4,
+            center: position,
+            mapId: "DEMO_MAP_ID",
+        });
+
+        // The marker, positioned at Uluru
+        const marker = new AdvancedMarkerElement({
+            map: map,
+            position: position,
+            title: "Uluru",
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", initMap);
+</script>
+<script>
+    (g => {
+        var h, a, k, p = "The Google Maps JavaScript API",
+            c = "google",
+            l = "importLibrary",
+            q = "__ib__",
+            m = document,
+            b = window;
+        b = b[c] || (b[c] = {});
+        var d = b.maps || (b.maps = {}),
+            r = new Set,
+            e = new URLSearchParams,
+            u = () => h || (h = new Promise(async (f, n) => {
+                await (a = m.createElement("script"));
+                e.set("libraries", [...r] + "");
+                for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]);
+                e.set("callback", c + ".maps." + q);
+                a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+                d[q] = f;
+                a.onerror = () => h = n(Error(p + " could not load."));
+                a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+                m.head.append(a)
+            }));
+        d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() =>
+            d[l](f, ...n))
+    })
+    ({
+        key: "AIzaSyD-28lYRlFJLK4qZZqj3DzddgryZ1zYac8",
+        v: "weekly"
     });
 </script>

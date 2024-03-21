@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Jukir;
 
+use App\Models\HistoriMerchant;
 use App\Models\Jukir;
 use App\Models\Lokasi;
 use App\Models\Merchant;
@@ -27,6 +28,10 @@ class EditJukir extends Component
     public $dayList = [
         'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
     ];
+    public $migrasi_qr, $merchants_baru, $merchant_baru, $tgl_migrasi_qr;
+    public $merchant_lama = NULL;
+    public $is_migration, $old_merchant_id;
+    public $to_active, $old_ket_jukir;
 
     #[Validate('required|min:7')]
     public $kode_jukir, $nik_jukir;
@@ -94,6 +99,16 @@ class EditJukir extends Component
         $this->tgl_terbit_qr = $jukir->tgl_terbit_qr;
         $this->ket_jukir = $jukir->ket_jukir;
         $this->tgl_nonactive = $jukir->tgl_nonactive;
+
+        $this->is_migration = $jukir->is_migration;
+        $this->migrasi_qr = $jukir->is_migration;
+        if($this->migrasi_qr == true){
+            $histori = HistoriMerchant::where('jukir_id', $this->jukirId)->first();
+
+            $this->merchant_baru = $histori->new_merchant_id;
+            $this->merchant_lama = $histori->old_merchant_id;
+            $this->tgl_migrasi_qr = $histori->tanggal_perubahan;
+        }
     }
 
     public function updateJukir()
@@ -120,7 +135,17 @@ class EditJukir extends Component
             $file_document = $this->document->storeAs('document_jukir', $nama_document, 'public');
         }
 
-        $this->setYearAndMonth();
+        if($this->migrasi_qr == true){
+            $this->old_merchant_id = $this->merchant_lama;
+            $this->merchant_id = $this->merchant_baru;
+            $this->is_migration = $this->migrasi_qr;
+            $this->updateHistoriMerchant();
+        }else{
+            $this->old_merchant_id = NULL;
+            HistoriMerchant::where('jukir_id', $this->jukirId)->delete();
+        }
+
+        $this->tgl_nonactive = ($this->ket_jukir == 'Active') ? null : $this->tgl_nonactive;
 
         $jukir->update([
             'kode_jukir' => $this->kode_jukir,
@@ -156,7 +181,10 @@ class EditJukir extends Component
             'waktu_kerja' => $this->waktu_kerja,
             'tgl_nonactive' => $this->tgl_nonactive,
             'hari_libur' => json_encode($this->hari_libur),
-            'area_id' => $area_id
+            'area_id' => $area_id,
+            'tgl_nonactive' => $this->tgl_nonactive,
+            'old_merchant_id' => $this->old_merchant_id,
+            'is_migration' => $this->migrasi_qr,
         ]);
 
         $this->reset();
@@ -166,10 +194,39 @@ class EditJukir extends Component
         $this->redirectRoute('jukir.show', ['jukir' => $jukir->id]);
     }
 
-    private function setYearAndMonth()
+    public function updateHistoriMerchant(){
+        HistoriMerchant::updateOrCreate(
+            [
+                'jukir_id' => $this->jukirId
+            ],
+            [
+                'old_merchant_id' => $this->merchant_lama,
+                'new_merchant_id' => $this->merchant_id,
+                'tanggal_perubahan' => Carbon::parse($this->tgl_migrasi_qr)->format('Y-m-d H:i:s')
+            ]
+        );
+    }
+
+    public function updatedMigrasiQr($value)
     {
-        $this->tahun = Carbon::parse($this->tgl_perjanjian)->format('Y');
-        $this->bulan = Carbon::parse($this->tgl_perjanjian)->format('m');
+        if($value)
+        {
+            if($this->is_migration){
+                $histori = HistoriMerchant::where('jukir_id', $this->jukirId)->first();
+                $this->merchant_baru = $histori->new_merchant_id;
+                $this->merchant_lama = $histori->old_merchant_id;
+                $this->tgl_migrasi_qr = $histori->tanggal_perubahan;
+            }else{
+                $this->merchant_lama = $this->merchant_id;
+                $this->merchant_baru = "";
+                $this->tgl_migrasi_qr = "";
+            }
+        }else{
+            $this->merchant_lama = "";
+            $this->merchant_baru = "";
+            $this->tgl_migrasi_qr = "";
+
+        }
     }
 
     public function updatedStatus($value)
