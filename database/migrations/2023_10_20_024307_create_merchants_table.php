@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('merchants', function (Blueprint $table) {
+        Schema::create('merchant', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_terdaftar');
             $table->string('nmid', 50);

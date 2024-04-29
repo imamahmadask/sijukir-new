@@ -12,7 +12,7 @@ class Merchant extends Model
 {
     use HasFactory;
 
-    protected $table = "merchants";
+    protected $table = "merchant";
     protected $primaryKey = 'id'; // or null
 
     public $incrementing = false;

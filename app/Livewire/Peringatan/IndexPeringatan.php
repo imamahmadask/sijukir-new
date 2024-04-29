@@ -42,7 +42,7 @@ class IndexPeringatan extends Component
                     'surat_peringatans.tipe',
                     'surat_peringatans.tgl_klarifikasi',
                     'jukirs.nama_jukir',
-                    'merchants.merchant_name',
+                    'merchant.merchant_name',
                     'lokasis.titik_parkir',
                     'lokasis.lokasi_parkir',
                     'surat_peringatans.jml_kurang_setor',
@@ -54,11 +54,11 @@ class IndexPeringatan extends Component
                 )
                 ->leftJoin('jukirs', 'jukirs.id', '=', 'surat_peringatans.jukir_id')
                 ->leftJoin('lokasis', 'lokasis.id', '=', 'jukirs.lokasi_id')
-                ->leftJoin('merchants', 'merchants.id', '=', 'jukirs.merchant_id')
+                ->leftJoin('merchant', 'merchant.id', '=', 'jukirs.merchant_id')
                 ->leftJoin('korlaps', 'korlaps.id', '=', 'lokasis.korlap_id')
                 ->where(function ($query) {
                     $query->orWhere('jukirs.nama_jukir', 'like', '%' . $this->search . '%')
-                        ->orWhere('merchants.merchant_name', 'like', '%' . $this->search . '%')
+                        ->orWhere('merchant.merchant_name', 'like', '%' . $this->search . '%')
                         ->orWhere('lokasis.titik_parkir', 'like', '%' . $this->search . '%');
                 })
                 ->whereBetween('surat_peringatans.tgl_klarifikasi', [$this->date_start, $this->date_end])

@@ -16,7 +16,7 @@ class CreateMerchant extends Component
 
     public $areas;
 
-    #[Rule('required|unique:merchants,id')]
+    #[Rule('required|unique:merchant.id')]
     public $id;
 
     #[Rule('required')]
